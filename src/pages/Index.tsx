@@ -1,8 +1,10 @@
 import { HeroSlider } from '@/components/HeroSlider';
+import Navbar from '@/components/Navbar';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <Navbar />
       <HeroSlider />
       
       {/* Add more sections below the slider as needed */}
