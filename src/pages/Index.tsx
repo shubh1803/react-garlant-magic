@@ -1,12 +1,21 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { HeroSlider } from '@/components/HeroSlider';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <HeroSlider />
+      
+      {/* Add more sections below the slider as needed */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+            Our Landscaping Services
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Professional landscape design and maintenance services to transform your outdoor space into a beautiful, functional environment.
+          </p>
+        </div>
+      </section>
     </div>
   );
 };
