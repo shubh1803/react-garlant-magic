@@ -17,20 +17,20 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 195 100% 40%;
+    --primary: 88 50% 53%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 195 100% 35%;
-    --dark: 195 100% 15%;
+    --primary-hover: 88 50% 48%;
+    --dark: 0 0% 15%;
 
-    --secondary: 31 100% 65%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-hover: 31 100% 60%;
+    --secondary: 45 93% 58%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-hover: 45 93% 53%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 195 50% 95%;
-    --accent-foreground: 195 100% 20%;
+    --accent: 88 70% 35%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -42,11 +42,9 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Hero gradient for overlays */
-    --hero-overlay: linear-gradient(
-      135deg,
-      rgba(0, 95, 155, 0.9) 0%,
-      rgba(0, 60, 120, 0.8) 100%
-    );
+    --hero-overlay: linear-gradient(135deg, 
+      rgba(45, 70, 45, 0.8) 0%, 
+      rgba(20, 40, 20, 0.6) 100%);
     
     /* Medical theme gradients */
     --section-gradient: linear-gradient(135deg, 
@@ -87,19 +85,19 @@ All colors MUST be HSL.
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 195 100% 40%;
+    --primary: 88 50% 53%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 195 100% 35%;
+    --primary-hover: 88 50% 48%;
 
-    --secondary: 31 100% 65%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-hover: 31 100% 60%;
+    --secondary: 45 93% 58%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-hover: 45 93% 53%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 195 50% 15%;
-    --accent-foreground: 195 50% 95%;
+    --accent: 88 70% 35%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -108,11 +106,9 @@ All colors MUST be HSL.
     --input: 217.2 32.6% 17.5%;
     --ring: 88 50% 53%;
 
-    --hero-overlay: linear-gradient(
-      135deg,
-      rgba(0, 95, 155, 0.95) 0%,
-      rgba(0, 60, 120, 0.9) 100%
-    );
+    --hero-overlay: linear-gradient(135deg, 
+      rgba(25, 50, 25, 0.9) 0%, 
+      rgba(10, 30, 10, 0.7) 100%);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;

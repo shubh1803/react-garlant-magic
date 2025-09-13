@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Search, MapPin, Mail, Phone } from 'lucide-react';
+import { Menu, X, Search, MapPin, Mail, Phone, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -67,11 +67,20 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center space-x-8 ml-auto mr-8">
               <a href="/" className="text-dark hover:text-primary transition-colors font-medium">Home</a>
               <div className="relative group">
-                <a href="/pages" className="text-dark hover:text-primary transition-colors font-medium">Pages</a>
+                <a href="#" className="text-dark hover:text-primary transition-colors font-medium flex items-center">
+                  Services <ChevronDown className="ml-1 h-4 w-4" />
+                </a>
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="p-4">
+                    <a href="#" className="block px-3 py-2 text-sm text-dark hover:text-primary hover:bg-gray-50 rounded">Cooperative Registration</a>
+                    <a href="#" className="block px-3 py-2 text-sm text-dark hover:text-primary hover:bg-gray-50 rounded">Audit and Compliance</a>
+                    <a href="#" className="block px-3 py-2 text-sm text-dark hover:text-primary hover:bg-gray-50 rounded">Banking Business Setup</a>
+                    <a href="#" className="block px-3 py-2 text-sm text-dark hover:text-primary hover:bg-gray-50 rounded">Training & Capacity Building</a>
+                    <a href="#" className="block px-3 py-2 text-sm text-dark hover:text-primary hover:bg-gray-50 rounded">Business Growth & Expansion</a>
+                  </div>
+                </div>
               </div>
-              <div className="relative group">
-                <a href="/service" className="text-dark hover:text-primary transition-colors font-medium">Service</a>
-              </div>
+              <a href="/about" className="text-dark hover:text-primary transition-colors font-medium">About</a>
               <a href="/contact" className="text-dark hover:text-primary transition-colors font-medium">Contact</a>
             </div>
 
@@ -105,7 +114,7 @@ const Navbar = () => {
             <div className="lg:hidden border-t border-gray-200 py-4">
               <div className="flex flex-col space-y-4">
                 <a href="/" className="text-dark hover:text-primary transition-colors font-medium py-2">Home</a>
-                <a href="/pages" className="text-dark hover:text-primary transition-colors font-medium py-2">Pages</a>
+                <a href="/about" className="text-dark hover:text-primary transition-colors font-medium py-2">About</a>
                 <a href="/service" className="text-dark hover:text-primary transition-colors font-medium py-2">Service</a>
                 <a href="/contact" className="text-dark hover:text-primary transition-colors font-medium py-2">Contact</a>
                 <div className="flex items-center space-x-4 pt-4">
