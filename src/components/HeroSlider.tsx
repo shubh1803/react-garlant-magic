@@ -9,27 +9,43 @@ const slides = [
   {
     id: 1,
     image: heroSlide1,
-    title: "Be proud of your landscape design",
-    subtitle: "Claims of duty or the obligations of business it will frequently landscaping gardening system repudiated.",
-    primaryBtn: "More About Us",
+    title: "Start Your Own Credit Cooperative or Microfinance Company",
+    subtitle: "From registration to growth – Expert consultancy for Credit Cooperative Societies, Multi-State Societies, and Section 8 Microfinance Companies.",
+    primaryBtn: "Get Started Today",
     secondaryBtn: "Explore Now"
   },
   {
     id: 2,
     image: heroSlide2,
-    title: "Transform your outdoor space",
-    subtitle: "Create serene and beautiful gardens that reflect your vision with our expert landscape design services.",
-    primaryBtn: "Get Quote",
+    title: "Complete Compliance and Audit Solutions",
+    subtitle: "We take care of all your statutory, audit, and regulatory needs as per RBI and Ministry guidelines.",
+    primaryBtn: "Explore Our Compliance Services",
     secondaryBtn: "View Gallery"
   },
   {
     id: 3,
     image: heroSlide3,
-    title: "Professional landscaping solutions",
-    subtitle: "From concept to completion, we deliver exceptional outdoor environments that enhance your property value.",
-    primaryBtn: "Contact Us",
+    title: "Training That Builds Cooperative Leaders",
+    subtitle: "Customized training programs for your board, staff, and members to ensure strong governance and effective operations.",
+    primaryBtn: "View Training Programs",
     secondaryBtn: "Learn More"
-  }
+  },
+  {
+    id: 4,
+    image: heroSlide1,
+    title: "Grow and Expand Your Banking Business",
+    subtitle: "We help you scale your cooperative or microfinance institution with branch expansion, product development, and digital systems.",
+    primaryBtn: "Plan Your Growth",
+    secondaryBtn: "Learn More"
+  },
+  {
+    id: 5,
+    image: heroSlide2,
+    title: "Sahakar Samruddhi – Your Trusted Partner in Cooperative Success",
+    subtitle: "We empower cooperative institutions with legal, financial, and strategic expertise tailored to your goals.",
+    primaryBtn: "Request a Free Consultation",
+    secondaryBtn: "Learn More"
+  },
 ];
 
 export const HeroSlider = () => {

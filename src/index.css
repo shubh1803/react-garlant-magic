@@ -42,10 +42,12 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Hero gradient for overlays */
-    --hero-overlay: linear-gradient(135deg, 
-      rgba(45, 70, 45, 0.8) 0%, 
-      rgba(20, 40, 20, 0.6) 100%);
-    
+    --hero-overlay: linear-gradient(
+      135deg,
+      rgba(45, 70, 45, 0.8) 0%,
+      rgba(20, 40, 20, 0.6) 100%
+    );
+
     /* Animation timings */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slide: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -98,9 +100,11 @@ All colors MUST be HSL.
     --input: 217.2 32.6% 17.5%;
     --ring: 88 50% 53%;
 
-    --hero-overlay: linear-gradient(135deg, 
-      rgba(25, 50, 25, 0.9) 0%, 
-      rgba(10, 30, 10, 0.7) 100%);
+    --hero-overlay: linear-gradient(
+      135deg,
+      rgba(25, 50, 25, 0.9) 0%,
+      rgba(10, 30, 10, 0.7) 100%
+    );
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -111,13 +115,32 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
-
-@layer base {
-  * {
-    @apply border-border;
+@keyframes sidebar-zoom-out {
+  0% {
+    transform: scale(1.05);
+    opacity: 0.8;
   }
-
-  body {
-    @apply bg-background text-foreground;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
+}
+
+@keyframes content-zoom-out {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-sidebar-zoom-out {
+  animation: sidebar-zoom-out 0.5s ease-out forwards;
+}
+
+.animate-content-zoom-out {
+  animation: content-zoom-out 0.5s ease-out forwards;
 }
