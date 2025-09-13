@@ -57,7 +57,7 @@ const Navbar = () => {
             {/* Logo */}
  <div className="flex items-center">
         <img
-          src="/logo_black.png"  // 👈 apne logo ka path
+          src="/ss.png"  // 👈 apne logo ka path
           alt="Etaxwala Logo"
           className="h-12 w-auto mr-3" // height fix, width auto for proper ratio
         />
