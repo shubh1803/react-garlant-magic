@@ -96,7 +96,10 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                About <span className="text-primary">Sahakar Samruddhi</span>
+                About  <span className="text-[#7B191B] ml-2">सहकार</span>
+  <span className="text-[#3C3C3C] ml-2 animate-shine">
+    समृद्धी
+  </span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Empowering Cooperatives with Banking & Finance Expertise. We are a specialized consultancy platform dedicated to supporting the growth and success of cooperative financial institutions across India.

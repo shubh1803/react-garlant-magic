@@ -1,98 +1,124 @@
-import { useRef, useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChevronLeft, ChevronRight, FileText, Shield, Building, Users, TrendingUp, Sparkles } from 'lucide-react';
+import { useState, useRef, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const services = [
   {
-    icon: FileText,
-    title: "Cooperative Registration",
+    title: "Business Consultation & Planning",
     items: [
-      "Credit Cooperative Society (State Level)",
-      "Multi-State Credit Cooperative Society", 
-      "Microfinance Company under Section 8"
+      "Strategic business planning and advisory services",
+      "Market research and feasibility studies",
+      "Business model optimization and restructuring",
     ],
-    gradient: "from-emerald-500 to-teal-600",
-    bgColor: "bg-emerald-50",
-    iconColor: "text-emerald-600"
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
   },
   {
-    icon: Shield,
-    title: "Audit and Compliance",
+    title: "Business Setup & Registration",
     items: [
-      "Annual audit as per applicable laws",
-      "Statutory, legal, and RBI/NABARD compliance",
-      "Preparation and filing of mandatory returns and documents"
+      "Company incorporation and legal structuring",
+      "Business licensing and regulatory compliance",
+      "Trademark and intellectual property registration",
     ],
-    gradient: "from-blue-500 to-indigo-600",
-    bgColor: "bg-blue-50",
-    iconColor: "text-blue-600"
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
   },
   {
-    icon: Building,
-    title: "Banking Business Setup",
+    title: "Team Building & Start-up Training",
     items: [
-      "Designing cooperative banking business models",
-      "SOPs, loan and deposit product creation",
-      "Core banking solutions and digital integration support"
+      "Recruitment and talent acquisition strategies",
+      "Leadership development programs",
+      "Startup training and skill development workshops",
     ],
-    gradient: "from-purple-500 to-violet-600",
-    bgColor: "bg-purple-50",
-    iconColor: "text-purple-600"
+    image:
+      "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
   },
   {
-    icon: Users,
-    title: "Training and Capacity Building",
+    title: "Business Funding",
     items: [
-      "Tailored training for board members and staff",
-      "Regulatory awareness and governance best practices",
-      "Operational training in day-to-day banking activities"
+      "Investment pitching and investor connections",
+      "Loan application assistance and financial modeling",
+      "Grant writing and funding strategy development",
     ],
-    gradient: "from-rose-500 to-pink-600",
-    bgColor: "bg-rose-50",
-    iconColor: "text-rose-600"
+    image:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
   },
   {
-    icon: TrendingUp,
-    title: "Business Growth and Expansion",
+    title: "Business Software & Tools",
     items: [
-      "Strategy development for scaling cooperative operations",
-      "Multi-branch planning and execution",
-      "Marketing, digital presence, and branding support"
+      "ERP and CRM system implementation",
+      "Custom software development solutions",
+      "Digital transformation and automation services",
     ],
-    gradient: "from-orange-500 to-amber-600",
-    bgColor: "bg-orange-50",
-    iconColor: "text-orange-600"
-  }
+    image:
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Audit Taxation & Compliance",
+    items: [
+      "Financial statement auditing services",
+      "Tax planning and compliance management",
+      "Regulatory reporting and documentation",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Marketing & Branding",
+    items: [
+      "Brand strategy development and positioning",
+      "Digital marketing campaigns and social media management",
+      "Content creation and public relations services",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Business Growth & Expansion",
+    items: [
+      "Market expansion strategy development",
+      "Franchise development and licensing",
+      "Mergers and acquisitions advisory",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Start up Support",
+    items: [
+      "Incubation and acceleration programs",
+      "Mentorship and networking opportunities",
+      "Early-stage funding and resource connections",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+  },
 ];
 
 export const ServicesSection = () => {
+  const [hoveredService, setHoveredService] = useState(null);
   const scrollContainerRef = useRef(null);
-  const [activeCard, setActiveCard] = useState(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
-  const [inView, setInView] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
-    
+  const checkScrollPosition = () => {
     if (scrollContainerRef.current) {
-      observer.observe(scrollContainerRef.current);
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
+      setShowLeftArrow(scrollLeft > 0);
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
     }
-    
-    return () => observer.disconnect();
-  }, []);
+  };
 
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
       const scrollAmount = 400;
-      const newScrollLeft = scrollContainerRef.current.scrollLeft + (direction === 'right' ? scrollAmount : -scrollAmount);
-      
+      const newScrollLeft =
+        scrollContainerRef.current.scrollLeft +
+        (direction === "right" ? scrollAmount : -scrollAmount);
+
       scrollContainerRef.current.scrollTo({
         left: newScrollLeft,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
 
       setTimeout(() => {
@@ -101,177 +127,179 @@ export const ServicesSection = () => {
     }
   };
 
-  const checkScrollPosition = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-      setShowLeftArrow(scrollLeft > 0);
-      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
-    }
-  };
+  useEffect(() => {
+    checkScrollPosition();
+    window.addEventListener("resize", checkScrollPosition);
+    return () => window.removeEventListener("resize", checkScrollPosition);
+  }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-400 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-40 left-20 w-48 h-48 bg-purple-400 rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
-      </div>
-      
-      {/* Floating elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute"
-            style={{
-              left: `${10 + i * 12}%`,
-              top: `${20 + (i % 3) * 25}%`,
-              animation: `float 6s ease-in-out infinite`,
-              animationDelay: `${i * 0.8}s`
-            }}
-          >
-            <div className="w-2 h-2 bg-blue-300 rounded-full opacity-30"></div>
+    <section className="py-20 bg-gray-50 relative overflow-hidden">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="sub-style mb-4">
+            <h5 className="sub-title px-3 inline-block text-lg font-semibold relative">
+              <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
+                Our Specialized Services
+
+              </span>
+            </h5>
           </div>
-        ))}
-      </div>
-      
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Enhanced Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${inView ? 'animate-fade-in' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <Sparkles className="w-4 h-4 mr-2" />
-            Our Specialized Services
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-            Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Cooperative</span> Solutions
+
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+           Comprehensive Cooperative Solutions
+
           </h2>
-          
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We provide end-to-end services to establish, manage, and grow your cooperative financial institution with expert guidance and innovative solutions.
+
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          We provide end-to-end services to establish, manage, and grow your cooperative financial institution with expert guidance and innovative solutions.
           </p>
-          
-          <div className="mt-8 flex justify-center">
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-          </div>
         </div>
 
         <div className="relative">
           {/* Navigation Arrows */}
           {showLeftArrow && (
-            <button 
-              onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-blue-50 transition-all duration-300 -ml-7 group border border-gray-100"
+            <button
+              onClick={() => scroll("left")}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-100 transition-all duration-300 -ml-6 group border border-gray-200"
             >
-              <ChevronLeft className="w-6 h-6 text-blue-600 group-hover:text-blue-700" />
+              <ChevronLeft className="w-5 h-5 text-blue-600 group-hover:text-blue-800" />
             </button>
           )}
-          
+
           {showRightArrow && (
-            <button 
-              onClick={() => scroll('right')}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-blue-50 transition-all duration-300 -mr-7 group border border-gray-100"
+            <button
+              onClick={() => scroll("right")}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-100 transition-all duration-300 -mr-6 group border border-gray-200"
             >
-              <ChevronRight className="w-6 h-6 text-blue-600 group-hover:text-blue-700" />
+              <ChevronRight className="w-5 h-5 text-blue-600 group-hover:text-blue-800" />
             </button>
           )}
-          
+
           {/* Services Container */}
-          <div 
+          <div
             ref={scrollContainerRef}
-            className="flex overflow-x-auto pb-8 -mx-4 px-4 hide-scrollbar"
+            className="flex overflow-x-auto pb-12 -mx-4 px-4 hide-scrollbar"
             onScroll={checkScrollPosition}
           >
             <div className="flex space-x-8 min-w-max">
               {services.map((service, index) => (
-                <div 
+                <div
                   key={index}
-                  className={`w-80 flex-shrink-0 transition-all duration-700 ${
-                    inView ? 'animate-fade-in' : 'opacity-0 translate-y-8'
-                  }`}
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                  onMouseEnter={() => setActiveCard(index)}
-                  onMouseLeave={() => setActiveCard(null)}
+                  className="w-80 flex-shrink-0"
+                  onMouseEnter={() => setHoveredService(index)}
+                  onMouseLeave={() => setHoveredService(null)}
                 >
-                  <Card className={`h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group bg-white ${
-                    activeCard === index ? 'scale-105 -translate-y-2' : 'scale-100'
-                  }`}>
-                    
-                    {/* Header with Dynamic Gradient */}
-                    <div className={`h-44 relative overflow-hidden bg-gradient-to-br ${service.gradient}`}>
-                      
-                      {/* Animated particles in header */}
-                      <div className="absolute inset-0">
-                        {[...Array(4)].map((_, i) => (
-                          <div
-                            key={i}
-                            className="absolute w-2 h-2 bg-white/30 rounded-full animate-bounce"
-                            style={{
-                              left: `${20 + i * 20}%`,
-                              top: `${30 + i * 15}%`,
-                              animationDelay: `${i * 0.5}s`,
-                              animationDuration: '2s'
-                            }}
-                          />
-                        ))}
+                  {/* Card */}
+                  <div
+                    className={`service-item bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-xl 
+                      ${hoveredService === index ? "h-[480px] bg-gray-50" : "h-[320px]"}`}
+                  >
+                    <div className="service-inner relative">
+                      {/* Image Section */}
+                      <div className="service-img overflow-hidden h-40 relative">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
                       </div>
-                      
-                      {/* Icon Container */}
-                      <div className="absolute top-6 left-6 w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                        <service.icon className="w-8 h-8 text-white" />
+
+                      {/* Title + Accordion Content */}
+                      <div className="service-title p-5 relative">
+                        {/* Title (Default) */}
+                        <div
+                          className={`transition-all duration-300 ${
+                            hoveredService === index
+                              ? "opacity-0 h-0 overflow-hidden"
+                              : "opacity-100 h-auto"
+                          }`}
+                        >
+                          <div className="bg-blue-100 text-center rounded-lg p-4 mx-4 -mt-8 relative z-10 shadow-md">
+                            <h3 className="text-lg font-semibold text-blue-800">
+                              {service.title}
+                            </h3>
+                          </div>
+                          <div className="text-center mt-6">
+                            <button className="bg-blue-100 text-blue-800 rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-200 transition-colors duration-300">
+                              Explore More
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Expanded Content */}
+                        <div
+                          className={`service-content transition-all duration-500 ${
+                            hoveredService === index
+                              ? "opacity-100 translate-y-0 h-auto"
+                              : "opacity-0 -translate-y-4 pointer-events-none h-0 overflow-hidden"
+                          }`}
+                        >
+                          <div className="flex flex-col">
+                            <h3 className="text-xl font-semibold text-blue-800 mb-4">
+                              {service.title}
+                            </h3>
+                            <ul className="space-y-3 mb-6">
+                              {service.items.map((item, i) => (
+                                <li key={i} className="flex items-start">
+                                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                                  <span className="text-sm text-gray-700">
+                                    {item}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                            <button className="bg-blue-600 text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-700 transition-colors duration-300 mt-4">
+                              Get Started
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                      
-                      <CardHeader className="pt-24 pb-6 relative z-10">
-                        <CardTitle className="text-2xl font-bold text-white">
-                          {service.title}
-                        </CardTitle>
-                      </CardHeader>
                     </div>
-                    
-                    <CardContent className="p-6">
-                      <ul className="space-y-4">
-                        {service.items.map((item, itemIndex) => (
-                          <li key={itemIndex} className="flex items-start group/item">
-                            <div className={`w-6 h-6 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0 ${service.bgColor} group-hover/item:scale-110 transition-transform duration-300`}>
-                              <div className={`w-2 h-2 rounded-full ${service.iconColor.replace('text-', 'bg-')}`}></div>
-                            </div>
-                            <span className="text-gray-700 leading-relaxed group-hover/item:text-gray-800 transition-colors duration-300">
-                              {item}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      <div className="mt-8 pt-6 border-t border-gray-100">
-                        <button className={`${service.iconColor} font-semibold text-sm flex items-center hover:underline transition-all duration-300 group/button`}>
-                          Learn more
-                          <ChevronRight className="w-4 h-4 ml-1 group-hover/button:translate-x-1 transition-transform duration-300" />
-                        </button>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        
-        {/* Enhanced CTA */}
-        <div className={`text-center mt-16 transition-all duration-1000 ${inView ? 'animate-fade-in' : 'opacity-0 translate-y-8'}`} style={{animationDelay: '1s'}}>
-          <button className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white px-10 py-4 rounded-2xl font-semibold text-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 hover:scale-105 relative overflow-hidden group">
-            <span className="relative z-10 flex items-center">
-              Explore All Services
-              <Sparkles className="w-5 h-5 ml-2 animate-pulse" />
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        {/* CTA */}
+        <div className="text-center mt-16">
+          <button className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg">
+            View All Services
           </button>
         </div>
       </div>
 
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+      <style jsx>{`
+        .service-item {
+          transition: transform 0.3s ease, box-shadow 0.3s ease,
+            height 0.5s ease, background-color 0.3s ease;
+        }
+        .service-item:hover {
+          transform: translateY(-5px);
+        }
+        .service-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .sub-title:after {
+          content: "";
+          position: absolute;
+          width: 60%;
+          height: 2px;
+          background: #3b82f6;
+          bottom: -5px;
+          left: 20%;
         }
       `}</style>
     </section>

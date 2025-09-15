@@ -20,7 +20,7 @@ export const VisionSection = () => {
               <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8">
                 To become India's leading consultancy platform for cooperative institutions by providing quality, ethical, and impactful services that strengthen financial inclusion and cooperative development.
               </p>
-              <Button size="lg" className="bg-primary hover:bg-primary-hover text-primary-foreground group">
+              <Button size="lg" className="bg-primary hover:bg-primary-hover text-primary-foreground group"> 
                 Request a Free Consultation
                 <ExternalLink className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
