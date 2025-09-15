@@ -272,36 +272,6 @@ export const ServicesSection = () => {
         </div>
       </div>
 
-      <style jsx>{`
-        .service-item {
-          transition: transform 0.3s ease, box-shadow 0.3s ease,
-            height 0.5s ease, background-color 0.3s ease;
-        }
-        .service-item:hover {
-          transform: translateY(-5px);
-        }
-        .service-content {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .sub-title:after {
-          content: "";
-          position: absolute;
-          width: 60%;
-          height: 2px;
-          background: #3b82f6;
-          bottom: -5px;
-          left: 20%;
-        }
-      `}</style>
     </section>
   );
 };

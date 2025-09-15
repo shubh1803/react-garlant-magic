@@ -3,8 +3,8 @@ import { HeroSection } from '@/components/HeroSection';
 import { ServicesSection } from '@/components/ServicesSection';
 import WhyChooseSection from "@/components/WhyChooseSection";
 import { VisionSection } from '@/components/VisionSection';
-import { QuickLinksSection } from '@/components/QuickLinksSection';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
@@ -15,7 +15,7 @@ const Index = () => {
       <ServicesSection />
       <WhyChooseSection />
       <VisionSection />
-      <QuickLinksSection />
+      <Footer />
     </div>
   );
 };

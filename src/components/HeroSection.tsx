@@ -68,20 +68,6 @@ export const HeroSection = () => {
         </div>
       </div>
       
-      <style jsx>{`
-        @keyframes shine {
-          0% { background-position: 0% center; }
-          50% { background-position: 100% center; }
-          100% { background-position: 0% center; }
-        }
-        .animate-shine {
-          background-size: 200% auto;
-          animation: shine 5s ease infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-      `}</style>
     </section>
   );
 };
