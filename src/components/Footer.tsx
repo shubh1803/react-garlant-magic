@@ -33,8 +33,8 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="mb-6">
               <h3 className="text-2xl font-bold mb-2">
-                <span className="text-orange-600">सहकार</span>{" "}
-                <span className="text-blue-800">समृद्धी</span>
+               <span className="text-[#7B191B]">सहकार</span>{" "}
+                <span className="text-[#3C3C3C]">समृद्धी</span>
               </h3>
               <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-orange-500 rounded"></div>
             </div>
@@ -44,15 +44,19 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center text-gray-600">
                 <Mail className="w-4 h-4 mr-3 text-blue-600" />
-                <span className="text-sm">info@sahakarsamruddhi.com</span>
+                <span className="text-sm">info@sahakarsamruddhi.in</span>
               </div>
               <div className="flex items-center text-gray-600">
                 <Phone className="w-4 h-4 mr-3 text-blue-600" />
-                <span className="text-sm">+91 98765 43210</span>
+                <span className="text-sm">+91-XXXXXXXXXX</span>
               </div>
               <div className="flex items-center text-gray-600">
                 <MapPin className="w-4 h-4 mr-3 text-blue-600" />
-                <span className="text-sm">Mumbai, Maharashtra, India</span>
+                <span className="text-sm">Office Address:
+Ashoka Plaza, Beed Bypass Road,
+Infront of Reliance Digital,
+Chatrapati Sambhajinagar (Aurangabad), Maharashtra – 431010
+</span>
               </div>
             </div>
           </div>

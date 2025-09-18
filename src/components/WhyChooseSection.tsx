@@ -8,39 +8,34 @@ const WhyChooseSection = () => {
     {
       icon: Shield,
       title: "In-depth expertise in cooperative banking regulations",
-      description: "Our team has extensive knowledge of all regulatory frameworks governing cooperative banking institutions.",
+      description: "",
       image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       icon: Globe,
       title: "One-stop solution from registration to growth", 
-      description: "We provide comprehensive services covering every aspect of your cooperative's journey.",
+      description: "",
       image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       icon: Users,
       title: "Pan-India service coverage with a dedicated team",
-      description: "Our network spans across India with experienced professionals in every region.",
+      description: "",
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       icon: DollarSign,
       title: "Transparent pricing with result-driven approach",
-      description: "No hidden costs with clear deliverables and measurable outcomes for your institution.",
+      description: "",
       image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       icon: Heart,
       title: "Customized support for rural and urban cooperatives",
-      description: "Tailored solutions that address the unique challenges of different cooperative models.",
+      description: "",
       image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
-    {
-      icon: Award,
-      title: "Proven track record of successful implementations",
-      description: "Years of experience with hundreds of satisfied cooperative institutions across India.",
-      image: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    }
+   
   ];
 
   const scrollContainerRef = useRef(null);

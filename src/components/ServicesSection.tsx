@@ -1,101 +1,63 @@
 import { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const services = [
   {
-    title: "Business Consultation & Planning",
+    title: "Cooperative Registration",
     items: [
-      "Strategic business planning and advisory services",
-      "Market research and feasibility studies",
-      "Business model optimization and restructuring",
+      "Credit Cooperative Society (State Level)",
+      "Multi-State Credit Cooperative Society",
+      "Microfinance Company under Section 8 ",
     ],
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "/sample img.png",
   },
   {
-    title: "Business Setup & Registration",
+    title: "Audit and Compliance",
     items: [
-      "Company incorporation and legal structuring",
-      "Business licensing and regulatory compliance",
-      "Trademark and intellectual property registration",
+      "Annual audit as per applicable laws",
+      "Business licensing and regulatory Statutory, legal, and RBI/NABARD compliance",
+      "Preparation and filing of mandatory returns and documents",
     ],
     image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "/audit compliance.jpg",
   },
   {
-    title: "Team Building & Start-up Training",
+    title: "Banking Business Setup",
     items: [
-      "Recruitment and talent acquisition strategies",
-      "Leadership development programs",
-      "Startup training and skill development workshops",
+      "Designing cooperative banking business models",
+      "SOPs, loan and deposit product creation",
+      "Core banking solutions and digital integration support",
     ],
     image:
-      "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "/sample img.png",
   },
   {
-    title: "Business Funding",
+    title: "Training and Capacity Building",
     items: [
-      "Investment pitching and investor connections",
-      "Loan application assistance and financial modeling",
-      "Grant writing and funding strategy development",
+      "Tailored training for board members and staff",
+      "Regulatory awareness and governance best practices",
+      "Operational training in day-to-day banking activities",
     ],
     image:
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "/sample img.png",
   },
   {
-    title: "Business Software & Tools",
+    title: "Business Growth and Expansion",
     items: [
-      "ERP and CRM system implementation",
-      "Custom software development solutions",
-      "Digital transformation and automation services",
+      "Strategy development for scaling cooperative operations",
+      "Multi-branch planning and execution",
+      "Marketing, digital presence, and branding support",
     ],
     image:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    title: "Audit Taxation & Compliance",
-    items: [
-      "Financial statement auditing services",
-      "Tax planning and compliance management",
-      "Regulatory reporting and documentation",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    title: "Marketing & Branding",
-    items: [
-      "Brand strategy development and positioning",
-      "Digital marketing campaigns and social media management",
-      "Content creation and public relations services",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    title: "Business Growth & Expansion",
-    items: [
-      "Market expansion strategy development",
-      "Franchise development and licensing",
-      "Mergers and acquisitions advisory",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    title: "Start up Support",
-    items: [
-      "Incubation and acceleration programs",
-      "Mentorship and networking opportunities",
-      "Early-stage funding and resource connections",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "/busines growth.jpg",
   },
 ];
 
 export const ServicesSection = () => {
   const [hoveredService, setHoveredService] = useState(null);
+  const [showAppointmentForm, setShowAppointmentForm] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
   const scrollContainerRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -127,6 +89,17 @@ export const ServicesSection = () => {
     }
   };
 
+  const openAppointmentForm = (serviceTitle = "") => {
+    setSelectedService(serviceTitle);
+    setShowAppointmentForm(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeAppointmentForm = () => {
+    setShowAppointmentForm(false);
+    document.body.style.overflow = "auto";
+  };
+
   useEffect(() => {
     checkScrollPosition();
     window.addEventListener("resize", checkScrollPosition);
@@ -142,18 +115,16 @@ export const ServicesSection = () => {
             <h5 className="sub-title px-3 inline-block text-lg font-semibold relative">
               <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
                 Our Specialized Services
-
               </span>
             </h5>
           </div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
-           Comprehensive Cooperative Solutions
-
+            Comprehensive Cooperative Solutions
           </h2>
 
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          We provide end-to-end services to establish, manage, and grow your cooperative financial institution with expert guidance and innovative solutions.
+            We provide end-to-end services to establish, manage, and grow your cooperative financial institution with expert guidance and innovative solutions.
           </p>
         </div>
 
@@ -222,7 +193,10 @@ export const ServicesSection = () => {
                             </h3>
                           </div>
                           <div className="text-center mt-6">
-                            <button className="bg-blue-100 text-blue-800 rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-200 transition-colors duration-300">
+                            <button 
+                              onClick={() => openAppointmentForm(service.title)}
+                              className="bg-blue-100 text-blue-800 rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-200 transition-colors duration-300"
+                            >
                               Explore More
                             </button>
                           </div>
@@ -250,7 +224,10 @@ export const ServicesSection = () => {
                                 </li>
                               ))}
                             </ul>
-                            <button className="bg-blue-600 text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-700 transition-colors duration-300 mt-4">
+                            <button 
+                              onClick={() => openAppointmentForm(service.title)}
+                              className="bg-blue-600 text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-700 transition-colors duration-300 mt-4"
+                            >
                               Get Started
                             </button>
                           </div>
@@ -266,12 +243,122 @@ export const ServicesSection = () => {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg">
+          <button 
+            onClick={() => openAppointmentForm()}
+            className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg"
+          >
             View All Services
           </button>
         </div>
       </div>
 
+      {/* Appointment Form Modal */}
+      {showAppointmentForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center p-6 border-b">
+              <h3 className="text-xl font-semibold text-gray-800">Book an Appointment</h3>
+              <button 
+                onClick={closeAppointmentForm}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            
+            <div className="p-6">
+              <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {selectedService && (
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Selected Service
+                    </label>
+                    <div className="p-3 bg-blue-50 rounded-lg text-blue-800">
+                      {selectedService}
+                    </div>
+                  </div>
+                )}
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Company Name
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
+                
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Service Interested In
+                  </label>
+                  <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">Select a service</option>
+                    {services.map((service, index) => (
+                      <option key={index} value={service.title}>
+                        {service.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Message
+                  </label>
+                  <textarea
+                    rows={4}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  ></textarea>
+                </div>
+                
+                <div className="md:col-span-2 flex justify-center mt-4">
+                  <button
+                    type="submit"
+                    className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300"
+                  >
+                    Submit Appointment Request
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

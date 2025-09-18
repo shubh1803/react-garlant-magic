@@ -103,8 +103,7 @@ const About = () => {
   </span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Empowering Cooperatives with Banking & Finance Expertise. We are a specialized consultancy platform dedicated to supporting the growth and success of cooperative financial institutions across India.
-              </p>
+Sahakar Samruddhi is a specialized consultancy platform dedicated to supporting the growth and success of cooperative financial institutions across India. With a focused approach on Credit Cooperative Societies, Multi-State Credit Cooperative Societies, and Microfinance Companies (Section 8), we provide complete guidance from setup to compliance, operations, and expansion.              </p>
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
@@ -122,9 +121,12 @@ const About = () => {
             </div>
             <div className="relative">
               <div className="bg-primary/10 rounded-2xl p-6 h-80 flex items-center justify-center">
-                <div className="bg-primary/20 rounded-xl w-full h-full flex items-center justify-center">
-                  <span className="text-primary text-lg font-medium">Company Image/Banner</span>
-                </div>
+<img 
+  src="/sample img.png" 
+  alt="Company Banner" 
+  className="w-full h-full rounded-xl object-cover" 
+/>
+
               </div>
             </div>
           </div>
@@ -194,16 +196,18 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="relative">
               <div className="bg-primary/10 rounded-2xl p-6 h-80 flex items-center justify-center">
-                <div className="bg-primary/20 rounded-xl w-full h-full flex items-center justify-center">
-                  <span className="text-primary text-lg font-medium">Purpose Image</span>
-                </div>
+               <img 
+  src="/sample img.png" 
+  alt="Company Banner" 
+  className="w-full h-full rounded-xl object-cover" 
+/>
+
               </div>
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Purpose</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                India's cooperative movement holds the potential to bring real financial empowerment to rural and semi-urban populations. We believe that with the right structure, support, and strategy, cooperative institutions can create a lasting impact.
-              </p>
+India’s cooperative movement holds the potential to bring real financial empowerment to rural and semi-urban populations. At Sahakar Samruddhi, we believe that with the right structure, support, and strategy, cooperative institutions can create a lasting impact.              </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 We work with individuals, groups, and institutions who are passionate about community development, financial inclusion, and ethical banking practices.
               </p>
