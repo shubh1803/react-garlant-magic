@@ -60,6 +60,7 @@ export const HeroSection = () => {
                 Our mission is to empower cooperatives with expert support in legal compliance, strategic growth, and modern banking systems. Whether you're starting a new institution or looking to streamline and scale an existing one, we provide the guidance and solutions you need.
               </p>
             </div>
+            
             <Button size="lg" className="mt-8 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-8 py-6 text-md w-full transition-all duration-300 hover:scale-[1.02] shadow-md hover:shadow-lg relative overflow-hidden group">
               <span className="relative z-10">Request a Free Consultation</span>
               <span className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>

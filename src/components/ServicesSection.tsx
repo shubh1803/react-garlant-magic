@@ -1,36 +1,70 @@
 import { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { AppointmentForm } from "../components/AppointmentForm"; // Adjust path as needed
 
 const services = [
   {
     title: "Cooperative Registration",
     items: [
-      "Credit Cooperative Society (State Level)",
-      "Multi-State Credit Cooperative Society",
-      "Microfinance Company under Section 8 ",
+      {
+        name: "Credit Cooperative Society (State Level)",
+        path: "/credit-cooperative-registration"
+      },
+      {
+        name: "Multi-State Credit Cooperative Society",
+        path: "/multi-state-cooperative-registration"
+      },
+      {
+        name: "Microfinance Company under Section 8",
+        path: "/microfinance-registration"
+      },
+      {
+        name: "Other Cooperative Society Registration",
+        path: "/other-cooperative-registration"
+      }
     ],
-    image:
-      "/sample img.png",
+    image: "/sample img.png",
   },
   {
     title: "Audit and Compliance",
     items: [
-      "Annual audit as per applicable laws",
-      "Business licensing and regulatory Statutory, legal, and RBI/NABARD compliance",
-      "Preparation and filing of mandatory returns and documents",
+      {
+        name: "Credit Cooperative Society Audit and Compliance",
+        path: "/credit-cooperative-audit"
+      },
+      {
+        name: "Multi State Credit Cooperative Society Audit and Compliance", 
+        path: "/multi-state-audit"
+      },
+      {
+        name: "Microfinance Company (Section 8) Audit and Compliance",
+        path: "/microfinance-audit"
+      },
+      {
+        name: "Other Cooperative Society Audit and Compliance",
+        path: "/other-cooperative-audit"
+      }
     ],
-    image:
-      "/audit compliance.jpg",
+    image: "/audit compliance.jpg",
   },
   {
-    title: "Banking Business Setup",
+    title: "Business Consultancy",
     items: [
-      "Designing cooperative banking business models",
-      "SOPs, loan and deposit product creation",
-      "Core banking solutions and digital integration support",
+      {
+        name: "Banking Business Consultancy",
+        path: "/banking-consultancy"
+      },
+      {
+        name: "Banking Business Setup",
+        path: "/banking-business-setup"
+      },
+      {
+        name: "Banking Business Growth",
+        path: "/banking-business-growth"
+      }
     ],
-    image:
-      "/sample img.png",
+    image: "/busines consultation.jpg",
   },
   {
     title: "Training and Capacity Building",
@@ -39,8 +73,7 @@ const services = [
       "Regulatory awareness and governance best practices",
       "Operational training in day-to-day banking activities",
     ],
-    image:
-      "/sample img.png",
+    image: "/sample img.png",
   },
   {
     title: "Business Growth and Expansion",
@@ -49,8 +82,7 @@ const services = [
       "Multi-branch planning and execution",
       "Marketing, digital presence, and branding support",
     ],
-    image:
-      "/busines growth.jpg",
+    image: "/busines growth.jpg",
   },
 ];
 
@@ -61,6 +93,7 @@ export const ServicesSection = () => {
   const scrollContainerRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
+  const navigate = useNavigate();
 
   const checkScrollPosition = () => {
     if (scrollContainerRef.current) {
@@ -164,8 +197,8 @@ export const ServicesSection = () => {
                 >
                   {/* Card */}
                   <div
-                    className={`service-item bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-xl 
-                      ${hoveredService === index ? "h-[480px] bg-gray-50" : "h-[320px]"}`}
+                     className={`service-item bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-xl 
+                      ${hoveredService === index ? "h-[500px] bg-gray-50" : "h-[320px]"}`}
                   >
                     <div className="service-inner relative">
                       {/* Image Section */}
@@ -210,26 +243,37 @@ export const ServicesSection = () => {
                               : "opacity-0 -translate-y-4 pointer-events-none h-0 overflow-hidden"
                           }`}
                         >
-                          <div className="flex flex-col">
+                           <div className="flex flex-col h-full">
                             <h3 className="text-xl font-semibold text-blue-800 mb-4">
                               {service.title}
                             </h3>
-                            <ul className="space-y-3 mb-6">
+                            <ul className="space-y-3 mb-6 flex-1">
                               {service.items.map((item, i) => (
                                 <li key={i} className="flex items-start">
                                   <span className="w-2 h-2 bg-blue-600 rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
-                                  <span className="text-sm text-gray-700">
-                                    {item}
-                                  </span>
+                                  {typeof item === 'object' && item.path ? (
+                                    <button
+                                      onClick={() => navigate(item.path)}
+                                      className="text-sm text-gray-700 hover:text-blue-600 hover:underline transition-colors duration-200 text-left"
+                                    >
+                                      {item.name}
+                                    </button>
+                                  ) : (
+                                    <span className="text-sm text-gray-700 text-left">
+                                      {typeof item === 'string' ? item : item}
+                                    </span>
+                                  )}
                                 </li>
                               ))}
                             </ul>
-                            <button 
-                              onClick={() => openAppointmentForm(service.title)}
-                              className="bg-blue-600 text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-700 transition-colors duration-300 mt-4"
-                            >
-                              Get Started
-                            </button>
+                            <div className="mt-auto">
+                              <button 
+                                onClick={() => openAppointmentForm(service.title)}
+                                className="bg-blue-600 text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-700 transition-colors duration-300 w-full"
+                              >
+                                Get Started
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -252,113 +296,13 @@ export const ServicesSection = () => {
         </div>
       </div>
 
-      {/* Appointment Form Modal */}
-      {showAppointmentForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center p-6 border-b">
-              <h3 className="text-xl font-semibold text-gray-800">Book an Appointment</h3>
-              <button 
-                onClick={closeAppointmentForm}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                <X size={24} />
-              </button>
-            </div>
-            
-            <div className="p-6">
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {selectedService && (
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Selected Service
-                    </label>
-                    <div className="p-3 bg-blue-50 rounded-lg text-blue-800">
-                      {selectedService}
-                    </div>
-                  </div>
-                )}
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Company Name
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-                
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Service Interested In
-                  </label>
-                  <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">Select a service</option>
-                    {services.map((service, index) => (
-                      <option key={index} value={service.title}>
-                        {service.title}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  ></textarea>
-                </div>
-                
-                <div className="md:col-span-2 flex justify-center mt-4">
-                  <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300"
-                  >
-                    Submit Appointment Request
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Reusable Appointment Form */}
+      <AppointmentForm
+        isOpen={showAppointmentForm}
+        onClose={closeAppointmentForm}
+        selectedService={selectedService}
+        title="Book an Appointment"
+      />
     </section>
   );
 };
