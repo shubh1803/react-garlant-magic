@@ -220,18 +220,19 @@ export const ServicesSection = () => {
                               : "opacity-100 h-auto"
                           }`}
                         >
-                          <div className="bg-blue-100 text-center rounded-lg p-4 mx-4 -mt-8 relative z-10 shadow-md">
-                            <h3 className="text-lg font-semibold text-blue-800">
+                          <div className="bg-blue-900 text-white  text-center rounded-lg p-4 mx-4 -mt-8 relative z-10 shadow-md">
+                            <h3 className="text-lg font-semibold text-white-800">
                               {service.title}
                             </h3>
                           </div>
                           <div className="text-center mt-6">
                             <button 
-                              onClick={() => openAppointmentForm(service.title)}
-                              className="bg-blue-100 text-blue-800 rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-200 transition-colors duration-300"
-                            >
-                              Explore More
-                            </button>
+  onClick={() => openAppointmentForm(service.title)}
+  className="bg-blue-900 text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-600 transition-colors duration-300"
+>
+  Explore More
+</button>
+
                           </div>
                         </div>
 
@@ -269,7 +270,7 @@ export const ServicesSection = () => {
                             <div className="mt-auto">
                               <button 
                                 onClick={() => openAppointmentForm(service.title)}
-                                className="bg-blue-600 text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-700 transition-colors duration-300 w-full"
+                                className="bg-blue-900 text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-700 transition-colors duration-300 w-full"
                               >
                                 Get Started
                               </button>
@@ -289,7 +290,7 @@ export const ServicesSection = () => {
         <div className="text-center mt-16">
           <button 
             onClick={() => openAppointmentForm()}
-            className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg"
+            className="bg-primary-gradient text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg"
           >
             View All Services
           </button>

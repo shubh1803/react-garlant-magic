@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
+import { Check } from "lucide-react";
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { AppointmentForm } from '@/components/AppointmentForm';
@@ -251,7 +253,7 @@ const MultiStateAudit = () => {
           >
             {/* Heading */}
             <div className="text-center mb-14">
-              <h2 className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-extrabold bg-primary-gradient  bg-clip-text text-transparent">
                 Why Audit and Compliance Are Critical
               </h2>
               <p className="text-lg text-gray-700 mt-4 max-w-3xl mx-auto">
@@ -331,192 +333,394 @@ const MultiStateAudit = () => {
             </div>
 
             {/* Additional Benefits Grid */}
-            <div className="grid md:grid-cols-2 gap-8 mt-16">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="bg-white border border-gray-200 rounded-xl p-6 h-full flex flex-col transition-transform duration-500 hover:-translate-y-2 hover:shadow-md group"
-              >
-                <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-blue-600">
-                  <AlertTriangle className="w-7 h-7 text-blue-600 group-hover:text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">Prevent Penalties</h3>
-                <p className="text-gray-600 flex-grow">Prevents penalties and preserves your society's registration across all operating states.</p>
-              </motion.div>
+           <div className="mt-16">
+  {/* Mobile Horizontal Scroll */}
+  <div className="flex md:hidden gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-2xl p-6 flex flex-col transition-transform duration-500 hover:-translate-y-3 hover:shadow-xl snap-center"
+    >
+      <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-5 transition-all duration-300 hover:from-blue-500 hover:to-blue-700 hover:shadow-lg">
+        <AlertTriangle className="w-8 h-8 text-blue-600 hover:text-white transition-colors duration-300" />
+      </div>
+      <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-800 transition-colors duration-300">
+        Prevent Penalties
+      </h3>
+      <p className="text-gray-600 flex-grow">
+        Prevents penalties and preserves your society's registration across all operating states.
+      </p>
+    </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="bg-white border border-gray-200 rounded-xl p-6 h-full flex flex-col transition-transform duration-500 hover:-translate-y-2 hover:shadow-md group"
-              >
-                <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-blue-600">
-                  <Users className="w-7 h-7 text-blue-600 group-hover:text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">Member Confidence</h3>
-                <p className="text-gray-600 flex-grow">Strengthens member confidence and investor credibility across multiple states.</p>
-              </motion.div>
-            </div>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      viewport={{ once: true }}
+      className="flex-shrink-0 w-72 bg-white border border-gray-200 rounded-2xl p-6 flex flex-col transition-transform duration-500 hover:-translate-y-3 hover:shadow-xl snap-center"
+    >
+      <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-5 transition-all duration-300 hover:from-blue-500 hover:to-blue-700 hover:shadow-lg">
+        <Users className="w-8 h-8 text-blue-600 hover:text-white transition-colors duration-300" />
+      </div>
+      <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-800 transition-colors duration-300">
+        Member Confidence
+      </h3>
+      <p className="text-gray-600 flex-grow">
+        Strengthens member confidence and investor credibility across multiple states.
+      </p>
+    </motion.div>
+  </div>
+
+  {/* Desktop Grid */}
+  <div className="hidden md:grid md:grid-cols-2 gap-8">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="bg-white border border-gray-200 rounded-2xl p-6 h-full flex flex-col transition-transform duration-500 hover:-translate-y-3 hover:shadow-xl"
+    >
+      <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-5 transition-all duration-300 hover:from-blue-500 hover:to-blue-700 hover:shadow-lg">
+        <AlertTriangle className="w-8 h-8 text-blue-600 hover:text-white transition-colors duration-300" />
+      </div>
+      <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-800 transition-colors duration-300">
+        Prevent Penalties
+      </h3>
+      <p className="text-gray-600 flex-grow">
+        Prevents penalties and preserves your society's registration across all operating states.
+      </p>
+    </motion.div>
+
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      viewport={{ once: true }}
+      className="bg-white border border-gray-200 rounded-2xl p-6 h-full flex flex-col transition-transform duration-500 hover:-translate-y-3 hover:shadow-xl"
+    >
+      <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-5 transition-all duration-300 hover:from-blue-500 hover:to-blue-700 hover:shadow-lg">
+        <Users className="w-8 h-8 text-blue-600 hover:text-white transition-colors duration-300" />
+      </div>
+      <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-800 transition-colors duration-300">
+        Member Confidence
+      </h3>
+      <p className="text-gray-600 flex-grow">
+        Strengthens member confidence and investor credibility across multiple states.
+      </p>
+    </motion.div>
+  </div>
+</div>
+
           </div>
 
           {/* Requirements Section */}
-          <div 
-            id="requirements" 
-            ref={sectionRefs.requirements} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-100 ${
-              isVisible.requirements ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Key Compliance Requirements
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Multi-State Credit Cooperative Societies must adhere to specific compliance requirements under the Multi-State Cooperative Societies Act, 2002.
-              </p>
-            </div>
+      
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                {
-                  title: "Annual General Meeting (AGM)",
-                  description: "Multi-State societies must hold their AGM within the prescribed timeframe to approve audited accounts, elect board members, and pass key resolutions."
-                },
-                {
-                  title: "Filing of Annual Returns",
-                  description: "Annual returns, audited accounts, and compliance certificates must be filed with the Central Registrar of Cooperative Societies."
-                },
-                {
-                  title: "Maintenance of Statutory Registers",
-                  description: "Societies must maintain detailed registers of members, loans, share capital, and minutes of board meetings for each branch."
-                },
-                {
-                  title: "Reserve Funds and Provisions",
-                  description: "A fixed percentage of profits must be transferred to reserve funds and other mandatory accounts as per the Act."
-                },
-                {
-                  title: "Tax and Regulatory Compliance",
-                  description: "Multi-State societies may need to comply with income tax, GST, TDS, and state-level labour/tax laws wherever they operate. Timely filing avoids penalties."
-                },
-                {
-                  title: "Branch-wise Reporting",
-                  description: "Maintain accurate records for each branch or state of operation to ensure smooth consolidation during audit and filing."
-                }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white border border-gray-200 rounded-xl p-6 h-full flex flex-col transition-transform duration-500 hover:-translate-y-2 hover:shadow-md group"
-                >
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-blue-600">
-                    <FileText className="w-6 h-6 text-blue-600 group-hover:text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">{item.title}</h3>
-                  <p className="text-gray-600 flex-grow">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+{/* Requirements Section */}
+<motion.div
+  id="requirements"
+  ref={sectionRefs.requirements}
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+  className="mb-20 scroll-mt-20"
+>
+  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+    Key Compliance Requirements
+  </h2>
+
+  <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+    Multi-State Credit Cooperative Societies must adhere to specific compliance
+    requirements under the Multi-State Cooperative Societies Act, 2002.
+  </p>
+
+  {/* Mobile Horizontal Scroll */}
+  <div className="flex md:hidden overflow-x-auto hide-scrollbar gap-4 snap-x snap-mandatory mt-8">
+    <div className="flex flex-col gap-4 min-w-[80%] snap-center">
+      <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+          <Check className="w-6 h-6" />
+        </div>
+        <div>
+          <h3 className="text-gray-900 font-semibold">Annual General Meeting (AGM)</h3>
+          <p className="text-gray-600 text-sm">
+            Multi-State societies must hold their AGM within the prescribed timeframe to approve audited accounts, elect board members, and pass key resolutions.
+          </p>
+        </div>
+      </div>
+
+      <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+          <Check className="w-6 h-6" />
+        </div>
+        <div>
+          <h3 className="text-gray-900 font-semibold">Filing of Annual Returns</h3>
+          <p className="text-gray-600 text-sm">
+            Annual returns, audited accounts, and compliance certificates must be filed with the Central Registrar of Cooperative Societies.
+          </p>
+        </div>
+      </div>
+
+      <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+          <Check className="w-6 h-6" />
+        </div>
+        <div>
+          <h3 className="text-gray-900 font-semibold">Maintenance of Statutory Registers</h3>
+          <p className="text-gray-600 text-sm">
+            Societies must maintain detailed registers of members, loans, share capital, and minutes of board meetings for each branch.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div className="flex flex-col gap-4 min-w-[80%] snap-center">
+      <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+          <Check className="w-6 h-6" />
+        </div>
+        <div>
+          <h3 className="text-gray-900 font-semibold">Reserve Funds and Provisions</h3>
+          <p className="text-gray-600 text-sm">
+            A fixed percentage of profits must be transferred to reserve funds and other mandatory accounts as per the Act.
+          </p>
+        </div>
+      </div>
+
+      <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+          <Check className="w-6 h-6" />
+        </div>
+        <div>
+          <h3 className="text-gray-900 font-semibold">Tax and Regulatory Compliance</h3>
+          <p className="text-gray-600 text-sm">
+            Multi-State societies may need to comply with income tax, GST, TDS, and state-level labour/tax laws wherever they operate. Timely filing avoids penalties.
+          </p>
+        </div>
+      </div>
+
+      <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+          <Check className="w-6 h-6" />
+        </div>
+        <div>
+          <h3 className="text-gray-900 font-semibold">Branch-wise Reporting</h3>
+          <p className="text-gray-600 text-sm">
+            Maintain accurate records for each branch or state of operation to ensure smooth consolidation during audit and filing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Desktop Grid */}
+  <div className="hidden md:grid md:grid-cols-2 gap-8 mt-12">
+    <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+        <Check className="w-6 h-6" />
+      </div>
+      <div>
+        <h3 className="text-gray-900 font-semibold">Annual General Meeting (AGM)</h3>
+        <p className="text-gray-600 text-sm">
+          Multi-State societies must hold their AGM within the prescribed timeframe to approve audited accounts, elect board members, and pass key resolutions.
+        </p>
+      </div>
+    </div>
+
+    <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+        <Check className="w-6 h-6" />
+      </div>
+      <div>
+        <h3 className="text-gray-900 font-semibold">Filing of Annual Returns</h3>
+        <p className="text-gray-600 text-sm">
+          Annual returns, audited accounts, and compliance certificates must be filed with the Central Registrar of Cooperative Societies.
+        </p>
+      </div>
+    </div>
+
+    <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+        <Check className="w-6 h-6" />
+      </div>
+      <div>
+        <h3 className="text-gray-900 font-semibold">Maintenance of Statutory Registers</h3>
+        <p className="text-gray-600 text-sm">
+          Societies must maintain detailed registers of members, loans, share capital, and minutes of board meetings for each branch.
+        </p>
+      </div>
+    </div>
+
+    <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+        <Check className="w-6 h-6" />
+      </div>
+      <div>
+        <h3 className="text-gray-900 font-semibold">Reserve Funds and Provisions</h3>
+        <p className="text-gray-600 text-sm">
+          A fixed percentage of profits must be transferred to reserve funds and other mandatory accounts as per the Act.
+        </p>
+      </div>
+    </div>
+
+    <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+        <Check className="w-6 h-6" />
+      </div>
+      <div>
+        <h3 className="text-gray-900 font-semibold">Tax and Regulatory Compliance</h3>
+        <p className="text-gray-600 text-sm">
+          Multi-State societies may need to comply with income tax, GST, TDS, and state-level labour/tax laws wherever they operate. Timely filing avoids penalties.
+        </p>
+      </div>
+    </div>
+
+    <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md flex items-start space-x-4">
+      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+        <Check className="w-6 h-6" />
+      </div>
+      <div>
+        <h3 className="text-gray-900 font-semibold">Branch-wise Reporting</h3>
+        <p className="text-gray-600 text-sm">
+          Maintain accurate records for each branch or state of operation to ensure smooth consolidation during audit and filing.
+        </p>
+      </div>
+    </div>
+  </div>
+</motion.div>
+
+            
 
           {/* Services Section */}
-          <div 
-            id="services" 
-            ref={sectionRefs.services} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-200 ${
-              isVisible.services ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Our Services for Multi-State Credit Cooperative Societies
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Comprehensive audit and compliance solutions tailored for multi-state operations.
-              </p>
-            </div>
+         <div id="services" ref={sectionRefs.services} className="mb-20 scroll-mt-20">
+  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+    Our Services for Multi-State Credit Cooperative Societies
+  </h2>
+  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+    Comprehensive audit and compliance solutions tailored for multi-state operations.
+  </p>
 
-            <div className="flex flex-wrap justify-center gap-10">
-              {[
-                { text: "Conducting statutory and internal audits", icon: "📊" },
-                { text: "Preparing consolidated and branch-wise financial statements", icon: "📑" },
-                { text: "Filing annual returns and compliance certificates", icon: "📤" },
-                { text: "Maintaining statutory registers and minutes", icon: "📝" },
-                { text: "Advising on tax and financial planning", icon: "💡" },
-                { text: "Assisting in responding to notices from authorities", icon: "⚖️" }
-              ].map((service, i) => (
-                <div
-                  key={i}
-                  className="relative w-36 h-36 flex items-center justify-center text-center group"
-                  style={{ animationDelay: `${i * 0.2}s` }}
-                >
-                  <div className="absolute inset-0 transform rotate-45 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500"></div>
-                  
-                  <div className="relative flex flex-col items-center justify-center text-white p-4 animate-pulse">
-                    <div className="text-3xl">{service.icon}</div>
-                    <p className="text-xs mt-2 font-semibold px-2">{service.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+    {[
+      { text: "Conducting statutory and internal audits", description: "We perform thorough statutory and internal audits to ensure compliance across all branches." },
+      { text: "Preparing consolidated and branch-wise financial statements", description: "We prepare accurate consolidated and branch-wise financial statements for reporting." },
+      { text: "Filing annual returns and compliance certificates", description: "We assist in timely filing of annual returns and all required compliance certificates." },
+      { text: "Maintaining statutory registers and minutes", description: "We maintain statutory registers, board meeting minutes, and other essential records." },
+      { text: "Advising on tax and financial planning", description: "We provide expert advice on tax planning, financial strategy, and optimization." },
+      { text: "Assisting in responding to notices from authorities", description: "We guide you in responding to notices and queries from regulatory authorities." }
+    ].map((service, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, rotateY: 90 }}
+        whileInView={{ opacity: 1, rotateY: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        className="p-6 rounded-2xl bg-gradient-to-br from-blue-100 via-blue-200 to-blue-600 border border-blue-8000 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+      >
+        <h3 className="text-lg font-bold text-gray-900 mb-2">{service.text}</h3>
+        <p className="text-sm text-gray-700">{service.description}</p>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
+
+      
+
 
           {/* Benefits Section */}
-          <div 
-            id="benefits" 
-            ref={sectionRefs.benefits} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-300 ${
-              isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Benefits of Professional Audit and Compliance Support
-            </h2>
+        <div 
+  id="benefits" 
+  ref={sectionRefs.benefits} 
+  className={`mb-20 scroll-mt-20 transition-all duration-700 delay-100 ${
+    isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+  }`}
+>
+  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+    Benefits of Our Consultancy
+  </h2>
+  <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+    Discover the key advantages of partnering with us for your banking and microfinance business.
+  </p>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                {
-                  icon: <BookOpen className="w-8 h-8" />,
-                  title: "Expert Multi-State Handling",
-                  description: "Expert handling of complex multi-state requirements and regulations"
-                },
-                {
-                  icon: <Clock className="w-8 h-8" />,
-                  title: "Timely Filings",
-                  description: "Timely filings to avoid fines or deregistration across states"
-                },
-                {
-                  icon: <FileText className="w-8 h-8" />,
-                  title: "Clear Financial Reports",
-                  description: "Clear financial reports for better decision making and transparency"
-                },
-                {
-                  icon: <Shield className="w-8 h-8" />,
-                  title: "Regulatory Confidence",
-                  description: "Greater confidence among members and regulatory authorities"
-                }
-              ].map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white border border-gray-200 rounded-xl p-6 h-full flex flex-col transition-transform duration-500 hover:-translate-y-2 hover:shadow-md group"
-                >
-                  <div className="text-blue-600 mb-4 group-hover:text-blue-700 transition-colors duration-300">{benefit.icon}</div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors duration-300">{benefit.title}</h3>
-                  <p className="text-gray-600 flex-grow">{benefit.description}</p>
-                </motion.div>
-              ))}
+  {/* Mobile Horizontal Scroll */}
+  <div className="flex md:hidden overflow-x-auto hide-scrollbar gap-4 snap-x snap-mandatory mt-8">
+    {[0, 2].map((startIndex) => (
+      <div key={startIndex} className="flex flex-col gap-4 min-w-[80%] snap-center">
+        {[
+          {
+            title: "Expert Multi-State Handling",
+            description: "Expert handling of complex multi-state requirements and regulations"
+          },
+          {
+            title: "Timely Filings",
+            description: "Timely filings to avoid fines or deregistration across states"
+          },
+          {
+            title: "Clear Financial Reports",
+            description: "Clear financial reports for better decision making and transparency"
+          },
+          {
+            title: "Regulatory Confidence",
+            description: "Greater confidence among members and regulatory authorities"
+          }
+        ].slice(startIndex, startIndex + 2).map((benefit, index) => (
+          <div 
+            key={index} 
+            className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-start space-x-4"
+          >
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+              <Check className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="text-gray-900 font-semibold">{benefit.title}</h3>
+              <p className="text-gray-600 text-sm">{benefit.description}</p>
             </div>
           </div>
+        ))}
+      </div>
+    ))}
+  </div>
 
+  {/* Desktop Grid */}
+  <div className="hidden md:grid md:grid-cols-2 gap-8 mt-12">
+    {[
+      {
+        title: "Expert Multi-State Handling",
+        description: "Expert handling of complex multi-state requirements and regulations"
+      },
+      {
+        title: "Timely Filings",
+        description: "Timely filings to avoid fines or deregistration across states"
+      },
+      {
+        title: "Clear Financial Reports",
+        description: "Clear financial reports for better decision making and transparency"
+      },
+      {
+        title: "Regulatory Confidence",
+        description: "Greater confidence among members and regulatory authorities"
+      }
+    ].map((benefit, index) => (
+      <div 
+        key={index} 
+        className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-start space-x-4"
+      >
+        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white">
+          <Check className="w-6 h-6" />
+        </div>
+        <div>
+          <h3 className="text-gray-900 font-semibold">{benefit.title}</h3>
+          <p className="text-gray-600 text-sm">{benefit.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+         
           {/* Process Section */}
           <div
             id="process"
@@ -612,84 +816,140 @@ const MultiStateAudit = () => {
           </div>
 
           {/* FAQ Section */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions (FAQs)
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Find answers to the most common questions about Multi-State Credit Cooperative Society Audit and Compliance.
-            </p>
-          </div>
-
-          {/* FAQ List */}
-          <div 
-            id="faq" 
-            ref={sectionRefs.faq} 
-            className="max-w-4xl mx-auto space-y-4 mb-20"
-          >
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl shadow-lg overflow-hidden border border-indigo-100"
-              >
-                {/* Question */}
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none"
-                >
-                  <h3 className="text-lg font-semibold text-indigo-700">{faq.question}</h3>
-                  <motion.span
-                    animate={{ rotate: activeIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <ChevronDown className="w-6 h-6 text-indigo-700" />
-                  </motion.span>
-                </button>
-
-                {/* Answer */}
-                <AnimatePresence>
-                  {activeIndex === index && (
-                    <motion.div
-                      key="content"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="px-6 pb-6 text-gray-700"
-                    >
-                      {faq.answer}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </div>
-
+       <div className="text-center mb-12">
+           <h2 className="text-3xl font-bold text-gray-900 mb-4">
+             Frequently Asked Questions
+           </h2>
+         </div>
+         
+         <div className="max-w-5xl mx-auto">
+           {/* Desktop: 2 Columns */}
+           <div className="hidden md:grid md:grid-cols-2 gap-6">
+             {faqs.map((faq, index) => (
+               <motion.div
+                 key={index}
+                 initial={{ opacity: 0, y: 15 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                 viewport={{ once: true }}
+                 className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all hover:shadow-md"
+               >
+                 <button
+                   onClick={() => toggleFAQ(index)}
+                   className="w-full px-6 py-4 flex justify-between items-center focus:outline-none"
+                 >
+                   <h3 className="text-lg font-medium text-gray-800">{faq.question}</h3>
+                   <motion.span
+                     animate={{ rotate: activeIndex === index ? 180 : 0 }}
+                     transition={{ duration: 0.3 }}
+                   >
+                     <ChevronDown className="w-5 h-5 text-gray-500" />
+                   </motion.span>
+                 </button>
+         
+                 <AnimatePresence>
+                   {activeIndex === index && (
+                     <motion.div
+                       key="content"
+                       initial={{ opacity: 0, height: 0 }}
+                       animate={{ opacity: 1, height: "auto" }}
+                       exit={{ opacity: 0, height: 0 }}
+                       transition={{ duration: 0.3 }}
+                       className="px-6 pb-4 text-gray-600 text-sm"
+                     >
+                       {faq.answer}
+                     </motion.div>
+                   )}
+                 </AnimatePresence>
+               </motion.div>
+             ))}
+           </div>
+         
+           {/* Mobile: Horizontal Scroll, 5 per page */}
+           <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory py-4">
+             {[0, 3].map((startIndex) => (
+               <div key={startIndex} className="flex flex-col gap-4 min-w-[85%] snap-center">
+                 {faqs.slice(startIndex, startIndex + 3).map((faq, index) => (
+                   <motion.div
+                     key={index}
+                     initial={{ opacity: 0, y: 10 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.4, delay: index * 0.05 }}
+                     viewport={{ once: true }}
+                     className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+                   >
+                     <button
+                       onClick={() => toggleFAQ(startIndex + index)}
+                       className="w-full px-5 py-4 flex justify-between items-center focus:outline-none"
+                     >
+                       <h3 className="text-base font-medium text-gray-800">{faq.question}</h3>
+                       <motion.span
+                         animate={{ rotate: activeIndex === startIndex + index ? 180 : 0 }}
+                         transition={{ duration: 0.3 }}
+                       >
+                         <ChevronDown className="w-5 h-5 text-gray-500" />
+                       </motion.span>
+                     </button>
+         
+                     <AnimatePresence>
+                       {activeIndex === startIndex + index && (
+                         <motion.div
+                           key="content"
+                           initial={{ opacity: 0, height: 0 }}
+                           animate={{ opacity: 1, height: "auto" }}
+                           exit={{ opacity: 0, height: 0 }}
+                           transition={{ duration: 0.3 }}
+                           className="px-5 pb-4 text-gray-600 text-sm"
+                         >
+                           {faq.answer}
+                         </motion.div>
+                       )}
+                     </AnimatePresence>
+                   </motion.div>
+                 ))}
+               </div>
+             ))}
+           </div>
+         </div>
+         <br/>
           {/* CTA Section */}
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-10 text-center text-white shadow-xl transition-all duration-500 hover:shadow-2xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Choose Sahakar Samruddhi</h2>
-            <p className="text-lg mb-8 max-w-3xl mx-auto">
-              We specialize in Multi-State Credit Cooperative Society Audit and Compliance. From comprehensive audits to timely filings with the Central Registrar, we handle the entire process to save you time and ensure regulatory compliance. Our expertise ensures your society maintains credibility across all operating states.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button 
-                onClick={openAppointmentForm}
-                className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                Get Started Today
-              </button>
-              <button 
-                onClick={openAppointmentForm}
-                className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300"
-              >
-                Schedule Consultation
-              </button>
-            </div>
-          </div>
+         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 
+  rounded-2xl p-6 md:p-10 text-center text-white 
+  shadow-xl transition-all duration-500 hover:shadow-2xl"
+>
+  <h2 className="text-xl md:text-3xl font-bold mb-3 md:mb-4">
+    Why Choose Sahakar Samruddhi
+  </h2>
+  
+  <p className="text-sm md:text-lg mb-6 md:mb-8 max-w-3xl mx-auto">
+    We specialize in Multi-State Credit Cooperative Society Audit and Compliance. 
+    From comprehensive audits to timely filings with the Central Registrar, 
+    we handle the entire process to save you time and ensure regulatory compliance. 
+    Our expertise ensures your society maintains credibility across all operating states.
+  </p>
+
+  <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+    <button
+      onClick={openAppointmentForm}
+      className="bg-white text-blue-600 px-6 md:px-8 py-2 md:py-3 
+        rounded-full font-semibold hover:bg-gray-100 
+        transition-all duration-300 shadow-lg hover:shadow-xl 
+        transform hover:-translate-y-1 text-sm md:text-base"
+    >
+      Get Started Today
+    </button>
+
+    <button
+      onClick={openAppointmentForm}
+      className="border-2 border-white text-white px-6 md:px-8 py-2 md:py-3 
+        rounded-full font-semibold hover:bg-white hover:text-blue-600 
+        transition-all duration-300 text-sm md:text-base"
+    >
+      Schedule Consultation
+    </button>
+  </div>
+</div>
+
         </div>
       </section>
 

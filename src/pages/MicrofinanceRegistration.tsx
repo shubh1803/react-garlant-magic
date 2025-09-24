@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { Users, Briefcase, BookOpen, UserCheck, Home, GraduationCap } from "lucide-react";
+import { Users, Briefcase, BookOpen, UserCheck, Home, GraduationCap, ChevronDown } from "lucide-react";
 
-import { motion } from "framer-motion";
+import { motion,AnimatePresence } from "framer-motion";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { AppointmentForm } from '@/components/AppointmentForm';
@@ -43,6 +43,9 @@ const MicrofinanceRegistration = () => {
   const closeAppointmentForm = () => {
     setShowAppointmentForm(false);
     document.body.style.overflow = "auto";
+  };
+   const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   // Intersection Observer for scroll animations
@@ -268,7 +271,7 @@ const MicrofinanceRegistration = () => {
             className="mb-20 scroll-mt-20"
           >
             <div className="text-center mb-14">
-              <h2 className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-extrabold bg-primary-gradient bg-clip-text text-transparent">
                 What is a Section 8 Microfinance Company?
               </h2>
               <p className="text-lg text-gray-700 mt-4 max-w-3xl mx-auto">
@@ -277,59 +280,83 @@ const MicrofinanceRegistration = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Non-Profit Structure",
-                  description: "Operates as a non-profit entity under Section 8 of Companies Act, focusing on social objectives rather than profit distribution.",
-                  icon: "🏢",
-                  color: "blue"
-                },
-                {
-                  title: "No RBI License Required",
-                  description: "Unlike NBFC-MFIs, Section 8 companies don't require RBI approval to start microfinance operations.",
-                  icon: "📋",
-                  color: "indigo"
-                },
-                {
-                  title: "Financial Inclusion Focus",
-                  description: "Targets rural and semi-urban areas to provide small loans and promote entrepreneurship among underserved communities.",
-                  icon: "🎯",
-                  color: "purple"
-                }
-              ].map((card, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  className="group relative"
-                >
-                  <div className="h-full bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 border border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 hover:border-blue-300">
-                    <div className="text-4xl mb-4 transition-transform duration-300 group-hover:scale-110">
-                      {card.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                      {card.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {card.description}
-                    </p>
-                    <div className="mt-4 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+         <div className="mt-12 px-4 md:px-20">
+  {/* Wrapper: horizontal scroll on mobile, grid on md+ */}
+  <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-x-auto md:overflow-visible no-scrollbar py-2 md:py-0">
+    {[
+      {
+        title: "Non-Profit Structure",
+        description:
+          "Operates as a non-profit entity under Section 8 of Companies Act, focusing on social objectives rather than profit distribution.",
+        icon: "🏢",
+        color: "blue"
+      },
+      {
+        title: "No RBI License Required",
+        description:
+          "Unlike NBFC-MFIs, Section 8 companies don't require RBI approval to start microfinance operations.",
+        icon: "📋",
+        color: "indigo"
+      },
+      {
+        title: "Financial Inclusion Focus",
+        description:
+          "Targets rural and semi-urban areas to provide small loans and promote entrepreneurship among underserved communities.",
+        icon: "🎯",
+        color: "purple"
+      }
+    ].map((card, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.2 }}
+        viewport={{ once: true }}
+        className="flex-shrink-0 w-72 group relative"
+      >
+        <div className="h-full bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 sm:p-8 border border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 hover:border-blue-300">
+          <div className="text-4xl mb-4 transition-transform duration-300 group-hover:scale-110">
+            {card.icon}
+          </div>
+          <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            {card.title}
+          </h3>
+          <p className="text-gray-600 leading-relaxed">{card.description}</p>
+          <div className="mt-4 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
 
-            <div className="mt-12 bg-blue-50 rounded-2xl p-8 border border-blue-200">
-              <p className="text-blue-800 text-lg leading-relaxed">
-                At Sahakar Samruddhi, we help you set up a Microfinance Company under Section 8 so you can run your organization legally and efficiently.
-                A Section 8 Microfinance Company is a non-profit organization registered under the Companies Act, 2013. Unlike NBFCs, it does not require 
-                RBI approval to start operations. These companies provide small loans to individuals or groups, especially in rural or semi-urban areas, 
-                with the aim of promoting financial inclusion and community development rather than profit.
-              </p>
-            </div>
+
+          <div className="mt-16 px-4 md:px-20">
+ <div className="mt-8 px-4 sm:px-6 md:px-20">
+ <div className="bg-gradient-to-r from-blue-50 to-white rounded-3xl shadow-xl border border-gray-200 
+                py-4 sm:py-6 md:py-10 px-5 sm:px-8 md:px-12 
+                w-full sm:max-w-xl md:max-w-3xl mx-auto 
+                transition-transform transform hover:-translate-y-2 hover:shadow-2xl space-y-4 sm:space-y-5 md:space-y-6">
+  
+  {/* Heading with gradient underline */}
+  <h2 className="text-xl sm:text-2xl md:text-4xl font-extrabold text-gray-900 leading-snug relative">
+    Establish Your Section 8 Microfinance Company
+    <span className="block w-20 h-1 bg-gradient-to-r from-blue-800 to-blue-500 rounded-full mt-2"></span>
+  </h2>
+
+  {/* Paragraphs */}
+  <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-snug">
+    At <span className="font-semibold text-gray-900">Sahakar Samruddhi</span>, we guide you in setting up a Microfinance Company under Section 8 so your organization can operate legally and efficiently.
+  </p>
+
+  <p className="text-gray-700 text-xs sm:text-sm md:text-base leading-snug">
+    A Section 8 Microfinance Company is a non-profit entity registered under the Companies Act, 2013. Unlike NBFCs, it does not require RBI approval to start operations. These companies provide small loans to individuals or groups, particularly in rural or semi-urban areas, with the goal of promoting financial inclusion and community development rather than profit.
+  </p>
+</div>
+
+</div>
+
+</div>
+
           </div>
 
           {/* Benefits Section */}
@@ -347,10 +374,10 @@ const MicrofinanceRegistration = () => {
     {[
       { title: "No Minimum Capital", icon: "💰" },
       { title: "Legal Recognition", icon: "⚖️" },
-      { title: "Easy Funding Access", icon: "🏦" }, // changed 🎁 → 🏦 (bank)
+      { title: "Easy Funding Access", icon: "🏦" }, // 
       { title: "Promotes Inclusion", icon: "🤝" },
       { title: "Limited Liability", icon: "🛡️" },
-      { title: "Trust & Credibility", icon: "📜" }, // replaced 👁️ with 📜 (certificate/credibility)
+      { title: "Trust & Credibility", icon: "📜" }, // 
     ].map((b, i) => (
       <div
         key={i}
@@ -366,71 +393,119 @@ const MicrofinanceRegistration = () => {
 
 
           {/* Eligibility Section */}
-          <div 
-            id="eligibility"
-            ref={sectionRefs.eligibility}
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-200 ${
-              isVisible.eligibility ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <div className="relative bg-gradient-to-b from-indigo-50 via-white to-blue-50 rounded-3xl p-12 shadow-lg">
-              <div className="text-center mb-14">
-                <h2 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent mb-4">
-                  Eligibility Criteria
-                </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Follow these key requirements for Section 8 Microfinance Company Registration.
-                </p>
-              </div>
+       <div
+  id="eligibility"
+  ref={sectionRefs.eligibility}
+  className={`mb-20 scroll-mt-20 transition-all duration-700 delay-200 ${
+    isVisible.eligibility ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+  }`}
+>
+  {/* Section Header */}
+  <div className="text-center mb-14 px-4">
+    <h2 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent mb-4">
+      Eligibility Criteria
+    </h2>
+    <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+      Follow these key requirements for Section 8 Microfinance Company Registration.
+    </p>
+  </div>
 
-              <div className="grid md:grid-cols-2 gap-10">
-                {[
-                  {
-                    title: "Director Requirements",
-                    points: [
-                      "Minimum two directors are required",
-                      "At least one director must be a resident of India",
-                      "Directors should have a clean background with no disqualifications"
-                    ],
-                    icon: "👥",
-                    gradient: "from-indigo-500 to-blue-500"
-                  },
-                  {
-                    title: "Objective & Purpose",
-                    points: [
-                      "Company must have clear social or charitable objective",
-                      "Profits must be reinvested into company objectives",
-                      "No distribution of profits to members or shareholders"
-                    ],
-                    icon: "🎯",
-                    gradient: "from-pink-500 to-purple-500"
-                  }
-                ].map((section, index) => (
-                  <div 
-                    key={index} 
-                    className="relative backdrop-blur-lg bg-white/70 rounded-2xl border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 p-8"
-                  >
-                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-white shadow-lg bg-gradient-to-r ${section.gradient}`}>
-                      <span className="text-2xl">{section.icon}</span>
-                    </div>
+  {/* Mobile Horizontal Scroll */}
+  <div className="lg:hidden flex gap-6 overflow-x-auto snap-x snap-mandatory px-4 pb-6 scrollbar-hide">
+    {[
+      {
+        title: "Director Requirements",
+        points: [
+          "Minimum two directors are required",
+          "At least one director must be a resident of India",
+          "Directors should have a clean background with no disqualifications"
+        ],
+        icon: "👥",
+        gradient: "from-indigo-500 to-blue-500"
+      },
+      {
+        title: "Objective & Purpose",
+        points: [
+          "Company must have clear social or charitable objective",
+          "Profits must be reinvested into company objectives",
+          "No distribution of profits to members or shareholders"
+        ],
+        icon: "🎯",
+        gradient: "from-pink-500 to-purple-500"
+      }
+    ].map((section, idx) => (
+      <div
+        key={idx}
+        className="snap-start flex-shrink-0 w-[85%] bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
+        onClick={openAppointmentForm}
+      >
+        <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg bg-gradient-to-r ${section.gradient}`}>
+          <span className="text-3xl">{section.icon}</span>
+        </div>
 
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                      {section.title}
-                    </h3>
+        <h3 className="text-2xl font-semibold text-gray-900 mb-5">{section.title}</h3>
 
-                    <ul className="space-y-3">
-                      {section.points.map((point, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3"></span>
-                          <span className="text-gray-700">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+        <ul className="space-y-3 text-gray-700 text-sm">
+          {section.points.map((point, i) => (
+            <li key={i} className="flex items-start">
+              <span className="text-green-500 mr-3 mt-1 text-lg">✔️</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  {/* Desktop Grid */}
+  <div className="hidden lg:grid lg:grid-cols-2 gap-10 px-4">
+    {[
+      {
+        title: "Director Requirements",
+        points: [
+          "Minimum two directors are required",
+          "At least one director must be a resident of India",
+          "Directors should have a clean background with no disqualifications"
+        ],
+        icon: "👥",
+        gradient: "from-indigo-500 to-blue-500"
+      },
+      {
+        title: "Objective & Purpose",
+        points: [
+          "Company must have clear social or charitable objective",
+          "Profits must be reinvested into company objectives",
+          "No distribution of profits to members or shareholders"
+        ],
+        icon: "🎯",
+        gradient: "from-pink-500 to-purple-500"
+      }
+    ].map((section, idx) => (
+      <div
+        key={idx}
+        className="bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
+        onClick={openAppointmentForm}
+      >
+        <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-6 text-white shadow-lg bg-gradient-to-r ${section.gradient}`}>
+          <span className="text-3xl">{section.icon}</span>
+        </div>
+
+        <h3 className="text-2xl font-semibold text-gray-900 mb-5">{section.title}</h3>
+
+        <ul className="space-y-3 text-gray-700 text-sm">
+          {section.points.map((point, i) => (
+            <li key={i} className="flex items-start">
+              <span className="text-green-500 mr-3 mt-1 text-lg">✔️</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</div>
+
+
 
           {/* Activities Section */}
         <div 
@@ -451,31 +526,96 @@ const MicrofinanceRegistration = () => {
       </div>
 
       {/* Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {activities.map((activity, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="group cursor-pointer"
-            onClick={openAppointmentForm}
-          >
-            <div className="bg-white rounded-2xl border border-gray-200 p-6 h-full shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 mb-6 group-hover:scale-110 transition-transform">
-                {activity.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
-                {activity.title}
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {activity.description}
-              </p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+    <div
+  id="activities"
+  ref={sectionRefs.activities}
+  className={`mb-20 scroll-mt-20 transition-all duration-700 delay-200 ${
+    isVisible.activities ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+  }`}
+>
+  
+  {/* Mobile Horizontal Scroll: 1 card visible at a time */}
+  <div className="lg:hidden overflow-x-auto flex gap-4 px-4 pb-4 snap-x snap-mandatory scrollbar-hide">
+    {activities.map((activity, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        className="snap-start flex-shrink-0 w-[85%] bg-white border border-gray-200 rounded-xl p-6 flex flex-col
+                   transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)]
+                   group cursor-pointer overflow-hidden"
+        onClick={openAppointmentForm}
+      >
+        {/* Shimmer Overlay */}
+        <div
+          className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                     -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+        ></div>
+
+        {/* Icon */}
+        <div
+          className="w-14 h-14 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg flex items-center justify-center mb-4
+                     transition-all duration-500 group-hover:from-blue-500 group-hover:to-blue-700"
+        >
+          <div className="text-blue-600 transition-colors duration-300 group-hover:text-white">
+            {activity.icon}
+          </div>
+        </div>
+
+        {/* Title */}
+        <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
+          {activity.title}
+        </h3>
+
+        {/* Description */}
+        <p className="text-gray-600 flex-grow mb-4 text-sm">{activity.description}</p>
+
+        {/* Learn more */}
+        <div className="mt-auto pt-4 border-t border-gray-100 group-hover:border-blue-200 transition-colors duration-300">
+          <div className="inline-flex items-center text-blue-600 font-medium text-sm group-hover:text-blue-700 transition-colors duration-300">
+            Learn more
+            <svg
+              className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Desktop Grid: 3 columns (unchanged) */}
+  <div className="hidden lg:grid lg:grid-cols-3 gap-8 px-4">
+    {activities.map((activity, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        className="group cursor-pointer"
+        onClick={openAppointmentForm}
+      >
+        <div className="bg-white rounded-2xl border border-gray-200 p-6 h-full shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+          <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 mb-6 group-hover:scale-110 transition-transform">
+            {activity.icon}
+          </div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
+            {activity.title}
+          </h3>
+          <p className="text-gray-600 text-sm leading-relaxed">{activity.description}</p>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
     </div>
 
           {/* Registration Process */}
@@ -565,470 +705,573 @@ const MicrofinanceRegistration = () => {
               </div>
             </div>
 
-            <div className="mt-10 bg-blue-50 rounded-xl p-6 border border-blue-200">
-              <p className="text-blue-800">
-                Our team at Sahakar Samruddhi assists you with drafting documents, filing applications, and ensuring compliance at every stage.
-              </p>
-            </div>
+          <div className="mt-10 px-4 sm:px-6 md:px-20">
+  <div className="relative bg-white rounded-2xl shadow-md border border-gray-200 p-6 sm:p-8 md:p-10 overflow-hidden">
+    
+    {/* Top-left accent circle */}
+    <div className="absolute -top-6 -left-6 w-16 h-16 bg-blue-100 rounded-full"></div>
+    
+    {/* Bottom-right accent circle */}
+    <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-blue-200 opacity-30 rounded-full"></div>
+    
+    <p className="text-blue-900 text-base sm:text-lg md:text-xl font-medium relative z-10 leading-relaxed">
+      Our team at <span className="font-semibold">Sahakar Samruddhi</span> assists you with drafting documents, filing applications, and ensuring compliance at every stage.
+    </p>
+  </div>
+</div>
+
           </div>
 
           {/* Documents Section */}
-          <div 
-            id="documents" 
-            ref={sectionRefs.documents} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-500 ${isVisible.documents ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          >
-            <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-10">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Required Documents
-                </h2>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  Common documents needed to register a Section 8 Microfinance Company with our complete assistance.
-                </p>
-              </div>
+       <div 
+  id="documents" 
+  ref={sectionRefs.documents} 
+  className={`mb-20 scroll-mt-20 transition-all duration-700 delay-500 ${isVisible.documents ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+>
+  <div className="text-center mb-12 px-4 md:px-0">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      Required Documents
+    </h2>
+    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+      Common documents needed to register a Section 8 Microfinance Company with our complete assistance.
+    </p>
+  </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  {
-                    category: "Director Documents",
-                    items: [
-                      "PAN and Aadhaar of all directors",
-                      "Address proof of directors",
-                      "Passport-size photographs",
-                      "DIN (Director Identification Number)"
-                    ],
-                    icon: "👤",
-                    color: "blue"
-                  },
-                  {
-                    category: "Company Documents",
-                    items: [
-                      "Draft MOA and AOA for microfinance",
-                      "Registered office address proof",
-                      "Rent agreement or ownership documents",
-                      "Utility bills for address verification"
-                    ],
-                    icon: "🏢",
-                    color: "indigo"
-                  },
-                  {
-                    category: "Compliance Documents",
-                    items: [
-                      "Board resolution for incorporation",
-                      "Subscriber sheet and declaration",
-                      "Professional certificates (if applicable)",
-                      "Bank account opening documents"
-                    ],
-                    icon: "📊",
-                    color: "purple"
-                  }
-                ].map((docCategory, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.15 }}
-                    viewport={{ once: true }}
-                    className="group"
-                  >
-                    <div className="bg-white rounded-2xl p-6 border border-gray-200 h-full transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-lg flex items-center justify-center text-2xl mr-4 group-hover:scale-110 transition-transform">
-                          {docCategory.icon}
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-900">
-                          {docCategory.category}
-                        </h3>
-                      </div>
-                      <ul className="space-y-2">
-                        {docCategory.items.map((item, idx) => (
-                          <li key={idx} className="flex items-start text-sm">
-                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                            <span className="text-gray-700">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0">
+    {[
+      {
+        category: "Director Documents",
+        items: [
+          "PAN and Aadhaar of all directors",
+          "Address proof of directors",
+          "Passport-size photographs",
+          "DIN (Director Identification Number)"
+        ],
+        color: "from-blue-400 to-blue-200"
+      },
+      {
+        category: "Company Documents",
+        items: [
+          "Draft MOA and AOA for microfinance",
+          "Registered office address proof",
+          "Rent agreement or ownership documents",
+          "Utility bills for address verification"
+        ],
+        color: "from-indigo-400 to-indigo-200"
+      },
+      {
+        category: "Compliance Documents",
+        items: [
+          "Board resolution for incorporation",
+          "Subscriber sheet and declaration",
+          "Professional certificates (if applicable)",
+          "Bank account opening documents"
+        ],
+        color: "from-purple-400 to-purple-200"
+      }
+    ].map((docCategory, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.2 }}
+        viewport={{ once: true }}
+        className="group"
+      >
+        <div className={`h-full p-6 sm:p-8 rounded-3xl bg-gradient-to-br ${docCategory.color} shadow-lg border border-gray-200 transition-transform transform hover:-translate-y-3 hover:shadow-2xl`}>
+          
+          {/* Heading */}
+          <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">{docCategory.category}</h3>
+          <div className="w-12 h-1 bg-white rounded-full mx-auto mb-4"></div>
 
-              <div className="mt-8 bg-blue-100 border border-blue-200 rounded-xl p-6">
-                <div className="flex items-start">
-                  <div className="text-2xl mr-4">💡</div>
-                  <div>
-                    <h4 className="font-semibold text-blue-800 mb-2">Important Note</h4>
-                    <p className="text-blue-700 text-sm">
-                      Document requirements may vary based on specific state regulations and company objectives. 
-                      Our experts will provide you with a complete, customized checklist based on your unique requirements.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* List with checkmarks */}
+          <ul className="space-y-3 text-gray-800 text-sm sm:text-base">
+            {docCategory.items.map((item, idx) => (
+              <li key={idx} className="flex items-start">
+                <div className="text-white mt-1 mr-3 flex-shrink-0 text-lg">✅</div>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
 
           {/* Comparison Section */}
-          <div 
-            id="comparison" 
-            ref={sectionRefs.comparison} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-600 ${isVisible.comparison ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                NBFC-MFI vs Section 8 Microfinance Company
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Understanding the key differences helps you choose the right structure for your microfinance goals and objectives.
-              </p>
-            </div>
+<div 
+  id="comparison" 
+  ref={sectionRefs.comparison} 
+  className={`mb-20 scroll-mt-20 transition-all duration-700 delay-600 ${isVisible.comparison ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+>
+  <div className="text-center mb-12 px-4">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      NBFC-MFI vs Section 8 Microfinance Company
+    </h2>
+    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+      Understanding the key differences helps you choose the right structure for your microfinance goals and objectives.
+    </p>
+  </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-8 h-full transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
-                  <div className="flex items-center mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-xl flex items-center justify-center font-bold text-lg mr-4">
-                      NBFC
-                    </div>
-                    <h3 className="text-2xl font-bold text-red-800">NBFC-MFI</h3>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    {[
-                      "Requires RBI registration and approval",
-                      "Minimum ₹5 crore net owned funds required",
-                      "Strict compliance with RBI prudential norms",
-                      "Can accept public deposits with restrictions",
-                      "Higher regulatory compliance costs",
-                      "Profit distribution allowed to shareholders"
-                    ].map((feature, idx) => (
-                      <div key={idx} className="flex items-start">
-                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2.5 mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-700 text-sm">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-8 h-full transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
-                  <div className="flex items-center mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl flex items-center justify-center font-bold text-lg mr-4">
-                      S8
-                    </div>
-                    <h3 className="text-2xl font-bold text-blue-800">Section 8 Company</h3>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    {[
-                      "No RBI approval required to start",
-                      "No minimum capital requirement",
-                      "Simpler compliance and lower costs",
-                      "Cannot accept public deposits",
-                      "Tax benefits and CSR funding eligible",
-                      "Profits must be reinvested, no distribution"
-                    ].map((feature, idx) => (
-                      <div key={idx} className="flex items-start">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2.5 mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-700 text-sm">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            <div className="mt-8 text-center">
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 max-w-3xl mx-auto">
-                <p className="text-blue-800 font-medium mb-2">Which is Right for You?</p>
-                <p className="text-blue-700 text-sm leading-relaxed">
-                  Choose NBFC-MFI if you have substantial capital and want to operate on a large scale with deposit-taking capabilities. 
-                  Choose Section 8 if you want to start with lower investment, focus on social impact, and access grant funding.
-                </p>
-              </div>
-            </div>
+  {/* Mobile Horizontal Scroll */}
+  <div className="lg:hidden flex gap-6 overflow-x-auto px-4 pb-6 scrollbar-hide">
+    {[
+      {
+        title: "NBFC-MFI",
+        short: "NBFC",
+        gradient: "from-red-100 to-orange-100",
+        features: [
+          "Requires RBI registration and approval",
+          "Minimum ₹5 crore net owned funds required",
+          "Strict compliance with RBI prudential norms",
+          "Can accept public deposits with restrictions",
+          "Higher regulatory compliance costs",
+          "Profit distribution allowed to shareholders"
+        ]
+      },
+      {
+        title: "Section 8 Company",
+        short: "S8",
+        gradient: "from-blue-100 to-indigo-100",
+        features: [
+          "No RBI approval required to start",
+          "No minimum capital requirement",
+          "Simpler compliance and lower costs",
+          "Cannot accept public deposits",
+          "Tax benefits and CSR funding eligible",
+          "Profits must be reinvested, no distribution"
+        ]
+      }
+    ].map((section, idx) => (
+      <motion.div
+        key={idx}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: idx * 0.15 }}
+        viewport={{ once: true }}
+        className={`snap-start flex-shrink-0 w-[85%] rounded-3xl p-6 shadow-lg cursor-pointer transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${section.gradient} text-gray-900`}
+      >
+        {/* Card Header */}
+        <div className="flex items-center mb-6">
+          <div className="w-16 h-16 rounded-xl flex items-center justify-center font-bold text-lg mr-4 bg-white/30 backdrop-blur-sm">
+            {section.short}
           </div>
+          <h3 className="text-2xl font-bold">{section.title}</h3>
+        </div>
+
+        {/* Features */}
+        <div className="space-y-3">
+          {section.features.map((feature, i) => (
+            <div key={i} className="flex items-start">
+              <span className="w-5 h-5 flex items-center justify-center rounded-full bg-white/40 text-gray-900 mr-3 mt-1 text-sm">✔️</span>
+              <span className="text-gray-900 text-sm">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Desktop Grid */}
+  <div className="hidden lg:grid lg:grid-cols-2 gap-8 px-4">
+    {[
+      {
+        title: "NBFC-MFI",
+        short: "NBFC",
+        gradient: "from-red-100 to-orange-100",
+        features: [
+          "Requires RBI registration and approval",
+          "Minimum ₹5 crore net owned funds required",
+          "Strict compliance with RBI prudential norms",
+          "Can accept public deposits with restrictions",
+          "Higher regulatory compliance costs",
+          "Profit distribution allowed to shareholders"
+        ]
+      },
+      {
+        title: "Section 8 Company",
+        short: "S8",
+        gradient: "from-blue-100 to-indigo-100",
+        features: [
+          "No RBI approval required to start",
+          "No minimum capital requirement",
+          "Simpler compliance and lower costs",
+          "Cannot accept public deposits",
+          "Tax benefits and CSR funding eligible",
+          "Profits must be reinvested, no distribution"
+        ]
+      }
+    ].map((section, idx) => (
+      <motion.div
+        key={idx}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: idx * 0.15 }}
+        viewport={{ once: true }}
+        className={`rounded-3xl p-8 shadow-lg transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${section.gradient} text-gray-900 cursor-pointer`}
+      >
+        {/* Card Header */}
+        <div className="flex items-center mb-6">
+          <div className="w-16 h-16 rounded-xl flex items-center justify-center font-bold text-lg mr-4 bg-white/30 backdrop-blur-sm">
+            {section.short}
+          </div>
+          <h3 className="text-2xl font-bold">{section.title}</h3>
+        </div>
+
+        {/* Features */}
+        <div className="space-y-3">
+          {section.features.map((feature, i) => (
+            <div key={i} className="flex items-start">
+              <span className="w-5 h-5 flex items-center justify-center rounded-full bg-white/40 text-gray-900 mr-3 mt-1 text-sm">✔️</span>
+              <span className="text-gray-900 text-sm">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Recommendation Box */}
+  <div className="mt-8 text-center">
+    <div className="bg-gradient-to-r from-blue-50 to-white border border-blue-200 rounded-3xl p-6 max-w-3xl mx-auto shadow-lg">
+      <p className="text-blue-800 font-medium mb-2">Which is Right for You?</p>
+      <p className="text-blue-700 text-sm leading-relaxed">
+        Choose NBFC-MFI if you have substantial capital and want to operate on a large scale with deposit-taking capabilities. 
+        Choose Section 8 if you want to start with lower investment, focus on social impact, and access grant funding.
+      </p>
+    </div>
+  </div>
+</div>
+
 
           {/* Funding & Capital Section */}
-          <div className="mb-20">
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-10 text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 border border-white/20 rounded-full -mr-20 -mt-20"></div>
-              <div className="absolute bottom-0 left-0 w-32 h-32 border border-white/20 rounded-full -ml-16 -mb-16"></div>
-              
-              <div className="relative z-10">
-                <div className="text-center mb-8">
-                  <h2 className="text-3xl font-bold mb-4">Capital and Funding Options</h2>
-                  <p className="text-blue-100 max-w-3xl mx-auto">
-                    Although Section 8 Microfinance Companies don't have a fixed minimum capital requirement, 
-                    you will still need working capital to start operations.
-                  </p>
-                </div>
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-10 text-white relative overflow-hidden">
+  {/* Decorative circles */}
+  <div className="absolute top-0 right-0 w-40 h-40 border border-white/20 rounded-full -mr-20 -mt-20"></div>
+  <div className="absolute bottom-0 left-0 w-32 h-32 border border-white/20 rounded-full -ml-16 -mb-16"></div>
+  
+  <div className="relative z-10">
+    {/* Header */}
+    <div className="text-center mb-8">
+      <h2 className="text-3xl font-bold mb-4">Capital and Funding Options</h2>
+      <p className="text-blue-100 max-w-3xl mx-auto">
+        Although Section 8 Microfinance Companies don't have a fixed minimum capital requirement, 
+        you will still need working capital to start operations.
+      </p>
+    </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[
-                    {
-                      title: "Member Contributions",
-                      description: "Initial capital from founding members and subscribers",
-                      icon: "👥"
-                    },
-                    {
-                      title: "Donations & Grants",
-                      description: "Funding from charitable organizations and foundations", 
-                      icon: "🎁"
-                    },
-                    {
-                      title: "CSR Funds",
-                      description: "Corporate Social Responsibility funding from companies",
-                      icon: "🏢"
-                    },
-                    {
-                      title: "Soft Loans",
-                      description: "Low-interest loans from banks and financial institutions",
-                      icon: "🏦"
-                    }
-                  ].map((funding, index) => (
-                    <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                      <div className="text-3xl mb-3">{funding.icon}</div>
-                      <h3 className="text-lg font-semibold mb-2">{funding.title}</h3>
-                      <p className="text-blue-100 text-sm">{funding.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+    {/* Funding options grid */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        {
+          title: "Member Contributions",
+          description: "Initial capital from founding members and subscribers",
+          icon: "👥"
+        },
+        {
+          title: "Donations & Grants",
+          description: "Funding from charitable organizations and foundations", 
+          icon: "🎁"
+        },
+        {
+          title: "CSR Funds",
+          description: "Corporate Social Responsibility funding from companies",
+          icon: "🏢"
+        },
+        {
+          title: "Soft Loans",
+          description: "Low-interest loans from banks and financial institutions",
+          icon: "🏦"
+        }
+      ].map((funding, index) => (
+        <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+          <div className="text-3xl mb-3">{funding.icon}</div>
+          <h3 className="text-lg font-semibold mb-2">{funding.title}</h3>
+          <p className="text-blue-100 text-sm">{funding.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 
           {/* Compliance Section */}
-          <div 
-            id="compliance" 
-            ref={sectionRefs.compliance} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-700 ${isVisible.compliance ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          >
-            <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-10">
-              <div className="text-center mb-10">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  RBI Compliance and Restrictions
-                </h2>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  Section 8 Microfinance Companies are exempt from direct RBI licensing but must follow certain lending limits and fair practices.
-                </p>
-              </div>
+        <div 
+  id="compliance" 
+  ref={sectionRefs.compliance} 
+  className={`mb-20 scroll-mt-20 transition-all duration-700 delay-700 ${isVisible.compliance ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+>
+  <div className="text-center mb-12 px-4 md:px-0">
+    <h2 className="text-3xl font-extrabold text-gray-900 mb-3">
+      RBI Compliance & Restrictions
+    </h2>
+    <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto">
+      Section 8 Microfinance Companies are exempt from direct RBI licensing but must follow certain lending limits and fair practices.
+    </p>
+  </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
-                {[
-                  {
-                    title: "Key Restrictions",
-                    points: [
-                      "Cannot accept public deposits like NBFCs",
-                      "Must follow fair lending practices and transparent interest rates",
-                      "Should maintain proper records of all financial transactions",
-                      "Must comply with state-specific microfinance regulations"
-                    ],
-                    icon: "🚫"
-                  },
-                  {
-                    title: "Compliance Requirements",
-                    points: [
-                      "Maintain proper books of accounts",
-                      "File annual returns and financial statements with the MCA",
-                      "Follow lending policies and fair practices code",
-                      "Conduct board meetings and maintain statutory registers"
-                    ],
-                    icon: "📋"
-                  }
-                ].map((section, index) => (
-                  <div key={index} className="bg-white rounded-2xl p-6 border border-blue-200 hover:shadow-md transition-all duration-300">
-                    <div className="flex items-center mb-4">
-                      <div className="text-3xl mr-4">{section.icon}</div>
-                      <h3 className="text-xl font-semibold text-gray-900">{section.title}</h3>
-                    </div>
-                    <ul className="space-y-3">
-                      {section.points.map((point, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2.5 mr-3 flex-shrink-0"></div>
-                          <span className="text-gray-700">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
+  {/* Cards container */}
+  <div className="flex gap-6 overflow-x-auto md:overflow-x-visible px-4 md:px-0 py-2 no-scrollbar">
+    {[
+      {
+        title: "Key Restrictions",
+        points: [
+          "Cannot accept public deposits like NBFCs",
+          "Must follow fair lending practices and transparent interest rates",
+          "Should maintain proper records of all financial transactions",
+          "Must comply with state-specific microfinance regulations"
+        ],
+        gradient: "from-red-400 to-pink-500",
+        icon: "❌"
+      },
+      {
+        title: "Compliance Requirements",
+        points: [
+          "Maintain proper books of accounts",
+          "File annual returns and financial statements with the MCA",
+          "Follow lending policies and fair practices code",
+          "Conduct board meetings and maintain statutory registers"
+        ],
+        gradient: "from-blue-400 to-indigo-500",
+        icon: "✔️"
+      }
+    ].map((section, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.15 }}
+        viewport={{ once: true }}
+        className="flex-shrink-0 w-72 md:flex-1 bg-white rounded-3xl p-6 border border-gray-200 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+      >
+        {/* Gradient line */}
+        <div className={`h-1 w-20 mb-5 rounded-full bg-gradient-to-r ${section.gradient} shadow-sm`}></div>
 
-              <div className="mt-8 bg-blue-100 border border-blue-200 rounded-xl p-6">
-                <div className="flex items-start">
-                  <div className="text-2xl mr-4">ℹ️</div>
-                  <div>
-                    <h4 className="font-semibold text-blue-800 mb-2">Ongoing Compliance Support</h4>
-                    <p className="text-blue-700 text-sm">
-                      We provide ongoing compliance support to ensure smooth operations and help you stay updated with changing regulations in the microfinance sector.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <h3 className="text-xl font-semibold text-gray-900 mb-4">{section.title}</h3>
+        
+        <ul className="space-y-3">
+          {section.points.map((point, idx) => (
+            <li key={idx} className="flex items-start text-gray-700 text-sm sm:text-base">
+              <span className={`${section.icon === "❌" ? "text-red-500" : "text-green-500"} mr-3 mt-1 text-lg`}>{section.icon}</span>
+              {point}
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Support info */}
+  <div className="mt-8 px-4 md:px-0">
+    <div className="flex items-start bg-gradient-to-r from-blue-50 to-white border border-blue-200 rounded-3xl p-6 gap-3 shadow-sm">
+      <div className="text-2xl">ℹ️</div>
+      <div>
+        <h4 className="font-semibold text-blue-800 mb-1">Ongoing Compliance Support</h4>
+        <p className="text-blue-700 text-sm">
+          We provide ongoing compliance support to ensure smooth operations and help you stay updated with changing regulations in the microfinance sector.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
           {/* Advantages Section */}
           <div 
-            id="advantages" 
-            ref={sectionRefs.advantages} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-800 ${isVisible.advantages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Advantages for Social Impact
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Section 8 Microfinance Companies offer unique advantages for organizations focused on creating meaningful social change.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  title: "Direct Community Impact",
-                  description: "Directly supports financial inclusion in underserved areas through accessible credit.",
-                  icon: "🌍",
-                  gradient: "from-blue-400 to-indigo-500"
-                },
-                {
-                  title: "Donor Trust",
-                  description: "Builds trust with donors and funding agencies through transparent governance structure.",
-                  icon: "🤝",
-                  gradient: "from-indigo-400 to-purple-500"
-                },
-                {
-                  title: "Sustainable Model",
-                  description: "Provides a sustainable model for community development through responsible lending practices.",
-                  icon: "♻️",
-                  gradient: "from-purple-400 to-blue-500"
-                },
-                {
-                  title: "Entrepreneurship Support",
-                  description: "Encourages entrepreneurship among low-income groups with tailored financial products.",
-                  icon: "💡",
-                  gradient: "from-blue-500 to-indigo-600"
-                }
-              ].map((advantage, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group relative overflow-hidden"
-                >
-                  <div className="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${advantage.gradient} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}>
-                      {advantage.icon}
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {advantage.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {advantage.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* FAQ Section */}
-        <div 
-            id="faq" 
-            ref={sectionRefs.faq} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-700 ${
-              isVisible.faq ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-              Frequently Asked Questions
-            </h2>
-
-            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {faqs.map((faq, index) => (
-               <div
-  key={index}
-  className="rounded-xl border border-blue-500 shadow-md bg-gradient-to-br from-blue-200 to-blue-400 text-white hover:shadow-xl transition duration-300"
+  id="advantages" 
+  ref={sectionRefs.advantages} 
+  className={`mb-20 scroll-mt-20 transition-all duration-700 delay-800 ${isVisible.advantages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
 >
-                  <button
-                    className="w-full px-5 py-4 text-left focus:outline-none"
-                    onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-                  >
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-base font-semibold text-gray-800">
-                        {faq.question}
-                      </h3>
-                      <svg
-                        className={`w-5 h-5 text-blue-600 transform transition-transform ${
-                          activeIndex === index ? "rotate-180" : ""
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        ></path>
-                      </svg>
-                    </div>
-                  </button>
+  <div className="text-center mb-12 px-4 md:px-0">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      Advantages for Social Impact
+    </h2>
+    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+      Section 8 Microfinance Companies offer unique advantages for organizations focused on creating meaningful social change.
+    </p>
+  </div>
 
-                  {activeIndex === index && (
-                    <div className="px-5 pb-4">
-                      <p className="text-sm text-gray-600 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              ))}
+  {/* Mobile horizontal scroll */}
+  <div className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-0">
+    <div className="flex space-x-4 overflow-x-auto md:overflow-visible no-scrollbar py-2">
+      {[
+        {
+          title: "Direct Community Impact",
+          description: "Directly supports financial inclusion in underserved areas through accessible credit.",
+          icon: "🌍",
+          gradient: "from-blue-400 to-indigo-500"
+        },
+        {
+          title: "Donor Trust",
+          description: "Builds trust with donors and funding agencies through transparent governance structure.",
+          icon: "🤝",
+          gradient: "from-indigo-400 to-purple-500"
+        },
+        {
+          title: "Sustainable Model",
+          description: "Provides a sustainable model for community development through responsible lending practices.",
+          icon: "♻️",
+          gradient: "from-purple-400 to-blue-500"
+        },
+        {
+          title: "Entrepreneurship Support",
+          description: "Encourages entrepreneurship among low-income groups with tailored financial products.",
+          icon: "💡",
+          gradient: "from-blue-500 to-indigo-600"
+        }
+      ].map((advantage, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          className="flex-shrink-0 w-72 group relative"
+        >
+          <div className="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${advantage.gradient} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}>
+              {advantage.icon}
             </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              {advantage.title}
+            </h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              {advantage.description}
+            </p>
           </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</div>
+   {/* FAQ Section */}
+<div id="faq" ref={sectionRefs.faq} className="text-center mb-12">
+  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+    Frequently Asked Questions
+  </h2>
+</div>
+
+<div className="max-w-5xl mx-auto">
+  {/* Desktop: 2 Columns */}
+  <div className="hidden md:grid md:grid-cols-2 gap-6">
+    {faqs.map((faq, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: index * 0.05 }}
+        viewport={{ once: true }}
+        className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all hover:shadow-md"
+      >
+        <button
+          onClick={() => toggleFAQ(index)}
+          className="w-full px-6 py-4 flex justify-between items-center focus:outline-none"
+        >
+          <h3 className="text-lg font-medium text-gray-800">{faq.question}</h3>
+          <motion.span
+            animate={{ rotate: activeIndex === index ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ChevronDown className="w-5 h-5 text-gray-500" />
+          </motion.span>
+        </button>
+
+        <AnimatePresence>
+          {activeIndex === index && (
+            <motion.div
+              key="content"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="px-6 pb-4 text-gray-600 text-sm"
+            >
+              {faq.answer}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Mobile: Horizontal Scroll, 5 per page */}
+  <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory py-4">
+    {[0, 5].map((startIndex) => (
+      <div key={startIndex} className="flex flex-col gap-4 min-w-[85%] snap-center">
+        {faqs.slice(startIndex, startIndex + 5).map((faq, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+          >
+            <button
+              onClick={() => toggleFAQ(startIndex + index)}
+              className="w-full px-5 py-4 flex justify-between items-center focus:outline-none"
+            >
+              <h3 className="text-base font-medium text-gray-800">{faq.question}</h3>
+              <motion.span
+                animate={{ rotate: activeIndex === startIndex + index ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ChevronDown className="w-5 h-5 text-gray-500" />
+              </motion.span>
+            </button>
+
+            <AnimatePresence>
+              {activeIndex === startIndex + index && (
+                <motion.div
+                  key="content"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="px-5 pb-4 text-gray-600 text-sm"
+                >
+                  {faq.answer}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+<br />
 
           {/* CTA Section */}
-          <div className="bg-gradient-to-br from-gray-900 to-blue-900 rounded-3xl p-10 text-center text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20"></div>
-            <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Choose Sahakar Samruddhi</h2>
-              <p className="text-lg mb-8 max-w-3xl mx-auto text-gray-200">
-                We specialize in Microfinance Company Registration under Section 8. From initial consultation to final incorporation, 
-                we provide end-to-end support so you can focus on your mission of financial inclusion and community development.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <button 
-                  onClick={openAppointmentForm}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                  Get Started Today
-                </button>
-                <button 
-                  onClick={openAppointmentForm}
-                  className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300"
-                >
-                  Schedule Consultation
-                </button>
-              </div>
-            </div>
-          </div>
+       <div className="bg-gradient-to-br from-gray-900 to-blue-900 rounded-3xl p-6 md:p-10 text-center text-white shadow-2xl relative overflow-hidden">
+  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20"></div>
+  <div className="relative z-10">
+    <h2 className="text-xl md:text-3xl font-bold mb-3 md:mb-4">
+      Why Choose Sahakar Samruddhi
+    </h2>
+    <p className="text-sm md:text-lg mb-6 md:mb-8 max-w-3xl mx-auto text-gray-200">
+      We specialize in Microfinance Company Registration under Section 8. From initial consultation to final incorporation, 
+      we provide end-to-end support so you can focus on your mission of financial inclusion and community development.
+    </p>
+    <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+      <button 
+        onClick={openAppointmentForm}
+        className="bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+      >
+        Get Started Today
+      </button>
+      <button 
+        onClick={openAppointmentForm}
+        className="border-2 border-white text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300"
+      >
+        Schedule Consultation
+      </button>
+    </div>
+  </div>
+</div>
+
         </div>
       </section>
 

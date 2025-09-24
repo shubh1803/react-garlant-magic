@@ -113,8 +113,9 @@ const WhyChooseSection = () => {
          
           
          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-  Why Choose <span className="text-[#7B191B]">सहकार</span>{" "}
-  <span className="text-[#3C3C3C]">समृद्धी</span>
+  Why Choose  <span className="bg-primary-gradient bg-clip-text text-transparent font-bold tracking-wide">
+    सहकार&nbsp;समृद्धी
+  </span>
 </h2>
 
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -211,7 +212,7 @@ const WhyChooseSection = () => {
     Join hundreds of successful cooperative institutions that have trusted Sahakar Samruddhi 
     for their banking and financial consultancy needs.
   </p>
-  <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 hover:scale-105">
+  <button className="bg-primary-gradient text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 hover:scale-105">
     Get Started Today
   </button>
 </div>

@@ -126,6 +126,28 @@ const CreditCooperativeAudit = () => {
       answer: "Keep accurate records, schedule regular board meetings, maintain statutory registers, and work with professionals like Sahakar Samruddhi for audits, returns, and timely advice."
     }
   ];
+  const benefits = [
+                {
+                  icon: <BookOpen className="w-8 h-8" />,
+                  title: "Professional Expertise",
+                  description: "Professional expertise in cooperative sector regulations"
+                },
+                {
+                  icon: <Clock className="w-8 h-8" />,
+                  title: "Timely Filing",
+                  description: "Timely filing and reduced penalties"
+                },
+                {
+                  icon: <FileText className="w-8 h-8" />,
+                  title: "Clear Reports",
+                  description: "Clear financial reports for better decision making"
+                },
+                {
+                  icon: <Shield className="w-8 h-8" />,
+                  title: "Peace of Mind",
+                  description: "Peace of mind so you can focus on member services"
+                }
+              ]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
@@ -412,72 +434,50 @@ const CreditCooperativeAudit = () => {
           </div>
 
           {/* Benefits Section */}
-          <div 
-            id="benefits" 
-            ref={sectionRefs.benefits} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-300 ${
-              isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <h2 className="text-3xl font-bold text-gray-909 mb-6 text-center">
-              Benefits of Outsourcing Audit and Compliance
-            </h2>
+        <div id="benefits" ref={sectionRefs.benefits} className="mb-20 scroll-mt-20 px-4 relative">
+  {/* Background decorative shapes */}
+  <motion.div
+    className="absolute top-0 left-10 w-60 h-20 bg-indigo-200 rounded-3xl opacity-20 blur-3xl"
+    animate={{ y: [0, 15, 0], x: [0, 10, 0] }}
+    transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+  />
+  <motion.div
+    className="absolute bottom-10 right-0 w-72 h-24 bg-purple-200 rounded-3xl opacity-20 blur-3xl"
+    animate={{ y: [0, -15, 0], x: [0, -10, 0] }}
+    transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
+  />
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                {
-                  icon: <BookOpen className="w-8 h-8" />,
-                  title: "Professional Expertise",
-                  description: "Professional expertise in cooperative sector regulations"
-                },
-                {
-                  icon: <Clock className="w-8 h-8" />,
-                  title: "Timely Filing",
-                  description: "Timely filing and reduced penalties"
-                },
-                {
-                  icon: <FileText className="w-8 h-8" />,
-                  title: "Clear Reports",
-                  description: "Clear financial reports for better decision making"
-                },
-                {
-                  icon: <Shield className="w-8 h-8" />,
-                  title: "Peace of Mind",
-                  description: "Peace of mind so you can focus on member services"
-                }
-              ].map((benefit, index) => (
-                <div 
-                  key={index} 
-                  className="relative bg-white border border-gray-200 rounded-xl p-6 h-full flex flex-col 
-                             transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] 
-                             group cursor-pointer overflow-hidden"
-                >
-                  {/* Shimmer Effect Overlay */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent 
-                                  -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+  {/* Heading */}
+  <div className="text-center mb-12 relative z-10">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+     Benefits of Outsourcing Audit and Compliance
+    </h2>
+   
+  </div>
 
-                  <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center mb-4 
-                                  transition-all duration-500 group-hover:from-blue-500 group-hover:to-blue-700">
-                    <div className="text-blue-600 transition-colors duration-300 group-hover:text-white">
-                      {benefit.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600 flex-grow">{benefit.description}</p>
-                  <div className="mt-auto pt-4 border-t border-gray-100 group-hover:border-blue-200 transition-colors duration-300">
-                    <div className="inline-flex items-center text-blue-600 font-medium text-sm group-hover:text-blue-700 transition-colors duration-300">
-                      Learn more
-                      <svg className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+  {/* Capsule benefits */}
+  <div className="flex flex-wrap justify-center gap-6 relative z-10">
+    {[
+      { title: "Step-by-step guidance from registration to operation", icon: <CheckCircle className="w-8 h-8 text-white mb-2" /> },
+      { title: "Reduced delays and lower compliance risks", icon: <Clock className="w-8 h-8 text-white mb-2" /> },
+      { title: "Customized solutions for your financial model", icon: <Settings className="w-8 h-8 text-white mb-2" /> },
+      { title: "Expert advice on best practices in cooperative and microfinance sectors", icon: <Briefcase className="w-8 h-8 text-white mb-2" /> },
+    ].map((benefit, index) => (
+      <motion.div
+        key={index}
+        className="min-w-[220px] px-6 py-4 rounded-3xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.2 }}
+        viewport={{ once: true }}
+        whileHover={{ scale: 1.05, boxShadow: "0 20px 25px rgba(0,0,0,0.2)" }}
+      >
+        {benefit.icon}
+        <p className="text-sm font-semibold">{benefit.title}</p>
+      </motion.div>
+    ))}
+  </div>
+</div>
 
           {/* Process Section */}
           <div
@@ -550,65 +550,102 @@ const CreditCooperativeAudit = () => {
           </div>
 
           {/* FAQ Section */}
-          <div 
-            id="faq" 
-            ref={sectionRefs.faq} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-500 ${
-              isVisible.faq ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                Get answers to common questions about Credit Cooperative Society audits and compliance requirements.
-              </p>
-            </div>
-
-            <div className="max-w-4xl mx-auto space-y-4">
-              {faqs.map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl shadow-lg overflow-hidden border border-indigo-100"
-                >
-                  {/* Question */}
-                  <button
-                    onClick={() => toggleFAQ(index)}
-                    className="w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none"
-                  >
-                    <h3 className="text-lg font-semibold text-indigo-700">{faq.question}</h3>
-                    <motion.span
-                      animate={{ rotate: activeIndex === index ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="w-6 h-6 text-indigo-700" />
-                    </motion.span>
-                  </button>
-
-                  {/* Answer */}
-                  <AnimatePresence>
-                    {activeIndex === index && (
-                      <motion.div
-                        key="content"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="px-6 pb-6 text-gray-700"
-                      >
-                        {faq.answer}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+         <div className="text-center mb-12">
+           <h2 className="text-3xl font-bold text-gray-900 mb-4">
+             Frequently Asked Questions
+           </h2>
+         </div>
+         
+         <div className="max-w-5xl mx-auto">
+           {/* Desktop: 2 Columns */}
+           <div className="hidden md:grid md:grid-cols-2 gap-6">
+             {faqs.map((faq, index) => (
+               <motion.div
+                 key={index}
+                 initial={{ opacity: 0, y: 15 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                 viewport={{ once: true }}
+                 className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all hover:shadow-md"
+               >
+                 <button
+                   onClick={() => toggleFAQ(index)}
+                   className="w-full px-6 py-4 flex justify-between items-center focus:outline-none"
+                 >
+                   <h3 className="text-lg font-medium text-gray-800">{faq.question}</h3>
+                   <motion.span
+                     animate={{ rotate: activeIndex === index ? 180 : 0 }}
+                     transition={{ duration: 0.3 }}
+                   >
+                     <ChevronDown className="w-5 h-5 text-gray-500" />
+                   </motion.span>
+                 </button>
+         
+                 <AnimatePresence>
+                   {activeIndex === index && (
+                     <motion.div
+                       key="content"
+                       initial={{ opacity: 0, height: 0 }}
+                       animate={{ opacity: 1, height: "auto" }}
+                       exit={{ opacity: 0, height: 0 }}
+                       transition={{ duration: 0.3 }}
+                       className="px-6 pb-4 text-gray-600 text-sm"
+                     >
+                       {faq.answer}
+                     </motion.div>
+                   )}
+                 </AnimatePresence>
+               </motion.div>
+             ))}
+           </div>
+         
+           {/* Mobile: Horizontal Scroll, 5 per page */}
+           <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory py-4">
+             {[0, 5].map((startIndex) => (
+               <div key={startIndex} className="flex flex-col gap-4 min-w-[85%] snap-center">
+                 {faqs.slice(startIndex, startIndex + 5).map((faq, index) => (
+                   <motion.div
+                     key={index}
+                     initial={{ opacity: 0, y: 10 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.4, delay: index * 0.05 }}
+                     viewport={{ once: true }}
+                     className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+                   >
+                     <button
+                       onClick={() => toggleFAQ(startIndex + index)}
+                       className="w-full px-5 py-4 flex justify-between items-center focus:outline-none"
+                     >
+                       <h3 className="text-base font-medium text-gray-800">{faq.question}</h3>
+                       <motion.span
+                         animate={{ rotate: activeIndex === startIndex + index ? 180 : 0 }}
+                         transition={{ duration: 0.3 }}
+                       >
+                         <ChevronDown className="w-5 h-5 text-gray-500" />
+                       </motion.span>
+                     </button>
+         
+                     <AnimatePresence>
+                       {activeIndex === startIndex + index && (
+                         <motion.div
+                           key="content"
+                           initial={{ opacity: 0, height: 0 }}
+                           animate={{ opacity: 1, height: "auto" }}
+                           exit={{ opacity: 0, height: 0 }}
+                           transition={{ duration: 0.3 }}
+                           className="px-5 pb-4 text-gray-600 text-sm"
+                         >
+                           {faq.answer}
+                         </motion.div>
+                       )}
+                     </AnimatePresence>
+                   </motion.div>
+                 ))}
+               </div>
+             ))}
+           </div>
+         </div>
+         <br/>
 
           {/* CTA Section */}
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-10 text-center text-white shadow-xl transition-all duration-500 hover:shadow-2xl">

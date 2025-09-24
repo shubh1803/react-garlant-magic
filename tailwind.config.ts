@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}"
+  ],
   prefix: "",
   theme: {
     container: {
@@ -24,8 +29,6 @@ export default {
           foreground: "hsl(var(--primary-foreground))",
           hover: "hsl(var(--primary-hover))",
         },
-        dark: "hsl(var(--dark))",
-        dark: "hsl(var(--dark))",
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -51,6 +54,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        dark: "hsl(var(--dark))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -61,6 +65,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Gradient reference colors (optional)
+        primaryGradientStart: '#00c6ff',
+        primaryGradientMiddle: '#5e00ff',
+        primaryGradientEnd: '#ff00aa',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -78,20 +86,20 @@ export default {
         },
         "fade-in": {
           "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" }
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "slide-in-left": {
           "0%": { transform: "translateX(-100%)" },
-          "100%": { transform: "translateX(0)" }
+          "100%": { transform: "translateX(0)" },
         },
         "slide-in-right": {
           "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(0)" }
+          "100%": { transform: "translateX(0)" },
         },
         "scale-in": {
           "0%": { transform: "scale(0.9)", opacity: "0" },
-          "100%": { transform: "scale(1)", opacity: "1" }
-        }
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -103,10 +111,11 @@ export default {
       },
       backgroundImage: {
         'hero-overlay': 'var(--hero-overlay)',
+        'primary-gradient': 'linear-gradient(90deg, #00c6ff, #5e00ff, #ff00aa)', // blue → purple → pink
       },
       transitionTimingFunction: {
-        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
-        'slide': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        slide: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
       },
     },
   },

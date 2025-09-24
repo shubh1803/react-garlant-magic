@@ -387,7 +387,7 @@ className="p-6 rounded-2xl bg-gradient-to-br from-blue-100 via-blue-200 to-blue-
           </div>
 
           {/* FAQ Section with Accordion-like Expand Animation */}
-      <div id="faq" className="mb-20 scroll-mt-20 px-4 relative">
+      <div id="faq" ref={sectionRefs.faq} className="mb-20 scroll-mt-20 px-4 relative">
       {/* Heading */}
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">

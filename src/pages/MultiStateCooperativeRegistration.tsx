@@ -135,6 +135,62 @@ const MultiStateCooperativeRegistration = () => {
       answer: "Yes, existing state-level societies can convert to multi-state societies by following the prescribed procedure and obtaining necessary approvals."
     }
   ];
+  const steps =  [
+        {
+          title: "Initial Consultation & Planning",
+          description: "We understand your requirements and assess eligibility for multi-state operations, helping you plan the expansion strategy.",
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m2 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          ),
+        },
+        {
+          title: "Document Preparation",
+          description: "Drafting multi-state compliant bylaws and preparing all necessary registration documents as per the Act requirements.",
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+            </svg>
+          ),
+        },
+        {
+          title: "NOC Acquisition",
+          description: "Obtaining No Objection Certificate from the State Registrar of Cooperative Societies where your society is first proposed.",
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          ),
+        },
+        {
+          title: "Application Filing",
+          description: "Preparing and filing the application with the Central Registrar of Cooperative Societies (Ministry of Cooperation, Government of India).",
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4"/>
+            </svg>
+          ),
+        },
+        {
+          title: "Coordination & Follow-up",
+          description: "Coordinating with authorities, responding to queries, and ensuring compliance with all legal and financial norms.",
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          ),
+        },
+        {
+          title: "Certificate Collection",
+          description: "Receiving your registration certificate and starting multi-state operations with our ongoing support.",
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          ),
+        },
+      ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -349,46 +405,67 @@ const MultiStateCooperativeRegistration = () => {
           </div>
 
           {/* Benefits Section */}
-          <div 
-            id="benefits" 
-            ref={sectionRefs.benefits} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-100 ${
-              isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Benefits of Registering a Multi-State Credit Cooperative Society
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Explore the key advantages of expanding your cooperative society across multiple states.
-              </p>
-            </div>
+        <div
+  id="benefits"
+  ref={sectionRefs.benefits}
+  className={`mb-20 scroll-mt-20 transition-all duration-700 delay-100 ${
+    isVisible.benefits ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
+  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+    Benefits of Registering a Credit Cooperative Society
+  </h2>
 
-            <div className="flex flex-wrap justify-center gap-10">
-              {[
-                { text: "Legal recognition to operate in more than one state", icon: "📝" },
-                { text: "Larger membership base and stronger financial resources", icon: "👥" },
-                { text: "Ability to offer loans and credit facilities across regions", icon: "💳" },
-                { text: "Access to a wider network of cooperative benefits", icon: "🌐" },
-                { text: "Increased credibility with regulators and financial institutions", icon: "🏛️" },
-                { text: "Tax benefits and exemptions under multi-state cooperative laws", icon: "💰" },
-              ].map((benefit, i) => (
-                <div
-                  key={i}
-                  className="relative w-36 h-36 flex items-center justify-center text-center group"
-                  style={{ animationDelay: `${i * 0.2}s` }}
-                >
-                  <div className="absolute inset-0 transform rotate-45 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500"></div>
-                  
-                  <div className="relative flex flex-col items-center justify-center text-white p-4 animate-pulse">
-                    <div className="text-3xl">{benefit.icon}</div>
-                    <p className="text-xs mt-2 font-semibold px-2">{benefit.text}</p>
-                  </div>
-                </div>
-              ))}
+  {/* Mobile Horizontal Scroll */}
+  <div className="flex md:hidden overflow-x-auto hide-scrollbar gap-4 snap-x snap-mandatory px-4">
+    {[0, 3].map((startIndex) => (
+      <div key={startIndex} className="flex flex-col gap-4 min-w-[80%] snap-center">
+        {[
+          { text: "Legal recognition to operate in more than one state", icon: "📝" },
+          { text: "Larger membership base and stronger financial resources", icon: "👥" },
+          { text: "Ability to offer loans and credit facilities across regions", icon: "💳" },
+          { text: "Access to a wider network of cooperative benefits", icon: "🌐" },
+          { text: "Increased credibility with regulators and financial institutions", icon: "🏛️" },
+          { text: "Tax benefits and exemptions under multi-state cooperative laws", icon: "💰" },
+        ].slice(startIndex, startIndex + 3).map((benefit, index) => (
+          <div
+            key={index}
+            className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4"
+          >
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white font-bold">
+              ✓
             </div>
+            <p className="text-gray-900 font-medium">{benefit.text}</p>
           </div>
+        ))}
+      </div>
+    ))}
+  </div>
+
+  {/* Desktop Grid */}
+  <div className="hidden md:grid md:grid-cols-2 gap-8 mt-12 px-4">
+    {[
+      { text: "Legal recognition to operate in more than one state", icon: "📝" },
+      { text: "Larger membership base and stronger financial resources", icon: "👥" },
+      { text: "Ability to offer loans and credit facilities across regions", icon: "💳" },
+      { text: "Access to a wider network of cooperative benefits", icon: "🌐" },
+      { text: "Increased credibility with regulators and financial institutions", icon: "🏛️" },
+      { text: "Tax benefits and exemptions under multi-state cooperative laws", icon: "💰" },
+    ].map((benefit, index) => (
+      <div
+        key={index}
+        className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4"
+      >
+        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white font-bold">
+          ✓
+        </div>
+        <p className="text-gray-900 font-medium">{benefit.text}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+
 
           {/* Eligibility Section */}
           <div 
@@ -439,13 +516,14 @@ const MultiStateCooperativeRegistration = () => {
           </div>
 
           {/* Registration Process */}
-       <div
+     <div
   id="process"
   ref={sectionRefs.process}
   className={`mb-20 scroll-mt-20 transition-all duration-700 delay-400 ${
     isVisible.process ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
   }`}
 >
+  {/* Section Header */}
   <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
     Registration Process
   </h2>
@@ -454,74 +532,20 @@ const MultiStateCooperativeRegistration = () => {
   </p>
 
   <div className="relative">
-    {/* Timeline Line */}
-<div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 transform -translate-x-1/2"></div>
+    {/* Timeline Line for Desktop */}
+    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 transform -translate-x-1/2"></div>
 
-    <div className="space-y-16 relative">
-      {[
-        {
-          title: "Initial Consultation & Planning",
-          description: "We understand your requirements and assess eligibility for multi-state operations, helping you plan the expansion strategy.",
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m2 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          ),
-        },
-        {
-          title: "Document Preparation",
-          description: "Drafting multi-state compliant bylaws and preparing all necessary registration documents as per the Act requirements.",
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
-            </svg>
-          ),
-        },
-        {
-          title: "NOC Acquisition",
-          description: "Obtaining No Objection Certificate from the State Registrar of Cooperative Societies where your society is first proposed.",
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
-          ),
-        },
-        {
-          title: "Application Filing",
-          description: "Preparing and filing the application with the Central Registrar of Cooperative Societies (Ministry of Cooperation, Government of India).",
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4"/>
-            </svg>
-          ),
-        },
-        {
-          title: "Coordination & Follow-up",
-          description: "Coordinating with authorities, responding to queries, and ensuring compliance with all legal and financial norms.",
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
-          ),
-        },
-        {
-          title: "Certificate Collection",
-          description: "Receiving your registration certificate and starting multi-state operations with our ongoing support.",
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
-          ),
-        },
-      ].map((step, index) => (
+    {/* Desktop Layout */}
+    <div className="hidden md:flex flex-col space-y-16 relative">
+      {steps.map((step, index) => (
         <motion.div
           key={index}
           initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
           viewport={{ once: true }}
-          className={`flex flex-col md:flex-row items-start md:items-center group ${
-            index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+          className={`flex items-start md:items-center group ${
+            index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
           }`}
         >
           {/* Icon Circle */}
@@ -532,14 +556,11 @@ const MultiStateCooperativeRegistration = () => {
           </div>
 
           {/* Step Content Card */}
-        <div
-  className={`mt-4 md:mt-0 flex-grow max-w-xl p-6 rounded-2xl border border-transparent shadow-md 
-    bg-blue-300 transition-all duration-500 
-    group-hover:scale-[1.05] group-hover:shadow-xl group-hover:border-blue-700/50 ${
-      index % 2 === 0 ? "md:ml-8" : "md:mr-8"
-    }`}
->
-
+          <div
+            className={`mt-4 md:mt-0 flex-grow max-w-xl p-6 rounded-2xl border border-transparent shadow-md bg-blue-300 transition-all duration-500 group-hover:scale-[1.05] group-hover:shadow-xl group-hover:border-blue-700/50 ${
+              index % 2 === 0 ? 'md:ml-8' : 'md:mr-8'
+            }`}
+          >
             <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors duration-500">
               {step.title}
             </h3>
@@ -548,26 +569,63 @@ const MultiStateCooperativeRegistration = () => {
         </motion.div>
       ))}
     </div>
+
+    {/* Mobile Layout */}
+    {/* Mobile Layout */}
+<div className="md:hidden relative flex flex-col gap-4 px-4">
+  {/* Vertical timeline line */}
+  <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600"></div>
+
+  {steps.map((step, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, x: -15 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      viewport={{ once: true }}
+      className="flex items-start gap-3 relative"
+    >
+      {/* Icon Circle */}
+      <div className="flex-shrink-0 relative z-10">
+        <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white shadow-sm">
+          {step.icon}
+        </div>
+      </div>
+
+      {/* Step Content Card */}
+      <div className="flex-grow p-3 rounded-lg border border-transparent shadow-sm bg-blue-100 transition-all duration-500">
+        <h3 className="text-sm font-semibold text-gray-900 mb-1">{step.title}</h3>
+        <p className="text-xs text-gray-700 leading-snug">{step.description}</p>
+      </div>
+    </motion.div>
+  ))}
+</div>
+
+
   </div>
 </div>
 
+
+
+
           {/* Documents Section */}
-        <div
+      <div
   id="documents"
   ref={sectionRefs.documents}
   className={`mb-20 relative scroll-mt-20 transition-all duration-700 delay-500 ${
     isVisible.documents ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
   }`}
 >
-  <h2 className="text-4xl font-extrabold text-gray-900 mb-6 text-center">
+  {/* Section Header */}
+  <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 md:mb-6 text-center">
     Documents Needed
   </h2>
-  <p className="text-base text-gray-700 mb-10 text-center max-w-3xl mx-auto">
+  <p className="text-sm md:text-base text-gray-700 mb-8 md:mb-10 text-center max-w-3xl mx-auto leading-relaxed">
     Common documents required for Multi-State Credit Cooperative Society registration include:
   </p>
 
-  {/* Desktop Grid / Mobile Carousel */}
-  <div className="hidden lg:grid grid-cols-3 gap-6">
+  {/* Desktop Grid */}
+  <div className="hidden lg:grid grid-cols-3 gap-6 max-w-6xl mx-auto">
     {[
       { title: "Draft Bylaws", description: "Draft bylaws of the proposed society according to the multi-state requirements", icon: "📄", gradient: "from-purple-100 to-purple-200" },
       { title: "Member List", description: "List of promoter members with ID and address proof from different states", icon: "👥", gradient: "from-pink-100 to-pink-200" },
@@ -588,8 +646,9 @@ const MultiStateCooperativeRegistration = () => {
         className={`relative group p-4 rounded-xl shadow-md border border-gray-100 cursor-pointer overflow-hidden bg-gradient-to-r ${doc.gradient} hover:shadow-lg transition-all duration-300`}
         style={{ minHeight: '160px' }}
       >
-        <div className="absolute -top-6 -left-6 w-20 h-20 bg-white opacity-15 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
-        <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-white opacity-15 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
+        {/* Decorative floating circles */}
+        <div className="absolute -top-6 -left-6 w-16 h-16 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
+        <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
 
         <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-sm mb-3 text-xl">
           {doc.icon}
@@ -601,8 +660,8 @@ const MultiStateCooperativeRegistration = () => {
     ))}
   </div>
 
-  {/* Mobile Scroll Carousel */}
-  <div className="lg:hidden overflow-x-auto flex gap-4 py-4 px-2 snap-x snap-mandatory">
+  {/* Mobile Vertical List */}
+  <div className="lg:hidden flex flex-col gap-3 max-w-xs mx-auto">
     {[
       { title: "Draft Bylaws", description: "Draft bylaws of the proposed society according to the multi-state requirements", icon: "📄", gradient: "from-purple-100 to-purple-200" },
       { title: "Member List", description: "List of promoter members with ID and address proof from different states", icon: "👥", gradient: "from-pink-100 to-pink-200" },
@@ -620,24 +679,21 @@ const MultiStateCooperativeRegistration = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: index * 0.08 }}
-        className={`relative group flex-shrink-0 w-64 rounded-xl shadow-md border border-gray-100 cursor-pointer overflow-hidden bg-gradient-to-r ${doc.gradient} hover:shadow-lg transition-all duration-300 snap-start`}
-        style={{ minHeight: '180px', marginLeft: index !== 0 ? '-40px' : '0' }} // overlap effect
+        className={`flex items-start gap-3 bg-white rounded-xl shadow-md p-3 transition-transform hover:scale-105`}
       >
-        <div className="absolute -top-6 -left-6 w-20 h-20 bg-white opacity-15 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
-        <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-white opacity-15 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
-
-        <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-sm mb-3 text-xl">
+        <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-tr ${doc.gradient} text-white text-lg shadow`}>
           {doc.icon}
         </div>
-
-        <h3 className="text-lg font-semibold text-gray-900 mb-1 group-hover:text-gray-800 transition-colors duration-300">{doc.title}</h3>
-        <p className="text-gray-700 text-sm">{doc.description}</p>
+        <div className="flex flex-col">
+          <h3 className="text-sm font-semibold text-gray-900">{doc.title}</h3>
+          <p className="text-xs text-gray-700 leading-snug">{doc.description}</p>
+        </div>
       </motion.div>
     ))}
   </div>
 
   {/* Note Section */}
-  <div className="mt-12 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-4 border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow duration-300">
+  <div className="mt-8 md:mt-12 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-4 border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow duration-300">
     <p className="text-blue-800 text-sm italic text-center">
       Note: Requirements may vary depending on your proposed operations. Our experts will guide you through the specific documentation needed for your case.
     </p>
@@ -646,14 +702,15 @@ const MultiStateCooperativeRegistration = () => {
 
 
           {/* NOC Section */}
-         <div
+     <div
   id="noc"
   ref={sectionRefs.noc}
   className={`mb-20 scroll-mt-20 transition-all duration-700 delay-600 ${
     isVisible.noc ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
   }`}
 >
-  <div className="relative z-10">
+  <div className="relative z-10 px-4 lg:px-0">
+
     {/* Header */}
     <div className="text-center mb-12">
       <motion.h2
@@ -685,335 +742,361 @@ const MultiStateCooperativeRegistration = () => {
       </motion.p>
     </div>
 
-    {/* Main Content Grid */}
-    <div className="grid lg:grid-cols-2 gap-8 mb-10">
-      {/* Why NOC is Needed */}
-      <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300"
+    {/* NOC Main Card */}
+   <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, delay: 0.4 }}
+  className="bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-6 border-l-4 border-gradient-to-r from-blue-500 to-indigo-600 shadow-md hover:shadow-xl transition-all duration-300 mb-6"
+>
+  <div className="flex items-start sm:items-center gap-4">
+    {/* Icon */}
+    <div className="w-12 h-12 flex-shrink-0 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex items-center justify-center shadow-lg">
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
       >
-        <div className="flex items-center mb-6">
-          <div className="w-14 h-14 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-white shadow-lg mr-4">
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              ></path>
-            </svg>
-          </div>
-          <h3 className="text-2xl font-bold text-gray-800">Why NOC is Required</h3>
-        </div>
-        <div className="space-y-4">
-          {[
-            "Confirms legal registration status at state level",
-            "Ensures no conflict with existing societies",
-            "Provides compliance record to Central Registrar",
-            "Validates multi-state expansion eligibility",
-          ].map((item, idx) => (
-            <div key={idx} className="flex items-start space-x-3 group">
-              <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300">
-                <svg
-                  className="w-3 h-3 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="3"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-              </div>
-              <p className="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
-                {item}
-              </p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* When You Need It */}
-      <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300"
-      >
-        <div className="flex items-center mb-6">
-          <div className="w-14 h-14 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg mr-4">
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-              ></path>
-            </svg>
-          </div>
-          <h3 className="text-2xl font-bold text-gray-800">When You Need It</h3>
-        </div>
-        <div className="space-y-6">
-          <div className="bg-blue-50/50 rounded-xl p-5 border border-blue-200/50">
-            <h4 className="font-bold text-blue-800 mb-3 flex items-center">
-              <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-              For New Societies
-            </h4>
-            <p className="text-gray-700 text-sm leading-relaxed">
-              Obtain NOC from State Registrar before applying to Central Registrar for multi-state registration.
-            </p>
-          </div>
-          <div className="bg-indigo-50/50 rounded-xl p-5 border border-indigo-200/50">
-            <h4 className="font-bold text-indigo-800 mb-3 flex items-center">
-              <span className="w-2 h-2 bg-indigo-600 rounded-full mr-3"></span>
-              For Existing Societies
-            </h4>
-            <p className="text-gray-700 text-sm leading-relaxed">
-              Converting state-level society requires NOC from each state where you plan to operate.
-            </p>
-          </div>
-        </div>
-      </motion.div>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
     </div>
 
-    {/* Process Timeline */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.8 }}
-      className="bg-gradient-to-r from-white/80 to-blue-50/80 backdrop-blur-sm rounded-2xl p-8 border border-white/60 shadow-lg"
-    >
-      <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
-        <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-          NOC Acquisition Process
-        </span>
+    {/* Text */}
+    <div>
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
+        What is NOC?
       </h3>
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Submission Requirements */}
-        <div className="space-y-4">
-          <div className="flex items-center mb-4">
-            <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white shadow-md mr-3">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                ></path>
-              </svg>
-            </div>
-            <h4 className="text-xl font-semibold text-gray-800">Submission Requirements</h4>
-          </div>
-          {[
-            "Written application to State Registrar",
-            "Draft bylaws and member lists",
-            "Formation resolution documents",
-            "Existing operation proofs (if applicable)",
-          ].map((req, idx) => (
-            <div
-              key={idx}
-              className="flex items-center space-x-3 p-3 bg-white/60 rounded-lg border border-purple-200/50 hover:bg-white/80 transition-colors duration-300"
-            >
-              <div className="w-5 h-5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex-shrink-0"></div>
-              <span className="text-gray-700 text-sm">{req}</span>
-            </div>
-          ))}
+      <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+        The No Objection Certificate (NOC) is a mandatory certificate issued by the State Registrar of Cooperative Societies. It confirms that your society has no objections or conflicts at the state level and is eligible to operate as a multi-state society. Without this certificate, your application to the Central Registrar for multi-state registration cannot proceed.
+        <br /><br />
+        Our experts help you prepare the necessary documents, coordinate with state authorities, and ensure all compliance requirements are met before submission.
+      </p>
+    </div>
+  </div>
+</motion.div>
+
+    {/* Why & When NOC Cards */}
+   {/* Why & When Cards: Horizontal Scroll on Mobile with Zoom */}
+{/* Why & When Cards: Horizontal Scroll on Mobile */}
+{/* Why & When NOC Cards - Mobile Optimized */}
+<div className="flex gap-4 overflow-x-auto lg:grid lg:grid-cols-2 mb-8 py-2 lg:py-0">
+  {/* Why NOC */}
+  <motion.div
+    initial={{ opacity: 0, x: -20 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: 0.5 }}
+    className="flex-shrink-0 min-w-[200px] sm:min-w-[220px] lg:min-w-full bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-5 border-l-4 border-gradient-to-r from-green-400 to-teal-500 shadow-md hover:shadow-xl transition-all duration-300"
+  >
+    <div className="flex items-center gap-3 mb-3">
+      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-green-400 to-teal-500 text-white shadow-lg">
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
+      <h4 className="text-lg font-bold text-gray-800">Why NOC is Required</h4>
+    </div>
+    <div className="space-y-2 flex flex-col">
+      {[
+        "Confirms legal registration status at state level",
+        "Ensures no conflict with existing societies",
+        "Provides compliance record to Central Registrar",
+        "Validates multi-state expansion eligibility",
+      ].map((item, idx) => (
+        <div key={idx} className="flex items-start space-x-2">
+          <div className="w-4 h-4 bg-gradient-to-r from-green-400 to-teal-400 rounded-full flex-shrink-0 mt-1"></div>
+          <p className="text-gray-700 text-sm">{item}</p>
+        </div>
+      ))}
+    </div>
+  </motion.div>
+
+  {/* When You Need NOC */}
+  <motion.div
+    initial={{ opacity: 0, x: 20 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: 0.7 }}
+    className="flex-shrink-0 min-w-[200px] sm:min-w-[220px] lg:min-w-full bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-5 border-l-4 border-gradient-to-r from-blue-500 to-indigo-500 shadow-md hover:shadow-xl transition-all duration-300"
+  >
+    <div className="flex items-center gap-3 mb-3">
+      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg">
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
+      <h4 className="text-lg font-bold text-gray-800">When You Need NOC</h4>
+    </div>
+    <div className="space-y-2 flex flex-col">
+      {[
+  {
+    title: "For New Societies",
+    desc: <>Obtain NOC from State Registrar before applying <br /> to Central Registrar for multi-state registration.</>,
+  },
+  {
+    title: "For Existing Societies",
+    desc: <>Converting state-level society requires NOC from each state <br /> where you plan to operate.</>,
+  },
+].map((item, idx) => (
+        <div
+          key={idx}
+          className="bg-blue-50/60 rounded-lg p-3 border border-blue-200/50 flex flex-col"
+        >
+          <h5 className="font-semibold text-blue-800 mb-1">{item.title}</h5>
+          <p className="text-gray-700 text-sm">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </motion.div>
+</div>
+
+
+
+
+    {/* NOC Process / Timeline */}
+  <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="mb-20 p-6"
+>
+  <h3 className="text-2xl font-bold text-gray-800 mb-12 text-center">
+    <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+      NOC Acquisition Process
+    </span>
+  </h3>
+
+  {/* Timeline Container */}
+  <div className="flex flex-col md:flex-row items-stretch md:justify-between gap-6 max-w-6xl mx-auto">
+    {[
+      { step: "Apply to State Registrar", icon: "M12 8v4l3 3" },
+      { step: "Draft Bylaws & Member List", icon: "M9 12h6m-6 4h6" },
+      { step: "Formation Resolution", icon: "M5 13l4 4L19 7" },
+      { step: "Pay Fees & Submit", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2" },
+      { step: "Processing & Approval", icon: "M12 8V7m0 1v8" }
+    ].map((item, idx) => (
+      <div
+        key={idx}
+        className="flex-1 bg-white rounded-2xl shadow-lg p-6 md:p-4 hover:shadow-2xl transition-all duration-300 relative"
+      >
+        {/* Icon */}
+        <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white mb-4">
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d={item.icon}
+            />
+          </svg>
         </div>
 
-        {/* Process & Timeline */}
-        <div className="space-y-4">
-          <div className="flex items-center mb-4">
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-white shadow-md mr-3">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-            </div>
-            <h4 className="text-xl font-semibold text-gray-800">Process & Timeline</h4>
-          </div>
-          {[
-            "Pay applicable state fees",
-            "Processing takes 2-4 weeks typically",
-            "NOC valid for 6 months from issuance",
-            "Follow-up support available",
-          ].map((process, idx) => (
-            <div
-              key={idx}
-              className="flex items-center space-x-3 p-3 bg-white/60 rounded-lg border border-blue-200/50 hover:bg-white/80 transition-colors duration-300"
-            >
-              <div className="w-5 h-5 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex-shrink-0"></div>
-              <span className="text-gray-700 text-sm">{process}</span>
-            </div>
-          ))}
-        </div>
+        {/* Step Title */}
+        <h4 className="text-lg font-semibold mb-2 text-gray-800">{item.step}</h4>
+
+        {/* Optional Description */}
+        <p className="text-sm text-gray-600">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Step description goes here.
+        </p>
+
+        {/* Connector for desktop */}
+        {idx !== 4 && (
+          <div className="hidden md:block absolute top-1/2 right-0 w-8 h-1 bg-gradient-to-r from-purple-300 to-blue-300 transform translate-x-full"></div>
+        )}
       </div>
-    </motion.div>
+    ))}
+  </div>
+</motion.div>
+
+
+
 
     {/* Support Section */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 1 }}
-      className="mt-10 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white shadow-xl overflow-hidden relative"
+   <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, delay: 1 }}
+  className="mt-6 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-4 sm:p-6 md:p-6 text-white shadow-xl overflow-hidden relative max-w-full sm:max-w-md md:max-w-3xl mx-auto"
+>
+  <div className="relative z-10 text-center">
+    <h4 className="text-xl sm:text-2xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-3">
+      Expert Guidance & Support
+    </h4>
+    <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4 md:mb-4 max-w-full sm:max-w-lg md:max-w-3xl mx-auto">
+      At Sahakar Samruddhi, we streamline the NOC acquisition process. Our experienced team prepares all necessary documents, coordinates with state authorities, and ensures your application meets every requirement before submission to the Central Registrar.
+    </p>
+    <button
+      onClick={openAppointmentForm}
+      className="bg-white text-indigo-600 px-4 sm:px-5 md:px-6 py-1.5 sm:py-2 md:py-2.5 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center mx-auto"
     >
-      <div className="relative z-10 text-center">
-        <div className="flex items-center justify-center mb-4">
-          <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white shadow-lg mr-4">
-            <svg
-              className="w-8 h-8"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 108.4 14.59A9.75 9.75 0 0012 2.25z"
-              ></path>
-            </svg>
-          </div>
-          <h3 className="text-2xl font-bold">Expert Guidance & Support</h3>
-        </div>
-        <p className="text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
-          At Sahakar Samruddhi, we streamline the NOC acquisition process. Our experienced team prepares all necessary documents, coordinates with state authorities, and ensures your application meets every requirement before submission to the Central Registrar.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <button
-            onClick={openAppointmentForm}
-            className="bg-white text-indigo-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center"
-          >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-              ></path>
-            </svg>
-            Get NOC Support
-          </button>
-        </div>
-      </div>
-    </motion.div>
+      Get NOC Support
+    </button>
+  </div>
+</motion.div>
+
+
   </div>
 </div>
 
 
+
           {/* FAQ Section */}
-          <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
-          Frequently Asked Questions (FAQs)
-        </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Find answers to the most common questions about our banking and consultancy services.
-        </p>
-      </div>
-
-      {/* FAQ List */}
-      <div className="max-w-4xl mx-auto space-y-4">
-        {faqs.map((faq, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl shadow-lg overflow-hidden border border-indigo-100"
-          >
-            {/* Question */}
-            <button
-              onClick={() => toggleFAQ(index)}
-              className="w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none"
-            >
-              <h3 className="text-lg font-semibold text-indigo-700">{faq.question}</h3>
-              <motion.span
-                animate={{ rotate: activeIndex === index ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ChevronDown className="w-6 h-6 text-indigo-700" />
-              </motion.span>
-            </button>
-
-            {/* Answer */}
-            <AnimatePresence>
-              {activeIndex === index && (
-                <motion.div
-                  key="content"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="px-6 pb-6 text-gray-700"
-                >
-                  {faq.answer}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        ))}
-      </div>
+         <div id="faq" ref={sectionRefs.faq} className="text-center mb-12">
+           <h2 className="text-3xl font-bold text-gray-900 mb-4">
+             Frequently Asked Questions
+           </h2>
+         </div>
+         
+         <div className="max-w-5xl mx-auto">
+           {/* Desktop: 2 Columns */}
+           <div className="hidden md:grid md:grid-cols-2 gap-6">
+             {faqs.map((faq, index) => (
+               <motion.div
+                 key={index}
+                 initial={{ opacity: 0, y: 15 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                 viewport={{ once: true }}
+                 className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all hover:shadow-md"
+               >
+                 <button
+                   onClick={() => toggleFAQ(index)}
+                   className="w-full px-6 py-4 flex justify-between items-center focus:outline-none"
+                 >
+                   <h3 className="text-lg font-medium text-gray-800">{faq.question}</h3>
+                   <motion.span
+                     animate={{ rotate: activeIndex === index ? 180 : 0 }}
+                     transition={{ duration: 0.3 }}
+                   >
+                     <ChevronDown className="w-5 h-5 text-gray-500" />
+                   </motion.span>
+                 </button>
+         
+                 <AnimatePresence>
+                   {activeIndex === index && (
+                     <motion.div
+                       key="content"
+                       initial={{ opacity: 0, height: 0 }}
+                       animate={{ opacity: 1, height: "auto" }}
+                       exit={{ opacity: 0, height: 0 }}
+                       transition={{ duration: 0.3 }}
+                       className="px-6 pb-4 text-gray-600 text-sm"
+                     >
+                       {faq.answer}
+                     </motion.div>
+                   )}
+                 </AnimatePresence>
+               </motion.div>
+             ))}
+           </div>
+         
+           {/* Mobile: Horizontal Scroll, 5 per page */}
+           <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory py-4">
+             {[0, 4].map((startIndex) => (
+               <div key={startIndex} className="flex flex-col gap-4 min-w-[85%] snap-center">
+                 {faqs.slice(startIndex, startIndex + 4).map((faq, index) => (
+                   <motion.div
+                     key={index}
+                     initial={{ opacity: 0, y: 10 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.4, delay: index * 0.05 }}
+                     viewport={{ once: true }}
+                     className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+                   >
+                     <button
+                       onClick={() => toggleFAQ(startIndex + index)}
+                       className="w-full px-5 py-4 flex justify-between items-center focus:outline-none"
+                     >
+                       <h3 className="text-base font-medium text-gray-800">{faq.question}</h3>
+                       <motion.span
+                         animate={{ rotate: activeIndex === startIndex + index ? 180 : 0 }}
+                         transition={{ duration: 0.3 }}
+                       >
+                         <ChevronDown className="w-5 h-5 text-gray-500" />
+                       </motion.span>
+                     </button>
+         
+                     <AnimatePresence>
+                       {activeIndex === startIndex + index && (
+                         <motion.div
+                           key="content"
+                           initial={{ opacity: 0, height: 0 }}
+                           animate={{ opacity: 1, height: "auto" }}
+                           exit={{ opacity: 0, height: 0 }}
+                           transition={{ duration: 0.3 }}
+                           className="px-5 pb-4 text-gray-600 text-sm"
+                         >
+                           {faq.answer}
+                         </motion.div>
+                       )}
+                     </AnimatePresence>
+                   </motion.div>
+                 ))}
+               </div>
+             ))}
+           </div>
+         </div>
       <br />
 
           {/* CTA Section */}
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-10 text-center text-white shadow-xl transition-all duration-500 hover:shadow-2xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Choose Sahakar Samruddhi</h2>
-            <p className="text-lg mb-8 max-w-3xl mx-auto">
-              We specialize in Multi-State Credit Cooperative Society Registration. From drafting bylaws to filing your application with the Central Registrar, we handle the entire process to save you time and reduce errors. Our expertise ensures your society is legally compliant and ready to operate across states.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button 
-                onClick={openAppointmentForm}
-                className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                Get Started Today
-              </button>
-              <button 
-                onClick={openAppointmentForm}
-                className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300"
-              >
-                Schedule Consultation
-              </button>
-            </div>
-          </div>
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-4 sm:p-6 md:p-10 text-center text-white shadow-xl transition-all duration-500 hover:shadow-2xl max-w-full sm:max-w-lg md:max-w-4xl mx-auto">
+  <h2 className="text-lg sm:text-xl md:text-3xl font-bold mb-2 sm:mb-3 md:mb-4">
+    Why Choose Sahakar Samruddhi
+  </h2>
+  <p className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 md:mb-8 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto">
+    We specialize in Multi-State Credit Cooperative Society Registration. From drafting bylaws to filing your application with the Central Registrar, we handle the entire process to save you time and reduce errors. Our expertise ensures your society is legally compliant and ready to operate across states.
+  </p>
+  <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
+    <button 
+      onClick={openAppointmentForm}
+      className="bg-white text-blue-600 px-4 sm:px-6 md:px-8 py-1.5 sm:py-2 md:py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+    >
+      Get Started Today
+    </button>
+    <button 
+      onClick={openAppointmentForm}
+      className="border-2 border-white text-white px-4 sm:px-6 md:px-8 py-1.5 sm:py-2 md:py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300"
+    >
+      Schedule Consultation
+    </button>
+  </div>
+</div>
+
+
         </div>
       </section>
 

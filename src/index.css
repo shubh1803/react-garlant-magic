@@ -179,3 +179,32 @@ All colors MUST be HSL.
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+.hexagon {
+  position: relative;
+  width: 160px;
+  height: 90px;
+  background: white;
+  margin: 45px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 45px solid white;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 45px solid white;
+}

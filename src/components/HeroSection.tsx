@@ -12,33 +12,42 @@ export const HeroSection = () => {
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           {/* Left Side Content */}
-          <div className="flex-1 text-left">
-           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-  <span className="block text-[#7B191B]">सहकार</span>
-  <span className="block text-[#3C3C3C] py-2 ml-20 animate-shine">
-    समृद्धी
-  </span>
-</h1>
+        <div className="flex-1 text-left space-y-8">
+  {/* Hero Heading */}
+  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-in-left">
+    <span className="bg-primary-gradient bg-clip-text text-transparent font-bold tracking-wide">
+      सहकार&nbsp;समृद्धी
+    </span>
+  </h1>
 
+  {/* Subheading / Tagline */}
+  <p className="text-xl md:text-2xl text-primary/80 font-medium max-w-md leading-snug relative animate-fade-in">
+    <span className="bg-primary-gradient bg-clip-text text-transparent animate-shine">
+      Empowering Cooperatives with Banking & Finance Expertise
+    </span>
 
-            <p className="text-xl md:text-2xl text-primary/80 mb-8 font-medium max-w-md leading-snug relative">
-              <span className="bg-gradient-to-r from-[#9A3C3C] via-gray-500 to-[#B44D4D] bg-clip-text text-transparent animate-shine">
-  Empowering Cooperatives with Banking & Finance Expertise
-</span>
+    <span className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-1000"></span>
+  </p>
 
+  {/* Specializations Card */}
+  <div className="bg-primary/5 p-6 rounded-2xl border-l-4 border-primary transition-all duration-300 hover:shadow-2xl hover:border-primary/80 hover:bg-primary/10 group animate-slide-in-right">
+    <h3 className="text-lg font-semibold text-foreground mb-4 text-xl md:text-2xl bg-primary-gradient bg-clip-text text-transparent animate-fade-in">
+      Our Specializations
+    </h3>
+    <ul className="text-muted-foreground space-y-2">
+      <li className="transition-all duration-300 hover:translate-x-2 hover:text-primary-gradient cursor-pointer">
+        • Credit Cooperative Societies
+      </li>
+      <li className="transition-all duration-300 hover:translate-x-2 hover:text-primary-gradient cursor-pointer">
+        • Multi-State Credit Cooperative Societies
+      </li>
+      <li className="transition-all duration-300 hover:translate-x-2 hover:text-primary-gradient cursor-pointer">
+        • Microfinance Companies (Section 8)
+      </li>
+    </ul>
+  </div>
+</div>
 
-              <span className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-1000"></span>
-            </p>
-            
-            <div className="bg-primary/5 p-6 rounded-2xl border-l-4 border-primary transition-all duration-300 hover:shadow-lg hover:border-primary/80 hover:bg-primary/10 group">
-              <h3 className="text-lg font-semibold text-foreground mb-2">Our Specializations</h3>
-              <ul className="text-muted-foreground space-y-1">
-                <li className="transition-all duration-300 hover:translate-x-1 hover:text-primary">• Credit Cooperative Societies</li>
-                <li className="transition-all duration-300 hover:translate-x-1 hover:text-primary">• Multi-State Credit Cooperative Societies</li>
-                <li className="transition-all duration-300 hover:translate-x-1 hover:text-primary">• Microfinance Companies (Section 8)</li>
-              </ul>
-            </div>
-          </div>
           
           {/* Right Side Content - Enhanced Card */}
           <div className="flex-1 bg-card rounded-2xl p-8 shadow-lg border border-border/20 relative overflow-hidden group transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
@@ -61,10 +70,11 @@ export const HeroSection = () => {
               </p>
             </div>
             
-            <Button size="lg" className="mt-8 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-8 py-6 text-md w-full transition-all duration-300 hover:scale-[1.02] shadow-md hover:shadow-lg relative overflow-hidden group">
+            <Button size="lg" className="mt-8 bg-primary-gradient from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-8 py-6 text-md w-full transition-all duration-300 hover:scale-[1.02] shadow-md hover:shadow-lg relative overflow-hidden group">
               <span className="relative z-10">Request a Free Consultation</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+              <span className="w-full sm:w-auto bg-primary-gradient text-white border-none hover:scale-105 transition-transform"></span>
             </Button>
+           
           </div>
         </div>
       </div>

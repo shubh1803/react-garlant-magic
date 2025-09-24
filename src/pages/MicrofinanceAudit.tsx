@@ -326,10 +326,10 @@ const MicrofinanceAudit = () => {
                   whileInView={{ opacity: 1, rotateY: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="p-6 rounded-2xl bg-gradient-to-br from-indigo-100 via-purple-100 to-indigo-600 border border-indigo-800 text-white hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="p-6 rounded-2xl bg-gradient-to-br from-blue-100 via-blue-200 to-blue-600 border border-blue-800 text-white hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
-                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-indigo-100">{item.description}</p>
+                  <h3 className="text-lg font-bold text-indigo-600 mb-2">{item.title}</h3>
+                  <p className="text-gray-600">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -491,61 +491,102 @@ const MicrofinanceAudit = () => {
           </div>
 
           {/* FAQ Section with Accordion-like Expand Animation */}
-          <div id="faq" ref={sectionRefs.faq} className="mb-20 scroll-mt-20 px-4 relative">
-            {/* Heading */}
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Frequently Asked Questions (FAQs)
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Find answers to the most common questions about Section 8 Microfinance Company audits and compliance.
-              </p>
-            </div>
-
-            {/* FAQ List */}
-            <div className="max-w-4xl mx-auto space-y-4">
-              {faqs.map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl shadow-lg overflow-hidden border border-indigo-100"
-                >
-                  {/* Question */}
-                  <button
-                    onClick={() => toggleFAQ(index)}
-                    className="w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none"
-                  >
-                    <h3 className="text-lg font-semibold text-indigo-700">{faq.question}</h3>
-                    <motion.span
-                      animate={{ rotate: activeIndex === index ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="w-6 h-6 text-indigo-700" />
-                    </motion.span>
-                  </button>
-
-                  {/* Answer */}
-                  <AnimatePresence>
-                    {activeIndex === index && (
-                      <motion.div
-                        key="content"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="px-6 pb-6 text-gray-700"
-                      >
-                        {faq.answer}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+        <div className="text-center mb-12">
+           <h2 className="text-3xl font-bold text-gray-900 mb-4">
+             Frequently Asked Questions
+           </h2>
+         </div>
+         
+         <div className="max-w-5xl mx-auto">
+           {/* Desktop: 2 Columns */}
+           <div className="hidden md:grid md:grid-cols-2 gap-6">
+             {faqs.map((faq, index) => (
+               <motion.div
+                 key={index}
+                 initial={{ opacity: 0, y: 15 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.4, delay: index * 0.05 }}
+                 viewport={{ once: true }}
+                 className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all hover:shadow-md"
+               >
+                 <button
+                   onClick={() => toggleFAQ(index)}
+                   className="w-full px-6 py-4 flex justify-between items-center focus:outline-none"
+                 >
+                   <h3 className="text-lg font-medium text-gray-800">{faq.question}</h3>
+                   <motion.span
+                     animate={{ rotate: activeIndex === index ? 180 : 0 }}
+                     transition={{ duration: 0.3 }}
+                   >
+                     <ChevronDown className="w-5 h-5 text-gray-500" />
+                   </motion.span>
+                 </button>
+         
+                 <AnimatePresence>
+                   {activeIndex === index && (
+                     <motion.div
+                       key="content"
+                       initial={{ opacity: 0, height: 0 }}
+                       animate={{ opacity: 1, height: "auto" }}
+                       exit={{ opacity: 0, height: 0 }}
+                       transition={{ duration: 0.3 }}
+                       className="px-6 pb-4 text-gray-600 text-sm"
+                     >
+                       {faq.answer}
+                     </motion.div>
+                   )}
+                 </AnimatePresence>
+               </motion.div>
+             ))}
+           </div>
+         
+           {/* Mobile: Horizontal Scroll, 5 per page */}
+           <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory py-4">
+             {[0, 5].map((startIndex) => (
+               <div key={startIndex} className="flex flex-col gap-4 min-w-[85%] snap-center">
+                 {faqs.slice(startIndex, startIndex + 5).map((faq, index) => (
+                   <motion.div
+                     key={index}
+                     initial={{ opacity: 0, y: 10 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.4, delay: index * 0.05 }}
+                     viewport={{ once: true }}
+                     className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+                   >
+                     <button
+                       onClick={() => toggleFAQ(startIndex + index)}
+                       className="w-full px-5 py-4 flex justify-between items-center focus:outline-none"
+                     >
+                       <h3 className="text-base font-medium text-gray-800">{faq.question}</h3>
+                       <motion.span
+                         animate={{ rotate: activeIndex === startIndex + index ? 180 : 0 }}
+                         transition={{ duration: 0.3 }}
+                       >
+                         <ChevronDown className="w-5 h-5 text-gray-500" />
+                       </motion.span>
+                     </button>
+         
+                     <AnimatePresence>
+                       {activeIndex === startIndex + index && (
+                         <motion.div
+                           key="content"
+                           initial={{ opacity: 0, height: 0 }}
+                           animate={{ opacity: 1, height: "auto" }}
+                           exit={{ opacity: 0, height: 0 }}
+                           transition={{ duration: 0.3 }}
+                           className="px-5 pb-4 text-gray-600 text-sm"
+                         >
+                           {faq.answer}
+                         </motion.div>
+                       )}
+                     </AnimatePresence>
+                   </motion.div>
+                 ))}
+               </div>
+             ))}
+           </div>
+         </div>
+         <br/>
 
           {/* CTA Section with Pulse Animation */}
           <motion.div 

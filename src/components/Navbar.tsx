@@ -14,26 +14,32 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top Header */}
+      {/* Top Header - Only visible on desktop */}
       <div className="bg-dark text-white py-2 hidden lg:block">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-4">
               <span>Follow Us On:</span>
-              <div className="flex space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center hover:bg-primary-hover transition-colors cursor-pointer">
-                  <span className="text-xs">f</span>
-                </div>
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center hover:bg-primary-hover transition-colors cursor-pointer">
-                  <span className="text-xs">t</span>
-                </div>
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center hover:bg-primary-hover transition-colors cursor-pointer">
-                  <span className="text-xs">in</span>
-                </div>
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center hover:bg-primary-hover transition-colors cursor-pointer">
-                  <span className="text-xs">yt</span>
-                </div>
-              </div>
+           <div className="flex space-x-2">
+  {/* Facebook */}
+  <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110 bg-primary-gradient text-white font-bold text-xs">
+    f
+  </div>
+  {/* Twitter */}
+  <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110 bg-primary-gradient text-white font-bold text-xs">
+    t
+  </div>
+  {/* LinkedIn */}
+  <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110 bg-primary-gradient text-white font-bold text-xs">
+    in
+  </div>
+  {/* YouTube */}
+  <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110 bg-primary-gradient text-white font-bold text-xs">
+    yt
+  </div>
+</div>
+
+
             </div>
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
@@ -56,13 +62,13 @@ const Navbar = () => {
       {/* Main Navigation */}
       <nav className="bg-white shadow-lg sticky top-0 z-50">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-center py-4">
+          <div className="flex justify-between items-center py-2 md:py-4">
             {/* Logo */}
             <div className="flex items-center">
               <img
-                src="/ss.png"
+                src="/logo.png"
                 alt="Etaxwala Logo"
-                className="h-12 w-auto mr-3"
+                className="h-12 md:h-16 w-auto"
               />
             </div>
 
@@ -120,10 +126,16 @@ const Navbar = () => {
 
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center space-x-4">
-              <button className="p-2 text-dark hover:text-primary">
+              <button className="p-2 text-primary hover:text-primary-hover">
                 <Search className="w-5 h-5" />
               </button>
-              <Button variant="default" size="lg" className="ml-4">Get Started Now</Button>
+<Button
+  variant="default"
+  size="lg"
+  className="ml-4 bg-primary-gradient text-white hover:scale-105 border-none"
+>
+  Get Started Now
+</Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -136,7 +148,7 @@ const Navbar = () => {
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="lg:hidden border-t border-gray-200 py-4 bg-white">
+            <div className="lg:hidden border-t border-gray-200 py-2 bg-white">
               <div className="flex flex-col space-y-2">
                 <a href="/" className="text-dark font-medium py-2 px-4 hover:bg-gray-100 rounded">Home</a>
 
@@ -198,10 +210,16 @@ const Navbar = () => {
 
                 {/* Actions */}
                 <div className="flex items-center space-x-4 px-4 pt-4">
-                  <button className="p-2 text-dark hover:text-primary">
+                  <button className="p-2 text-primary hover:text-primary-hover">
                     <Search className="w-5 h-5" />
                   </button>
-                  <Button variant="default" size="lg">Get Started Now</Button>
+<Button
+  variant="default"
+  size="lg"
+  className="w-full sm:w-auto bg-primary-gradient text-white border-none hover:scale-105 transition-transform"
+>
+  Get Started Now
+</Button>
                 </div>
               </div>
             </div>
