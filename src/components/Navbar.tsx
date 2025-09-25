@@ -1,6 +1,15 @@
-import { useState } from 'react';
-import { Menu, X, Search, MapPin, Mail, Phone, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import {
+  Menu,
+  X,
+  Search,
+  MapPin,
+  Mail,
+  Phone,
+  ChevronDown,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom"; // ✅ Added React Router Link
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,27 +29,37 @@ const Navbar = () => {
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-4">
               <span>Follow Us On:</span>
-           <div className="flex space-x-2">
-  {/* Facebook */}
-  <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110 bg-primary-gradient text-white font-bold text-xs">
-    f
-  </div>
-  {/* Twitter */}
-  <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110 bg-primary-gradient text-white font-bold text-xs">
-    t
-  </div>
-  {/* LinkedIn */}
-  <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110 bg-primary-gradient text-white font-bold text-xs">
-    in
-  </div>
-  {/* YouTube */}
-  <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-transform hover:scale-110 bg-primary-gradient text-white font-bold text-xs">
-    yt
-  </div>
-</div>
+              <div className="flex space-x-2">
+                {/* Facebook */}
+                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
+                  bg-blue-600 text-white font-bold text-xs 
+                  transition-all duration-300 hover:bg-primary-gradient hover:scale-110">
+                  f
+                </div>
 
+                {/* Twitter */}
+                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
+                  bg-blue-600 text-white font-bold text-xs 
+                  transition-all duration-300 hover:bg-primary-gradient hover:scale-110">
+                  t
+                </div>
 
+                {/* LinkedIn */}
+                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
+                  bg-blue-600 text-white font-bold text-xs 
+                  transition-all duration-300 hover:bg-primary-gradient hover:scale-110">
+                  in
+                </div>
+
+                {/* YouTube */}
+                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
+                  bg-blue-600 text-white font-bold text-xs 
+                  transition-all duration-300 hover:bg-primary-gradient hover:scale-110">
+                  yt
+                </div>
+              </div>
             </div>
+
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-primary" />
@@ -65,63 +84,93 @@ const Navbar = () => {
           <div className="flex justify-between items-center py-2 md:py-4">
             {/* Logo */}
             <div className="flex items-center">
-              <img
-                src="/logo.png"
-                alt="Etaxwala Logo"
-                className="h-12 md:h-16 w-auto"
-              />
+              <Link to="/">
+                <img
+                  src="/logo.png"
+                  alt="Etaxwala Logo"
+                  className="h-12 md:h-16 w-auto"
+                />
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8 ml-auto mr-8">
-              <a href="/" className="text-dark hover:text-primary font-medium">Home</a>
+              <Link to="/" className="text-dark hover:text-primary font-medium">
+                Home
+              </Link>
 
               {/* Registration */}
               <div className="relative group">
-                <a href="#" className="text-dark hover:text-primary font-medium flex items-center">
+                <span className="text-dark hover:text-primary font-medium flex items-center cursor-pointer">
                   Registration <ChevronDown className="ml-1 h-4 w-4" />
-                </a>
+                </span>
                 <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="p-4 space-y-1">
-                    <a href="/credit-cooperative-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Credit Cooperative Society Registration</a>
-                    <a href="/multi-state-cooperative-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Multi State Credit Cooperative Society Registration</a>
-                    <a href="/microfinance-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Microfinance Company (Section 8) Registration</a>
-                    <a href="/other-cooperative-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Other Cooperative Society Registration</a>
+                    <Link to="/credit-cooperative-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Credit Cooperative Society Registration
+                    </Link>
+                    <Link to="/multi-state-cooperative-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Multi State Credit Cooperative Society Registration
+                    </Link>
+                    <Link to="/microfinance-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Microfinance Company (Section 8) Registration
+                    </Link>
+                    <Link to="/other-cooperative-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Other Cooperative Society Registration
+                    </Link>
                   </div>
                 </div>
               </div>
 
               {/* Audit & Compliance */}
               <div className="relative group">
-                <a href="#" className="text-dark hover:text-primary font-medium flex items-center">
+                <span className="text-dark hover:text-primary font-medium flex items-center cursor-pointer">
                   Audit & Compliance <ChevronDown className="ml-1 h-4 w-4" />
-                </a>
+                </span>
                 <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="p-4 space-y-1">
-                    <a href="/credit-cooperative-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Credit Cooperative Society Audit</a>
-                    <a href="/multi-state-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Multi State Audit & Compliance</a>
-                    <a href="/microfinance-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Microfinance Audit & Compliance</a>
-                    <a href="/other-cooperative-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Other Cooperative Audit</a>
+                    <Link to="/credit-cooperative-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Credit Cooperative Society Audit
+                    </Link>
+                    <Link to="/multi-state-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Multi State Audit & Compliance
+                    </Link>
+                    <Link to="/microfinance-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Microfinance Audit & Compliance
+                    </Link>
+                    <Link to="/other-cooperative-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Other Cooperative Audit
+                    </Link>
                   </div>
                 </div>
               </div>
 
               {/* Business Consultancy */}
               <div className="relative group">
-                <a href="#" className="text-dark hover:text-primary font-medium flex items-center">
+                <span className="text-dark hover:text-primary font-medium flex items-center cursor-pointer">
                   Business Consultancy <ChevronDown className="ml-1 h-4 w-4" />
-                </a>
+                </span>
                 <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="p-4 space-y-1">
-                    <a href="/banking-consultancy" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Banking Business Consultancy</a>
-                    <a href="/banking-business-setup" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Banking Business Setup</a>
-                    <a href="/banking-business-growth" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">Banking Business Growth</a>
+                    <Link to="/banking-consultancy" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Banking Business Consultancy
+                    </Link>
+                    <Link to="/banking-business-setup" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Banking Business Setup
+                    </Link>
+                    <Link to="/banking-business-growth" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
+                      Banking Business Growth
+                    </Link>
                   </div>
                 </div>
               </div>
 
-              <a href="/about" className="text-dark hover:text-primary font-medium">About</a>
-              <a href="/contact" className="text-dark hover:text-primary font-medium">Contact</a>
+              <Link to="/about" className="text-dark hover:text-primary font-medium">
+                About
+              </Link>
+              <Link to="/contact" className="text-dark hover:text-primary font-medium">
+                Contact
+              </Link>
             </div>
 
             {/* Desktop Actions */}
@@ -129,18 +178,21 @@ const Navbar = () => {
               <button className="p-2 text-primary hover:text-primary-hover">
                 <Search className="w-5 h-5" />
               </button>
-<Button
-  variant="default"
-  size="lg"
-  className="ml-4 bg-primary-gradient text-white hover:scale-105 border-none"
->
-  Get Started Now
-</Button>
+              <Button
+                variant="default"
+                size="lg"
+                className="ml-4 bg-blue-600 text-white border-none transition-all duration-300 hover:bg-primary-gradient hover:scale-105"
+              >
+                Get Started Now
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="lg:hidden">
-              <button onClick={toggleMenu} className="p-2 text-dark hover:text-primary">
+              <button
+                onClick={toggleMenu}
+                className="p-2 text-dark hover:text-primary"
+              >
                 {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
@@ -150,22 +202,37 @@ const Navbar = () => {
           {isMenuOpen && (
             <div className="lg:hidden border-t border-gray-200 py-2 bg-white">
               <div className="flex flex-col space-y-2">
-                <a href="/" className="text-dark font-medium py-2 px-4 hover:bg-gray-100 rounded">Home</a>
+                <Link to="/" className="text-dark font-medium py-2 px-4 hover:bg-gray-100 rounded">
+                  Home
+                </Link>
 
                 {/* Mobile Registration */}
                 <div className="px-4 py-2 border-b border-gray-100">
                   <button
-                    onClick={() => toggleSubMenu('registration')}
+                    onClick={() => toggleSubMenu("registration")}
                     className="w-full flex justify-between items-center text-dark font-medium py-2"
                   >
-                    Registration <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${openSubMenu === 'registration' ? 'rotate-180' : ''}`} />
+                    Registration{" "}
+                    <ChevronDown
+                      className={`ml-1 h-4 w-4 transition-transform ${
+                        openSubMenu === "registration" ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
-                  {openSubMenu === 'registration' && (
+                  {openSubMenu === "registration" && (
                     <div className="mt-2 space-y-1 pl-4">
-                      <a href="/credit-cooperative-registration" className="block py-1 hover:text-primary">Credit Cooperative Society Registration</a>
-                      <a href="/multi-state-cooperative-registration" className="block py-1 hover:text-primary">Multi State Credit Cooperative Society Registration</a>
-                      <a href="/microfinance-registration" className="block py-1 hover:text-primary">Microfinance Company (Section 8) Registration</a>
-                      <a href="/other-cooperative-registration" className="block py-1 hover:text-primary">Other Cooperative Society Registration</a>
+                      <Link to="/credit-cooperative-registration" className="block py-1 hover:text-primary">
+                        Credit Cooperative Society Registration
+                      </Link>
+                      <Link to="/multi-state-cooperative-registration" className="block py-1 hover:text-primary">
+                        Multi State Credit Cooperative Society Registration
+                      </Link>
+                      <Link to="/microfinance-registration" className="block py-1 hover:text-primary">
+                        Microfinance Company (Section 8) Registration
+                      </Link>
+                      <Link to="/other-cooperative-registration" className="block py-1 hover:text-primary">
+                        Other Cooperative Society Registration
+                      </Link>
                     </div>
                   )}
                 </div>
@@ -173,17 +240,30 @@ const Navbar = () => {
                 {/* Mobile Audit & Compliance */}
                 <div className="px-4 py-2 border-b border-gray-100">
                   <button
-                    onClick={() => toggleSubMenu('audit')}
+                    onClick={() => toggleSubMenu("audit")}
                     className="w-full flex justify-between items-center text-dark font-medium py-2"
                   >
-                    Audit & Compliance <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${openSubMenu === 'audit' ? 'rotate-180' : ''}`} />
+                    Audit & Compliance{" "}
+                    <ChevronDown
+                      className={`ml-1 h-4 w-4 transition-transform ${
+                        openSubMenu === "audit" ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
-                  {openSubMenu === 'audit' && (
+                  {openSubMenu === "audit" && (
                     <div className="mt-2 space-y-1 pl-4">
-                      <a href="/credit-cooperative-audit" className="block py-1 hover:text-primary">Credit Cooperative Society Audit</a>
-                      <a href="/multi-state-audit" className="block py-1 hover:text-primary">Multi State Audit & Compliance</a>
-                      <a href="/microfinance-audit" className="block py-1 hover:text-primary">Microfinance Audit & Compliance</a>
-                      <a href="/other-cooperative-audit" className="block py-1 hover:text-primary">Other Cooperative Audit</a>
+                      <Link to="/credit-cooperative-audit" className="block py-1 hover:text-primary">
+                        Credit Cooperative Society Audit
+                      </Link>
+                      <Link to="/multi-state-audit" className="block py-1 hover:text-primary">
+                        Multi State Audit & Compliance
+                      </Link>
+                      <Link to="/microfinance-audit" className="block py-1 hover:text-primary">
+                        Microfinance Audit & Compliance
+                      </Link>
+                      <Link to="/other-cooperative-audit" className="block py-1 hover:text-primary">
+                        Other Cooperative Audit
+                      </Link>
                     </div>
                   )}
                 </div>
@@ -191,35 +271,50 @@ const Navbar = () => {
                 {/* Mobile Business Consultancy */}
                 <div className="px-4 py-2 border-b border-gray-100">
                   <button
-                    onClick={() => toggleSubMenu('consultancy')}
+                    onClick={() => toggleSubMenu("consultancy")}
                     className="w-full flex justify-between items-center text-dark font-medium py-2"
                   >
-                    Business Consultancy <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${openSubMenu === 'consultancy' ? 'rotate-180' : ''}`} />
+                    Business Consultancy{" "}
+                    <ChevronDown
+                      className={`ml-1 h-4 w-4 transition-transform ${
+                        openSubMenu === "consultancy" ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
-                  {openSubMenu === 'consultancy' && (
+                  {openSubMenu === "consultancy" && (
                     <div className="mt-2 space-y-1 pl-4">
-                      <a href="/banking-consultancy" className="block py-1 hover:text-primary">Banking Business Consultancy</a>
-                      <a href="/banking-business-setup" className="block py-1 hover:text-primary">Banking Business Setup</a>
-                      <a href="/banking-business-growth" className="block py-1 hover:text-primary">Banking Business Growth</a>
+                      <Link to="/banking-consultancy" className="block py-1 hover:text-primary">
+                        Banking Business Consultancy
+                      </Link>
+                      <Link to="/banking-business-setup" className="block py-1 hover:text-primary">
+                        Banking Business Setup
+                      </Link>
+                      <Link to="/banking-business-growth" className="block py-1 hover:text-primary">
+                        Banking Business Growth
+                      </Link>
                     </div>
                   )}
                 </div>
 
-                <a href="/about" className="text-dark font-medium py-2 px-4 hover:bg-gray-100 rounded">About</a>
-                <a href="/contact" className="text-dark font-medium py-2 px-4 hover:bg-gray-100 rounded">Contact</a>
+                <Link to="/about" className="text-dark font-medium py-2 px-4 hover:bg-gray-100 rounded">
+                  About
+                </Link>
+                <Link to="/contact" className="text-dark font-medium py-2 px-4 hover:bg-gray-100 rounded">
+                  Contact
+                </Link>
 
                 {/* Actions */}
                 <div className="flex items-center space-x-4 px-4 pt-4">
                   <button className="p-2 text-primary hover:text-primary-hover">
                     <Search className="w-5 h-5" />
                   </button>
-<Button
-  variant="default"
-  size="lg"
-  className="w-full sm:w-auto bg-primary-gradient text-white border-none hover:scale-105 transition-transform"
->
-  Get Started Now
-</Button>
+                  <Button
+                    variant="default"
+                    size="lg"
+                    className="w-full sm:w-auto bg-primary-gradient text-white border-none hover:scale-105 transition-transform"
+                  >
+                    Get Started Now
+                  </Button>
                 </div>
               </div>
             </div>
