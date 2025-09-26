@@ -146,7 +146,7 @@ export const ServicesSection = () => {
         <div className="text-center mb-16">
           <div className="sub-style mb-4">
             <h5 className="sub-title px-3 inline-block text-lg font-semibold relative">
-              <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
+              <span className="bg-blue-600 text-black px-4 py-2 rounded-full">
                 Our Specialized Services
               </span>
             </h5>

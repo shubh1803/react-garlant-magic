@@ -256,6 +256,30 @@ const CreditCooperativeRegistration = () => {
       )
     }
   ];
+   const services = [
+    {
+     
+      title: "Member-Owned",
+      description: "Members collectively own the society, ensuring transparency, fairness, and equality.",
+      colorFrom: "from-blue-100",
+      colorTo: "to-blue-300",
+    },
+    {
+   
+      title: "Affordable Credit",
+      description: "Societies provide loans at lower interest rates, supporting small businesses and families.",
+      colorFrom: "from-blue-100",
+      colorTo: "to-blue-300",
+    },
+    {
+     
+      title: "Democratic Decisions",
+      description: "Every member has one vote, encouraging fairness and collective growth in the community.",
+      colorFrom: "from-blue-100",
+      colorTo: "to-blue-300",
+    },
+  ];
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
@@ -390,75 +414,44 @@ const CreditCooperativeRegistration = () => {
             </div>
 
             {/* Horizontal Stepper */}
-            <div className="relative max-w-6xl mx-auto">
-              {/* Line */}
-              <div className="hidden md:block absolute top-16 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-400"></div>
+           <div id="services" ref={sectionRefs.services} className="mb-32 scroll-mt-20 max-w-7xl mx-auto px-4 relative">
+     
 
-              <div className="flex flex-col md:flex-row md:justify-between gap-12 md:gap-6">
-                {/* Step 1 */}
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="relative flex-1 text-center"
-                >
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg relative z-10">
-                      1
-                    </div>
-                    <div className="mt-6 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition border border-gray-100">
-                      <h3 className="text-lg font-bold text-blue-700">Member-Owned</h3>
-                      <p className="text-gray-600 mt-2">
-                        Members collectively own the society, ensuring transparency, fairness, and equality.
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
+      {/* Horizontal Line */}
+      <div className="hidden md:block absolute top-32 left-0 right-0 h-1 bg-blue-700"></div>
 
-                {/* Step 2 */}
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className="relative flex-1 text-center"
-                >
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center shadow-lg relative z-10">
-                      2
-                    </div>
-                    <div className="mt-6 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition border border-gray-100">
-                      <h3 className="text-lg font-bold text-indigo-700">Affordable Credit</h3>
-                      <p className="text-gray-600 mt-2">
-                        Societies provide loans at lower interest rates, supporting small businesses and families.
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
+      {/* Dots on line */}
+      <div className="hidden md:flex absolute top-28 left-0 right-0 justify-between px-8">
+        {services.map((_, index) => (
+          <div
+            key={index}
+            className="w-4 h-4 bg-blue-700 rounded-full border-2 border-white"
+          ></div>
+        ))}
+      </div>
 
-                {/* Step 3 */}
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  viewport={{ once: true }}
-                  className="relative flex-1 text-center"
-                >
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full flex items-center justify-center shadow-lg relative z-10">
-                      3
-                    </div>
-                    <div className="mt-6 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition border border-gray-100">
-                      <h3 className="text-lg font-bold text-blue-700">Democratic Decisions</h3>
-                      <p className="text-gray-600 mt-2">
-                        Every member has one vote, encouraging fairness and collective growth in the community.
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
+      <div className="grid md:grid-cols-3 gap-8 relative mt-16">
+        {services.map((service, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, rotateY: 90 }}
+            whileInView={{ opacity: 1, rotateY: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className={`group p-6 rounded-2xl bg-gradient-to-br ${service.colorFrom} ${service.colorTo} border border-blue-800 text-white hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center`}
+          >
+            {/* Number Circle */}
+            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center font-bold text-black text-lg mb-4 transition-colors duration-300 group-hover:bg-primary-gradient group-hover:text-white">
+              {index + 1}
             </div>
+
+            <h3 className="text-lg font-bold text-indigo-700 mb-2 text-center">{service.title}</h3>
+            <p className="text-gray-600 text-center">{service.description}</p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+           
           </div>
 
           {/* Benefits Section */}
@@ -490,7 +483,7 @@ const CreditCooperativeRegistration = () => {
             className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4 group"
           >
             {/* Circle Icon */}
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600 border border-gray-200 flex items-center justify-center text-gray-900 font-bold transition-all duration-300 group-hover:bg-primary-gradient group-hover:text-white group-hover:border-transparent">
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-blue-900 font-bold transition-all duration-300 group-hover:bg-primary-gradient group-hover:text-white group-hover:border-transparent">
               ✓
             </div>
             <p className="text-gray-900 font-medium">{benefit}</p>
@@ -515,7 +508,7 @@ const CreditCooperativeRegistration = () => {
         className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4 group"
       >
         {/* Circle Icon */}
-       <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-blue-600 font-bold transition-all duration-300 group-hover:bg-primary-gradient group-hover:text-white group-hover:border-transparent">
+       <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-green-900 font-bold transition-all duration-300 group-hover:bg-primary-gradient group-hover:text-white group-hover:border-transparent">
   ✓
 </div>
 
