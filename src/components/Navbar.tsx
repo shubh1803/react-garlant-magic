@@ -178,13 +178,14 @@ const Navbar = () => {
               <button className="p-2 text-primary hover:text-primary-hover">
                 <Search className="w-5 h-5" />
               </button>
-              <Button
-                variant="default"
-                size="lg"
-                className="ml-4 bg-blue-600 text-white border-none transition-all duration-300 hover:bg-primary-gradient hover:scale-105"
-              >
-                Get Started Now
-              </Button>
+            <Button
+  variant="default"
+  size="lg"
+  className="ml-4 bg-blue-600 text-white border-none transition-all duration-300 hover:bg-primary-gradient hover:scale-105"
+>
+  Get Started Now
+</Button>
+
             </div>
 
             {/* Mobile Menu Button */}
@@ -308,13 +309,14 @@ const Navbar = () => {
                   <button className="p-2 text-primary hover:text-primary-hover">
                     <Search className="w-5 h-5" />
                   </button>
-                  <Button
-                    variant="default"
-                    size="lg"
-                    className="w-full sm:w-auto bg-primary-gradient text-white border-none hover:scale-105 transition-transform"
-                  >
-                    Get Started Now
-                  </Button>
+                 <Button
+  variant="default"
+  size="lg"
+  className="w-full sm:w-auto bg-blue-600 text-white border-none hover:bg-primary-gradient hover:scale-105 transition-transform"
+>
+  Get Started Now
+</Button>
+
                 </div>
               </div>
             </div>

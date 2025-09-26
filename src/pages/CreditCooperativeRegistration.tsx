@@ -515,9 +515,10 @@ const CreditCooperativeRegistration = () => {
         className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4 group"
       >
         {/* Circle Icon */}
-        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600 border border-gray-200 flex items-center justify-center text-gray-900 font-bold transition-all duration-300 group-hover:bg-primary-gradient group-hover:text-white group-hover:border-transparent">
-          ✓
-        </div>
+       <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-blue-600 font-bold transition-all duration-300 group-hover:bg-primary-gradient group-hover:text-white group-hover:border-transparent">
+  ✓
+</div>
+
         <p className="text-gray-900 font-medium">{benefit}</p>
       </div>
     ))}

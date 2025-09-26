@@ -288,12 +288,13 @@ export const ServicesSection = () => {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <button 
-            onClick={() => openAppointmentForm()}
-            className="bg-primary-gradient text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg"
-          >
-            View All Services
-          </button>
+         <button 
+  onClick={() => openAppointmentForm()}
+  className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-primary-gradient transition-colors duration-300 shadow-md hover:shadow-lg"
+>
+  View All Services
+</button>
+
         </div>
       </div>
 

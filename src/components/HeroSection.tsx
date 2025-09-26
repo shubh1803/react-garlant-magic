@@ -151,11 +151,12 @@ export const HeroSection = () => {
               <motion.div variants={itemVariants} className="flex justify-center">
                <Button
   size="sm"
-  className="mt-4 sm:mt-6 bg-gradient-to-r from-primary to-primary/80 text-white px-10 py-4 sm:py-5 text-sm sm:text-md transition-all duration-300 hover:scale-[1.05] shadow-lg 
+  className="mt-4 sm:mt-6 bg-gradient-to-r from-primary to-primary/80 text-white px-10 py-4 sm:py-5 md:px-12 md:py-8 text-sm sm:text-md transition-all duration-300 hover:scale-[1.05] shadow-lg 
              hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500"
 >
   Request a Free Consultation
 </Button>
+
 
 
               </motion.div>

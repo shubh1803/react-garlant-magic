@@ -212,9 +212,10 @@ const WhyChooseSection = () => {
     Join hundreds of successful cooperative institutions that have trusted Sahakar Samriddhi 
     for their banking and financial consultancy needs.
   </p>
-  <button className="bg-primary-gradient text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 hover:scale-105">
-    Get Started Today
-  </button>
+ <button className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary-gradient hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 hover:scale-105">
+  Get Started Today
+</button>
+
 </div>
 
       </div>
