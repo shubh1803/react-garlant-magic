@@ -80,7 +80,7 @@ export const HeroSection = () => {
   }}
   animate={{ y: [0, -5, 0] }}
   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-  className="bg-white/30 backdrop-blur-md p-5 sm:p-6 rounded-[80px_0px_80px_0px] border-l-4 border-gradient-to-b from-primary to-accent shadow-md hover:shadow-2xl transition-all duration-500 group w-full max-w-[280px] sm:max-w-xs md:max-w-md hover:border-blue-400"
+className="bg-white/30 backdrop-blur-md p-5 sm:p-6 rounded-[80px_0px_80px_0px] border-l-4 border-blue-400 shadow-2xl transition-all duration-500 group w-full max-w-[280px] sm:max-w-xs md:max-w-md"
 >
   <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2 sm:mb-3">
     Our Specializations
@@ -151,7 +151,7 @@ export const HeroSection = () => {
               <motion.div variants={itemVariants} className="flex justify-center">
                <Button
   size="sm"
-  className="mt-4 sm:mt-6 bg-gradient-to-r from-primary to-primary/80 text-white px-10 py-4 sm:py-5 md:px-12 md:py-8 text-sm sm:text-md transition-all duration-300 hover:scale-[1.05] shadow-lg 
+  className="mt-4 sm:mt-6 bg-gradient-to-r from-primary to-primary/80 text-white px-10 py-8 sm:py-8 md:px-12 md:py-8 text-sm sm:text-md transition-all duration-300 hover:scale-[1.05] shadow-lg 
              hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500"
 >
   Request a Free Consultation
