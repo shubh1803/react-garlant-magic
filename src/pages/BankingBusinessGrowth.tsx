@@ -217,21 +217,21 @@ const BankingBusinessGrowth = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative py-16 md:py-24 min-h-screen flex items-center bg-gradient-to-br from-green-900 via-blue-800 to-purple-900 text-white overflow-hidden">
+      <section className="relative py-16 md:py-24 min-h-screen flex items-center bg-gradient-to-br from-indigo-900 via-blue-800 to-purple-900 text-white overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-green-700 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 animate-pulse"></div>
+           <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-700 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-700 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 animate-bounce delay-1000"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div 
+           <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="inline-flex items-center bg-white/10 rounded-full px-4 py-2 mb-6 border border-white/20 backdrop-blur-sm"
             >
-              <Rocket className="w-4 h-4 mr-2 text-green-400 animate-pulse" />
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-ping"></span>
               <span className="text-sm font-medium">Banking Business Growth Services</span>
             </motion.div>
 
@@ -241,7 +241,7 @@ const BankingBusinessGrowth = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             >
-              Banking Business <span className="text-green-300">Growth</span>
+              Banking Business <span className="text-purple-300">Growth</span>
             </motion.h1>
 
             <motion.p 
@@ -262,7 +262,7 @@ const BankingBusinessGrowth = () => {
             >
               <button
                 onClick={openAppointmentForm}
-                className="bg-white text-green-700 px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-white text-indigo-700 px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 Start Growing
               </button>
@@ -292,8 +292,8 @@ const BankingBusinessGrowth = () => {
                   key={tab.id}
                   onClick={() => scrollToSection(tab.id)}
                   className={`px-5 py-3 rounded-lg font-medium text-sm transition-all ${activeTab === tab.id ? 
-                    'bg-green-600 text-white shadow-md transform -translate-y-1' : 
-                    'text-gray-600 hover:bg-gray-100 hover:text-green-600'}`}
+                    'bg-indigo-600 text-white shadow-md transform -translate-y-1' : 
+                    'text-gray-600 hover:bg-gray-100 hover:text-indigo-600'}`}
                 >
                   {tab.label}
                 </button>
@@ -310,7 +310,7 @@ const BankingBusinessGrowth = () => {
           {/* Overview Section */}
           <div id="overview" ref={sectionRefs.overview} className="mb-20 scroll-mt-20">
             <div className="text-center mb-14">
-              <h2 className="text-4xl font-extrabold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+              <h2 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                 Why Focus on Growth?
               </h2>
               <p className="text-lg text-gray-700 mt-4 max-w-3xl mx-auto">
@@ -334,7 +334,7 @@ const BankingBusinessGrowth = () => {
                   viewport={{ once: true }}
                   className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
                     <item.icon className="w-8 h-8" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -345,62 +345,66 @@ const BankingBusinessGrowth = () => {
           </div>
 
           {/* Services Section with Horizontal Scroll */}
-          <div id="services" ref={sectionRefs.services} className="mb-20 scroll-mt-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Banking Business Growth Services</h2>
+           <div id="services" ref={sectionRefs.services} className="mb-20 scroll-mt-20">
+  <div className="text-center mb-12">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Banking Business Growth Services</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Comprehensive growth services to help your institution move from start-up to scale-up successfully
               </p>
-            </div>
+  </div>
 
-            <div className="relative">
-              {showLeftArrow.services && (
-                <button 
-                  onClick={() => scroll('left', servicesScrollRef, 'services')}
-                  className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-50 transition-all duration-300 -ml-6 group border border-gray-200"
-                >
-                  <ChevronLeft className="w-5 h-5 text-green-600 group-hover:text-green-800" />
-                </button>
-              )}
+  <div className="relative">
+    {showLeftArrow.services && (
+      <button 
+        onClick={() => scroll('left', servicesScrollRef, 'services')}
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-indigo-50 transition-all duration-300 -ml-6 group border border-gray-200"
+      >
+        <ChevronLeft className="w-5 h-5 text-indigo-600 group-hover:text-indigo-800" />
+      </button>
+    )}
 
-              {showRightArrow.services && (
-                <button 
-                  onClick={() => scroll('right', servicesScrollRef, 'services')}
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-50 transition-all duration-300 -mr-6 group border border-gray-200"
-                >
-                  <ChevronRight className="w-5 h-5 text-green-600 group-hover:text-green-800" />
-                </button>
-              )}
+    {showRightArrow.services && (
+      <button 
+        onClick={() => scroll('right', servicesScrollRef, 'services')}
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-indigo-50 transition-all duration-300 -mr-6 group border border-gray-200"
+      >
+        <ChevronRight className="w-5 h-5 text-indigo-600 group-hover:text-indigo-800" />
+      </button>
+    )}
 
-              <div 
-                ref={servicesScrollRef}
-                className="flex overflow-x-auto pb-6 -mx-4 px-4 hide-scrollbar"
-                onScroll={() => checkScrollPosition(servicesScrollRef, 'services')}
-              >
-                <div className="flex space-x-6 min-w-max">
-                  {growthServices.map((service, index) => (
-                    <div key={index} className="w-80 flex-shrink-0">
-                      <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-gray-100">
-                        <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-lg flex items-center justify-center mb-4">
-                          <service.icon className="w-6 h-6" />
-                        </div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-3">{service.title}</h3>
-                        <p className="text-gray-600 mb-4">{service.description}</p>
-                        <ul className="space-y-2">
-                          {service.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-center text-sm text-gray-700">
-                              <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+    <div 
+      ref={servicesScrollRef}
+      className="flex overflow-x-auto pb-6 -mx-4 px-4 hide-scrollbar"
+      onScroll={() => checkScrollPosition(servicesScrollRef, 'services')}
+    >
+      <div className="flex space-x-6 min-w-max">
+        {growthServices.map((service, index) => (
+          <div key={index} className="w-80 flex-shrink-0">
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-gray-100">
+              
+              {/* Number Circle */}
+              <div className="w-12 h-12 bg-indigo-500 text-black-600 font-bold rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                {index + 1}
               </div>
+
+              <h3 className="text-lg font-bold text-gray-900 mb-3">{service.title}</h3>
+              <p className="text-gray-600 mb-4">{service.description}</p>
+              <ul className="space-y-2">
+                {service.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+         
 
           {/* Benefits Section with Horizontal Scroll */}
          <div id="benefits" ref={sectionRefs.benefits} className="mb-20 scroll-mt-20">
@@ -426,7 +430,7 @@ const BankingBusinessGrowth = () => {
           viewport={{ once: true }}
           className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 flex items-center hover:shadow-xl transition-all"
         >
-          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-blue-600 flex items-center justify-center text-white font-bold mr-4">
+          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white font-bold mr-4">
             ✓
           </div>
           <p className="text-gray-900 font-medium">{benefit}</p>
@@ -563,17 +567,17 @@ const BankingBusinessGrowth = () => {
          <br />
 
           {/* CTA Section */}
-          <div className="text-center bg-gradient-to-r from-green-600 to-blue-600 text-white py-10 px-4 sm:py-16 sm:px-8 rounded-2xl">
+          <div className="text-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-10 px-4 sm:py-16 sm:px-8 rounded-2xl">
   <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
     Ready to Grow Your Banking Business?
   </h2>
   <p className="text-base sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">
-    Growth takes planning, expertise, and disciplined execution. Sahakar Samruddhi helps you identify 
+    Growth takes planning, expertise, and disciplined execution. Sahakar Samriddhi helps you identify 
     opportunities, remove roadblocks, and implement systems needed to expand successfully.
   </p>
   <button
     onClick={openAppointmentForm}
-    className="bg-white text-green-700 px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
+    className="bg-white text-indigo-700 px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base"
   >
     Start Your Growth Journey
   </button>

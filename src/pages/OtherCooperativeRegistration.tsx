@@ -378,51 +378,69 @@ const OtherCooperativeRegistration = () => {
           </div>
 
           {/* Benefits Section */}
-          <div id="benefits" ref={sectionRefs.benefits} className="mb-20 scroll-mt-20 px-4 relative">
-            <motion.div
-              className="absolute top-0 left-10 w-60 h-20 bg-blue-200 rounded-3xl opacity-20 blur-3xl"
-              animate={{ y: [0, 15, 0], x: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
-            />
-            <motion.div
-              className="absolute bottom-10 right-0 w-72 h-24 bg-purple-200 rounded-3xl opacity-20 blur-3xl"
-              animate={{ y: [0, -15, 0], x: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
-            />
+           <div 
+  id="benefits" 
+  ref={sectionRefs.benefits} 
+  className="mb-20 scroll-mt-20"
+>
 
-            <div className="text-center mb-12 relative z-10">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Benefits of Registering a Cooperative Society
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Cooperative societies offer numerous advantages for collective operations and community development.
-              </p>
-            </div>
+  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+    Benefits of Registering a Credit Cooperative Society
+  </h2>
 
-            <div className="flex flex-wrap justify-center gap-6 relative z-10">
-              {[
-                { title: "Legal recognition for collective operations", icon: <Shield className="w-8 h-8 text-white mb-2" /> },
-                { title: "Ability to enter into contracts and own property", icon: <FileText className="w-8 h-8 text-white mb-2" /> },
-                { title: "Democratic structure with equal voting rights", icon: <Users className="w-8 h-8 text-white mb-2" /> },
-                { title: "Access to government schemes and subsidies", icon: <TrendingUp className="w-8 h-8 text-white mb-2" /> },
-                { title: "Potential tax benefits under certain conditions", icon: "💰" },
-                { title: "Builds trust among members and stakeholders", icon: "🤝" }
-              ].map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  className="min-w-[220px] px-6 py-4 rounded-3xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05, boxShadow: "0 20px 25px rgba(0,0,0,0.2)" }}
-                >
-                  <div className="text-2xl mb-2">{benefit.icon}</div>
-                  <p className="text-sm font-semibold">{benefit.title}</p>
-                </motion.div>
-              ))}
+  {/* Mobile Horizontal Scroll */}
+  <div className="flex md:hidden overflow-x-auto hide-scrollbar gap-4 snap-x snap-mandatory">
+    {[0, 3].map((startIndex) => (
+      <div key={startIndex} className="flex flex-col gap-4 min-w-[80%] snap-center">
+        {[
+      "Legal recognition for collective operations",
+      "Ability to enter into contracts and own property",
+      "Democratic structure with equal voting rights",
+      "Access to government schemes and subsidies",
+      "Potential tax benefits under certain conditions",
+      "Builds trust among members and stakeholders"
+    ].slice(startIndex, startIndex + 3).map((benefit, index) => (
+          <div 
+            key={index} 
+            className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4 group"
+          >
+            {/* Circle Icon */}
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600 border border-gray-200 flex items-center justify-center text-gray-900 font-bold transition-all duration-300 group-hover:bg-primary-gradient group-hover:text-white group-hover:border-transparent">
+              ✓
             </div>
+            <p className="text-gray-900 font-medium">{benefit}</p>
           </div>
+        ))}
+      </div>
+    ))}
+  </div>
+
+  {/* Desktop Grid */}
+  <div className="hidden md:grid md:grid-cols-2 gap-8 mt-12">
+    {[
+      "Legal recognition for collective operations",
+      "Ability to enter into contracts and own property",
+      "Democratic structure with equal voting rights",
+      "Access to government schemes and subsidies",
+      "Potential tax benefits under certain conditions",
+      "Builds trust among members and stakeholders"
+    ].map((benefit, index) => (
+      <div 
+        key={index} 
+        className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4 group"
+      >
+        {/* Circle Icon */}
+        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600 border border-gray-200 flex items-center justify-center text-gray-900 font-bold transition-all duration-300 group-hover:bg-primary-gradient group-hover:text-white group-hover:border-transparent">
+          ✓
+        </div>
+        <p className="text-gray-900 font-medium">{benefit}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+       
+
 
           {/* Registration Process */}
      <div id="process" ref={sectionRefs.process} className="mb-20 scroll-mt-20">
@@ -437,64 +455,64 @@ const OtherCooperativeRegistration = () => {
   </div>
 
   {/* Steps in Horizontal Flow */}
-  <div className="flex flex-wrap justify-center items-center gap-6 max-w-6xl mx-auto">
+  <div className="flex flex-col md:flex-row md:justify-between md:items-start relative">
+    {/* Connecting Line */}
+    <div className="absolute hidden md:block top-16 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 rounded-full z-0"></div>
+
     {[
       {
-        step: "01",
+        number: 1,
         title: "Selecting Society Type",
-        description:
-          "Choosing the right type of cooperative society based on your objectives and membership.",
-        icon: "📋",
+        desc: "Choosing the right type of cooperative society based on your objectives and membership.",
+      
         color: "bg-blue-500",
       },
       {
-        step: "02",
+        number: 2,
         title: "Drafting Bylaws",
-        description:
-          "Drafting bylaws and objectives of the society as per cooperative principles.",
-        icon: "📝",
+        desc: "Drafting bylaws and objectives of the society as per cooperative principles.",
+        
         color: "bg-purple-500",
       },
       {
-        step: "03",
+        number: 3,
         title: "Application Preparation",
-        description:
-          "Preparing and filing application with the Registrar of Cooperative Societies.",
-        icon: "📤",
+        desc: "Preparing and filing application with the Registrar of Cooperative Societies.",
+       
         color: "bg-green-500",
       },
       {
-        step: "04",
+        number: 4,
         title: "Approval & Registration",
-        description:
-          "Obtaining approvals and registration certificates from the authorities.",
-        icon: "✅",
+        desc: "Obtaining approvals and registration certificates from the authorities.",
+       
         color: "bg-yellow-500",
       },
       {
-        step: "05",
+        number: 5,
         title: "Post-Registration Setup",
-        description:
-          "Guiding post-registration compliance and operational setup.",
-        icon: "🏢",
+        desc: "Guiding post-registration compliance and operational setup.",
+       
         color: "bg-red-500",
       },
-    ].map((step, i, arr) => (
-      <div key={i} className="flex items-center">
-        {/* Step Card */}
-        <div
-          className={`flex flex-col items-center justify-start w-40 min-h-[200px] p-4 rounded-xl shadow-lg text-white text-center hover:scale-105 transition-transform duration-500 ${step.color}`}
-        >
-          <div className="text-sm font-bold">{step.step}</div>
-          <div className="text-3xl my-2">{step.icon}</div>
-          <h3 className="font-semibold text-xs">{step.title}</h3>
-          <p className="text-[11px] mt-2 leading-snug">{step.description}</p>
+    ].map((step, index) => (
+      <div key={index} className="relative z-10 flex-1 text-center px-4 mb-12 md:mb-0 group">
+        {/* Step Circle */}
+        <div className={`w-14 h-14 mx-auto ${step.color} group-hover:bg-primary-gradient text-black group-hover:text-white flex items-center justify-center rounded-full text-lg font-bold shadow-lg transition-all duration-300`}>
+          {step.number}
         </div>
 
-        {/* Arrow Connector */}
-        {i < arr.length - 1 && (
-          <div className="mx-3 text-gray-500 text-2xl font-bold">➝</div>
-        )}
+        {/* Step Icon */}
+
+        {/* Step Title */}
+        <h3 className="mt-4 text-lg font-semibold text-gray-800 group-hover:text-pink-500 transition-colors">
+          {step.title}
+        </h3>
+
+        {/* Step Description */}
+        <p className="text-gray-600 mt-2 text-sm">
+          {step.desc}
+        </p>
       </div>
     ))}
   </div>
@@ -502,92 +520,90 @@ const OtherCooperativeRegistration = () => {
 
 
           {/* Documents Section */}
-          <div id="documents" ref={sectionRefs.documents} className="mb-20 scroll-mt-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Documents Required
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Common documents for registering other cooperative societies include:
-              </p>
-            </div>
+         <div id="documents" ref={sectionRefs.documents} className="mb-20 scroll-mt-20">
+  <div className="text-center mb-12">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      Documents Required
+    </h2>
+    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+      Common documents for registering other cooperative societies include:
+    </p>
+  </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  category: "Application Documents",
-                  items: [
-                    "Application form signed by promoter members",
-                    "Draft bylaws of the society",
-                    "List of members with identity and address proof"
-                  ],
-                  icon: <FileText className="w-8 h-8" />,
-                  color: "from-blue-500 to-blue-600"
-                },
-                {
-                  category: "Member Documents",
-                  items: [
-                    "Identity proof of all members (Aadhaar, PAN)",
-                    "Address proof of all members",
-                    "Passport-size photographs of members"
-                  ],
-                  icon: <Users className="w-8 h-8" />,
-                  color: "from-purple-500 to-purple-600"
-                },
-                {
-                  category: "Society Documents",
-                  items: [
-                    "Resolution for forming the society",
-                    "Proof of registered office address",
-                    "Affidavits and other statutory forms as required"
-                  ],
-                  icon: <Building className="w-8 h-8" />,
-                  color: "from-indigo-500 to-indigo-600"
-                }
-              ].map((docCategory, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  viewport={{ once: true }}
-                  className="group"
-                >
-                  <div className="bg-white rounded-2xl p-6 border border-gray-200 h-full transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
-                    <div className="flex items-center mb-4">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white mr-4 bg-gradient-to-r ${docCategory.color} group-hover:scale-110 transition-transform`}>
-                        {docCategory.icon}
-                      </div>
-                      <h3 className="text-lg font-semibold text-gray-900">
-                        {docCategory.category}
-                      </h3>
-                    </div>
-                    <ul className="space-y-2">
-                      {docCategory.items.map((item, idx) => (
-                        <li key={idx} className="flex items-start text-sm">
-                          <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                          <span className="text-gray-700">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              ))}
+  <div className="grid md:grid-cols-3 gap-6">
+    {[
+      {
+        category: "Application Documents",
+        items: [
+          "Application form signed by promoter members",
+          "Draft bylaws of the society",
+          "List of members with identity and address proof"
+        ],
+        color: "from-blue-500 to-blue-600"
+      },
+      {
+        category: "Member Documents",
+        items: [
+          "Identity proof of all members (Aadhaar, PAN)",
+          "Address proof of all members",
+          "Passport-size photographs of members"
+        ],
+        color: "from-purple-500 to-purple-600"
+      },
+      {
+        category: "Society Documents",
+        items: [
+          "Resolution for forming the society",
+          "Proof of registered office address",
+          "Affidavits and other statutory forms as required"
+        ],
+        color: "from-indigo-500 to-indigo-600"
+      }
+    ].map((docCategory, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.15 }}
+        viewport={{ once: true }}
+        className="group"
+      >
+        <div className="bg-white rounded-2xl p-6 border border-gray-200 h-full transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
+          <div className="flex items-center mb-4">
+            {/* Number Circle */}
+            <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white mr-4 bg-gradient-to-r ${docCategory.color} group-hover:scale-110 transition-transform font-bold`}>
+              {index + 1}
             </div>
-
-            <div className="mt-8 bg-blue-100 border border-blue-200 rounded-xl p-6">
-              <div className="flex items-start">
-                <div className="text-2xl mr-4">💡</div>
-                <div>
-                  <h4 className="font-semibold text-blue-800 mb-2">Important Note</h4>
-                  <p className="text-blue-700 text-sm">
-                    Document requirements may vary based on the state and type of cooperative society. 
-                    Our experts will provide you with a complete, customized checklist based on your specific requirements.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <h3 className="text-lg font-semibold text-gray-900">
+              {docCategory.category}
+            </h3>
           </div>
+          <ul className="space-y-2">
+            {docCategory.items.map((item, idx) => (
+              <li key={idx} className="flex items-start text-sm">
+                <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                <span className="text-gray-700">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+
+  <div className="mt-8 bg-blue-100 border border-blue-200 rounded-xl p-6">
+    <div className="flex items-start">
+      <div>
+        <h4 className="font-semibold text-blue-800 mb-2">Important Note</h4>
+        <p className="text-blue-700 text-sm">
+          Document requirements may vary based on the state and type of cooperative society. 
+          Our experts will provide you with a complete, customized checklist based on your specific requirements.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
           {/* Categories Section */}
 
@@ -624,7 +640,7 @@ const OtherCooperativeRegistration = () => {
       return (
         <div
           key={index}
-          className="min-w-[70%] snap-center bg-sky-100 rounded-2xl p-6 border border-sky-200 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 flex flex-col"
+          className="min-w-[70%] snap-center bg-gradient-to-br from-blue-100 via-blue-200 to-blue-600 border border-blue-800  rounded-2xl p-6  transition-all duration-500 hover:shadow-lg hover:-translate-y-1 flex flex-col"
         >
           <div className="w-12 h-12 bg-sky-400 rounded-full flex items-center justify-center mb-4">
             <IconComponent className="w-6 h-6 text-sky-700" />
@@ -863,11 +879,11 @@ const OtherCooperativeRegistration = () => {
          <br/>
 
           {/* CTA Section */}
-         <div className="bg-gradient-to-br from-sky-500 to-teal-500 rounded-3xl p-6 sm:p-8 md:p-10 text-center text-white shadow-2xl relative overflow-hidden max-w-full sm:max-w-xl mx-auto">
+         <div className="bg-gradient-to-br from-blue-900 via-purple-800 to-indigo-900 rounded-3xl p-6 sm:p-8 md:p-10 text-center text-white shadow-2xl relative overflow-hidden max-w-full sm:max-w-xl mx-auto">
   <div className="absolute inset-0 bg-gradient-to-r from-sky-400/20 to-teal-400/20"></div>
   <div className="relative z-10">
     <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
-      Why Choose Sahakar Samruddhi
+      Why Choose Sahakar Samriddhi
     </h2>
     <p className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto text-sky-100">
       We specialize in cooperative society registrations of all types. From selecting the right structure to filing your application, we provide end-to-end support so you can save time, reduce errors, and focus on your mission.

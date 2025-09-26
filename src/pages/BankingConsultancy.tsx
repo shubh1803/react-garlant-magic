@@ -68,7 +68,7 @@ const BankingConsultancy = () => {
       answer: "Anyone planning to start or grow a Credit Cooperative Society, Multi-State Cooperative Society, Microfinance Company, or other banking-related entity benefits from consultancy."
     },
     {
-      question: "Can Sahakar Samruddhi help with registration and compliance?",
+      question: "Can Sahakar Samriddhi help with registration and compliance?",
       answer: "Yes. We provide complete support for registration, licensing, compliance, audits, and training."
     },
     {
@@ -140,7 +140,7 @@ const BankingConsultancy = () => {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="text-lg md:text-xl text-purple-100 max-w-3xl mx-auto mb-10"
             >
-              Starting or growing a banking-related business requires deep knowledge of regulations, operations, and market practices. At Sahakar Samruddhi, we provide complete Banking Business Consultancy services to help you set up, manage, and grow your financial institution with confidence.
+              Starting or growing a banking-related business requires deep knowledge of regulations, operations, and market practices. At Sahakar Samriddhi, we provide complete Banking Business Consultancy services to help you set up, manage, and grow your financial institution with confidence.
             </motion.p>
 
             <motion.div 
@@ -329,33 +329,38 @@ className="p-6 rounded-2xl bg-gradient-to-br from-blue-100 via-blue-200 to-blue-
     </p>
   </div>
 
-  {/* Capsule benefits */}
+  {/* Capsule benefits with numbers */}
   <div className="flex flex-wrap justify-center gap-6 relative z-10">
     {[
-      { title: "Step-by-step guidance from registration to operation", icon: <CheckCircle className="w-8 h-8 text-white mb-2" /> },
-      { title: "Reduced delays and lower compliance risks", icon: <Clock className="w-8 h-8 text-white mb-2" /> },
-      { title: "Customized solutions for your financial model", icon: <Settings className="w-8 h-8 text-white mb-2" /> },
-      { title: "Expert advice on best practices in cooperative and microfinance sectors", icon: <Briefcase className="w-8 h-8 text-white mb-2" /> },
+      "Step-by-step guidance from registration to operation",
+      "Reduced delays and lower compliance risks",
+      "Customized solutions for your financial model",
+      "Expert advice on best practices in cooperative and microfinance sectors"
     ].map((benefit, index) => (
       <motion.div
         key={index}
-        className="min-w-[220px] px-6 py-4 rounded-3xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+        className="group min-w-[220px] px-6 py-4 rounded-3xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: index * 0.2 }}
         viewport={{ once: true }}
         whileHover={{ scale: 1.05, boxShadow: "0 20px 25px rgba(0,0,0,0.2)" }}
       >
-        {benefit.icon}
-        <p className="text-sm font-semibold">{benefit.title}</p>
+        {/* Number Circle */}
+      <div className="w-12 h-12 mb-2 rounded-full bg-gray-200 text-black font-bold flex items-center justify-center text-lg shadow-md group-hover:bg-primary-gradient group-hover:text-white transition-colors duration-300">
+  {index + 1}
+</div>
+
+        <p className="text-sm font-semibold">{benefit}</p>
       </motion.div>
     ))}
   </div>
 </div>
+
           {/* Why Choose Us Section with Slide-In Animation */}
           <div id="process" ref={sectionRefs.process} className="mb-20 scroll-mt-20">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Why Choose Sahakar Samruddhi
+              Why Choose Sahakar Samriddhi
             </h2>
 
             <motion.div 
@@ -455,7 +460,7 @@ className="p-6 rounded-2xl bg-gradient-to-br from-blue-100 via-blue-200 to-blue-
           >
             <h2 className="text-3xl font-bold mb-4">Ready to Start Your Banking Business Journey?</h2>
             <p className="text-xl mb-8 opacity-90">
-              With the right guidance, starting or growing your banking business becomes much easier. Sahakar Samruddhi offers expert consultancy to help you plan, register, and manage your financial institution confidently.
+              With the right guidance, starting or growing your banking business becomes much easier. Sahakar Samriddhi offers expert consultancy to help you plan, register, and manage your financial institution confidently.
             </p>
             <button
               onClick={openAppointmentForm}

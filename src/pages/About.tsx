@@ -103,7 +103,7 @@ const About = () => {
   </span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-Sahakar Samruddhi is a specialized consultancy platform dedicated to supporting the growth and success of cooperative financial institutions across India. With a focused approach on Credit Cooperative Societies, Multi-State Credit Cooperative Societies, and Microfinance Companies (Section 8), we provide complete guidance from setup to compliance, operations, and expansion.              </p>
+Sahakar Samriddhi is a specialized consultancy platform dedicated to supporting the growth and success of cooperative financial institutions across India. With a focused approach on Credit Cooperative Societies, Multi-State Credit Cooperative Societies, and Microfinance Companies (Section 8), we provide complete guidance from setup to compliance, operations, and expansion.              </p>
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
@@ -207,7 +207,7 @@ Sahakar Samruddhi is a specialized consultancy platform dedicated to supporting 
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Purpose</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-India’s cooperative movement holds the potential to bring real financial empowerment to rural and semi-urban populations. At Sahakar Samruddhi, we believe that with the right structure, support, and strategy, cooperative institutions can create a lasting impact.              </p>
+India’s cooperative movement holds the potential to bring real financial empowerment to rural and semi-urban populations. At Sahakar Samriddhi, we believe that with the right structure, support, and strategy, cooperative institutions can create a lasting impact.              </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 We work with individuals, groups, and institutions who are passionate about community development, financial inclusion, and ethical banking practices.
               </p>
@@ -479,7 +479,7 @@ India’s cooperative movement holds the potential to bring real financial empow
               </div>
               <CardTitle className="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">Email</CardTitle>
               <CardContent className="p-0">
-                <p className="text-gray-600">info@sahakarsamruddhi.in</p>
+                <p className="text-gray-600">info@sahakarSamriddhi.in</p>
               </CardContent>
             </Card>
 

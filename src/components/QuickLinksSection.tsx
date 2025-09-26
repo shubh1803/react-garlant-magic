@@ -5,7 +5,7 @@ import { ArrowRight, Info, Briefcase, BookOpen, Trophy, Phone } from 'lucide-rea
 const links = [
   {
     icon: Info,
-    title: "About Sahakar Samruddhi",
+    title: "About Sahakar Samriddhi",
     href: "/about"
   },
   {

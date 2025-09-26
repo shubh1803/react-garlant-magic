@@ -1,84 +1,181 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export const HeroSection = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const handleScroll = () => setScrollY(window.scrollY);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const containerVariants = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.2 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
+  };
+
+  const bgVariants = {
+    float: { y: [0, -15, 0], transition: { duration: 5, repeat: Infinity, ease: "easeInOut" } }
+  };
+
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-accent/20 via-background to-accent/10 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-10">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-48 h-48 bg-accent rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-          {/* Left Side Content */}
-        <div className="flex-1 text-left space-y-8">
-  {/* Hero Heading */}
-  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-in-left">
-    <span className="bg-primary-gradient bg-clip-text text-transparent font-bold tracking-wide">
-      सहकार&nbsp;समृद्धी
-    </span>
-  </h1>
+    <section className="relative overflow-visible py-16 sm:py-20 md:py-28 bg-gradient-to-br from-gray-50 to-white">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
 
-  {/* Subheading / Tagline */}
-  <p className="text-xl md:text-2xl text-primary/80 font-medium max-w-md leading-snug relative animate-fade-in">
-    <span className="bg-primary-gradient bg-clip-text text-transparent animate-shine">
-      Empowering Cooperatives with Banking & Finance Expertise
-    </span>
+          {/* Left Side - Shape */}
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex-1 w-full"
+          >
+            <motion.div
+              whileHover={{ scale: 1.03, boxShadow: "0 30px 60px rgba(0,0,0,0.25)" }}
+              className="relative w-full h-64 sm:h-72 md:h-96 mx-auto bg-white rounded-[120px_0px_120px_0px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent "
+            >
+              {/* Highlights */}
+              <div className="absolute top-0 left-0 w-24 sm:w-32 md:w-40 h-24 sm:h-32 md:h-40 bg-white opacity-20 rounded-tl-[120px]"></div>
+              <div className="absolute bottom-0 right-0 w-24 sm:w-32 md:w-40 h-24 sm:h-32 md:h-40 bg-white opacity-20 rounded-br-[120px]"></div>
 
-    <span className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-1000"></span>
-  </p>
+              {/* Shape Content */}
+              <motion.div
+                className="absolute inset-0 flex flex-col items-center justify-center p-4 sm:p-6 text-center space-y-3 sm:space-y-4"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+              >
+                <motion.h3
+                  variants={itemVariants}
+                  className="text-3xl sm:text-4xl md:text-5xl font-extrabold"
+                >
+                  <span className="bg-primary-gradient bg-clip-text text-transparent font-bold tracking-wide">
+                    सहकार&nbsp;समृद्धी
+                  </span>
+                </motion.h3>
 
-  {/* Specializations Card */}
-  <div className="bg-primary/5 p-6 rounded-2xl border-l-4 border-primary transition-all duration-300 hover:shadow-2xl hover:border-primary/80 hover:bg-primary/10 group animate-slide-in-right">
-    <h3 className="text-lg font-semibold text-foreground mb-4 text-xl md:text-2xl bg-primary-gradient bg-clip-text text-transparent animate-fade-in">
-      Our Specializations
-    </h3>
-    <ul className="text-muted-foreground space-y-2">
-      <li className="transition-all duration-300 hover:translate-x-2 hover:text-primary-gradient cursor-pointer">
-        • Credit Cooperative Societies
-      </li>
-      <li className="transition-all duration-300 hover:translate-x-2 hover:text-primary-gradient cursor-pointer">
-        • Multi-State Credit Cooperative Societies
-      </li>
-      <li className="transition-all duration-300 hover:translate-x-2 hover:text-primary-gradient cursor-pointer">
-        • Microfinance Companies (Section 8)
-      </li>
-    </ul>
-  </div>
-</div>
+              <motion.p
+  variants={itemVariants}
+  className="text-sm sm:text-lg md:text-xl max-w-[250px] sm:max-w-xs md:max-w-md leading-snug font-semibold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent"
+>
+  Empowering Cooperatives with Banking & Finance Expertise
+</motion.p>
 
-          
-          {/* Right Side Content - Enhanced Card */}
-          <div className="flex-1 bg-card rounded-2xl p-8 shadow-lg border border-border/20 relative overflow-hidden group transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
-            {/* Shine effect on hover */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-            
-            {/* Border glow effect */}
-            <div className="absolute inset-0 rounded-2xl p-px bg-gradient-to-r from-primary/30 to-accent/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
-            
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 relative">
-              Welcome to Sahakar Samruddhi
-              <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:w-24"></span>
-            </h2>
-            <div className="space-y-6 relative">
-              <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
-                Sahakar Samruddhi is your trusted consultancy partner for creating, managing, and expanding cooperative financial institutions in India. We specialize in Credit Cooperative Societies, Multi-State Credit Cooperative Societies, and Microfinance Companies registered under Section 8.
-              </p>
-              <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
+
+               <motion.div
+  variants={itemVariants}
+  whileHover={{
+    scale: 1.05,
+    y: -5,
+    boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
+  }}
+  animate={{ y: [0, -5, 0] }}
+  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+  className="bg-white/30 backdrop-blur-md p-5 sm:p-6 rounded-[80px_0px_80px_0px] border-l-4 border-gradient-to-b from-primary to-accent shadow-md hover:shadow-2xl transition-all duration-500 group w-full max-w-[280px] sm:max-w-xs md:max-w-md hover:border-blue-400"
+>
+  <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2 sm:mb-3">
+    Our Specializations
+  </h4>
+  
+  <motion.ul
+    className="text-gray-700 space-y-1 text-xs sm:text-sm"
+    variants={{
+      hidden: {},
+      show: { transition: { staggerChildren: 0.15 } }
+    }}
+    initial="hidden"
+    animate="show"
+  >
+    {[
+      "Credit Cooperative Societies",
+      "Multi-State Credit Cooperative Societies",
+      "Microfinance Companies (Section 8)"
+    ].map((item, index) => (
+      <motion.li
+        key={index}
+        variants={{
+          hidden: { opacity: 0, x: -20 },
+          show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
+        }}
+        className="hover:translate-x-2 hover:text-primary transition-all cursor-pointer"
+      >
+        • {item}
+      </motion.li>
+    ))}
+  </motion.ul>
+</motion.div>
+
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Side - Supporting Content */}
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex-1 w-full"
+          >
+            <motion.div
+              className="mx-auto text-center lg:text-left space-y-4 sm:space-y-6"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
+              <motion.h2 variants={itemVariants} className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 relative group">
+                Welcome to  <span className="bg-primary-gradient bg-clip-text text-transparent font-bold tracking-wide">
+               Sahakar &nbsp;Samriddhi
+              </span>
+                <span className="absolute -bottom-1 left-0 w-10 h-1 sm:w-12 sm:h-1 bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:w-20"></span>
+              </motion.h2>
+
+              <motion.p variants={itemVariants} className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                Sahakar Samriddhi is your trusted consultancy partner for creating, managing, and expanding cooperative financial institutions in India. We specialize in Credit Cooperative Societies, Multi-State Credit Cooperative Societies, and Microfinance Companies registered under Section 8.
+              </motion.p>
+
+              <motion.p variants={itemVariants} className="text-gray-600 text-sm sm:text-base leading-relaxed">
                 Our mission is to empower cooperatives with expert support in legal compliance, strategic growth, and modern banking systems. Whether you're starting a new institution or looking to streamline and scale an existing one, we provide the guidance and solutions you need.
-              </p>
-            </div>
-            
-            <Button size="lg" className="mt-8 bg-primary-gradient from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-8 py-6 text-md w-full transition-all duration-300 hover:scale-[1.02] shadow-md hover:shadow-lg relative overflow-hidden group">
-              <span className="relative z-10">Request a Free Consultation</span>
-              <span className="w-full sm:w-auto bg-primary-gradient text-white border-none hover:scale-105 transition-transform"></span>
-            </Button>
-           
-          </div>
+              </motion.p>
+
+              <motion.div variants={itemVariants} className="flex justify-center">
+               <Button
+  size="sm"
+  className="mt-4 sm:mt-6 bg-gradient-to-r from-primary to-primary/80 text-white px-10 py-4 sm:py-5 text-sm sm:text-md transition-all duration-300 hover:scale-[1.05] shadow-lg 
+             hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500"
+>
+  Request a Free Consultation
+</Button>
+
+
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
         </div>
       </div>
-      
+
+      {/* Background Decorations with Floating Animation */}
+      <motion.div
+        variants={bgVariants}
+        animate="float"
+        className="absolute top-0 left-0 w-36 sm:w-48 h-36 sm:h-72 bg-blue-50 rounded-full -translate-x-1/2 -translate-y-1/2 opacity-50"
+      ></motion.div>
+      <motion.div
+        variants={bgVariants}
+        animate="float"
+        className="absolute bottom-0 right-0 w-56 sm:w-72 h-56 sm:h-96 bg-purple-50 rounded-full translate-x-1/2 translate-y-1/2 opacity-50"
+      ></motion.div>
     </section>
   );
 };

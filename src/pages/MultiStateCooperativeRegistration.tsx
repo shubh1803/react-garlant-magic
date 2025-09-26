@@ -7,6 +7,9 @@ import Footer from '@/components/Footer';
 import { AppointmentForm } from '@/components/AppointmentForm';
 
 const MultiStateCooperativeRegistration = () => {
+     const scrollRef = useRef(null);
+      const cardsRefs = useRef([]);
+  
   
     const [activeNumber, setActiveNumber] = useState(null); // for click effect
 
@@ -52,6 +55,31 @@ const MultiStateCooperativeRegistration = () => {
     setShowAppointmentForm(false);
     document.body.style.overflow = "auto";
   };
+   const addToRefs = (el) => {
+    if (el && !cardsRefs.current.includes(el)) cardsRefs.current.push(el);
+  };
+    const handleScroll = () => {
+    if (!scrollRef.current) return;
+
+    const { scrollLeft } = scrollRef.current;
+    const cardWidth = scrollRef.current.firstChild.offsetWidth + 24; // card width + gap (space-x-6 = 1.5rem = 24px)
+
+    const newIndex = Math.round(scrollLeft / cardWidth);
+    setActiveIndex(newIndex);
+  };
+
+  // Smooth scroll to card when dot clicked
+  const scrollToIndex = (index) => {
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.firstChild.offsetWidth + 24;
+
+    scrollRef.current.scrollTo({
+      left: cardWidth * index,
+      behavior: "smooth",
+    });
+    setActiveIndex(index);
+  };
+
   
 
   // Intersection Observer for scroll animations
@@ -211,6 +239,72 @@ const MultiStateCooperativeRegistration = () => {
   { title: "Financial Plan", description: "Detailed financial plan and capital structure of the proposed society", gradient: "from-teal-100 to-teal-200" },
   { title: "Existing Society Documents", description: "For existing societies: registration certificate, audited accounts, and membership details", gradient: "from-rose-100 to-rose-200" }
 ];
+ const nocCards = [
+    {
+      type: "Why NOC",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      ),
+      title: "Why NOC is Required",
+      description: [
+        "Confirms legal registration status at state level",
+        "Ensures no conflict with existing societies",
+        "Provides compliance record to Central Registrar",
+        "Validates multi-state expansion eligibility",
+      ],
+      gradient: "from-green-400 to-teal-500",
+    },
+    {
+      type: "When NOC",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      ),
+      title: "When You Need NOC",
+      description: [
+        {
+          title: "For New Societies",
+          desc: (
+            <>
+              Obtain NOC from State Registrar before applying <br /> to Central Registrar for multi-state registration.
+            </>
+          ),
+        },
+        {
+          title: "For Existing Societies",
+          desc: (
+            <>
+              Converting state-level society requires NOC from each state <br /> where you plan to operate.
+            </>
+          ),
+        },
+      ],
+      gradient: "from-blue-500 to-indigo-500",
+    },
+  ];
 
 // Add numbers dynamically
 const numberedDocuments = documents.map((doc, index) => ({ ...doc, number: index + 1 }));
@@ -258,7 +352,7 @@ const numberedDocuments = documents.map((doc, index) => ({ ...doc, number: index
               transition={{ duration: 0.7, delay: 0.4 }}
               className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-10"
             >
-              Expanding your Credit Cooperative Society beyond one state opens new opportunities and a larger member base. At Sahakar Samruddhi, we guide you through the registration process.
+              Expanding your Credit Cooperative Society beyond one state opens new opportunities and a larger member base. At Sahakar Samriddhi, we guide you through the registration process.
             </motion.p>
             
             <motion.div 
@@ -559,7 +653,7 @@ const numberedDocuments = documents.map((doc, index) => ({ ...doc, number: index
     Registration Process
   </h2>
   <p className="text-lg text-gray-700 mb-12 text-center max-w-3xl mx-auto">
-    Registering a Multi-State Credit Cooperative Society involves compliance with the Multi-State Cooperative Societies Act, 2002. Our team at Sahakar Samruddhi assists you with:
+    Registering a Multi-State Credit Cooperative Society involves compliance with the Multi-State Cooperative Societies Act, 2002. Our team at Sahakar Samriddhi assists you with:
   </p>
 
   <div className="relative">
@@ -638,101 +732,88 @@ const numberedDocuments = documents.map((doc, index) => ({ ...doc, number: index
 
           {/* Documents Section */}
        <div
-      id="documents"
-      ref={sectionRefs.documents}
-      className={`mb-20 relative scroll-mt-20 transition-all duration-700 delay-500 ${
-        isVisible.documents ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
+  id="documents"
+  ref={sectionRefs.documents}
+  className={`mb-20 relative scroll-mt-20 transition-all duration-700 delay-500 ${
+    isVisible.documents ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+  }`}
+>
+  {/* Section Header */}
+  <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 md:mb-6 text-center">
+    Documents Needed
+  </h2>
+  <p className="text-sm md:text-base text-gray-700 mb-8 md:mb-10 text-center max-w-3xl mx-auto leading-relaxed">
+    Common documents required for Multi-State Credit Cooperative Society registration include:
+  </p>
+
+  {/* Desktop Grid */}
+  <div className="hidden lg:grid grid-cols-3 gap-6 max-w-6xl mx-auto">
+    {numberedDocuments.map((doc, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: index * 0.08 }}
+        className={`relative group p-4 rounded-xl shadow-md border border-gray-100 cursor-pointer overflow-hidden bg-gradient-to-r ${doc.gradient} hover:shadow-lg transition-all duration-300`}
+        style={{ minHeight: '160px' }}
+      >
+        {/* Decorative floating circles */}
+        <div className="absolute -top-6 -left-6 w-16 h-16 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
+        <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
+
+        {/* Number Badge */}
+        <div
+          className={`flex items-center justify-center w-12 h-12 rounded-full shadow-sm mb-3 text-xl font-semibold
+          bg-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-purple-600 group-hover:text-white cursor-pointer`}
+          onClick={() => setActiveNumber(index)}
+        >
+          {doc.number} {/* Always show number */}
+        </div>
+
+        <h3 className="text-lg font-semibold text-gray-900 mb-1 group-hover:text-gray-800 transition-colors duration-300">{doc.title}</h3>
+        <p className="text-gray-700 text-sm">{doc.description}</p>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Mobile Vertical List */}
+ {/* Mobile Vertical List */}
+<div className="lg:hidden flex flex-col gap-3 max-w-xs mx-auto">
+  {numberedDocuments.map((doc, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      className={`flex items-start gap-3 bg-gradient-to-r ${doc.gradient} rounded-xl shadow-md p-3 transition-transform hover:scale-105 group`}
     >
-      {/* Section Header */}
-      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 md:mb-6 text-center">
-        Documents Needed
-      </h2>
-      <p className="text-sm md:text-base text-gray-700 mb-8 md:mb-10 text-center max-w-3xl mx-auto leading-relaxed">
-        Common documents required for Multi-State Credit Cooperative Society registration include:
-      </p>
-
-      {/* Desktop Grid */}
-      <div className="hidden lg:grid grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {numberedDocuments.map((doc, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.08 }}
-            className={`relative group p-4 rounded-xl shadow-md border border-gray-100 cursor-pointer overflow-hidden bg-gradient-to-r ${doc.gradient} hover:shadow-lg transition-all duration-300`}
-            style={{ minHeight: '160px' }}
-          >
-            {/* Decorative floating circles */}
-            <div className="absolute -top-6 -left-6 w-16 h-16 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
-            <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
-
-            {/* Number Badge */}
-            <div
-              className={`flex items-center justify-center w-12 h-12 rounded-full shadow-sm mb-3 text-xl font-semibold
-              bg-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-purple-600 group-hover:text-white cursor-pointer`}
-              onClick={() => setActiveNumber(index)}
-            >
-              {activeNumber === index ? (
-                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
-                bg-blue-600 text-white font-bold text-xs 
-                transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 hover:scale-110">
-                  f
-                </div>
-              ) : (
-                doc.number
-              )}
-            </div>
-
-            <h3 className="text-lg font-semibold text-gray-900 mb-1 group-hover:text-gray-800 transition-colors duration-300">{doc.title}</h3>
-            <p className="text-gray-700 text-sm">{doc.description}</p>
-          </motion.div>
-        ))}
+      <div
+        className={`flex items-center justify-center w-12 h-12 rounded-full shadow-sm text-xl font-semibold
+        bg-white transition-all duration-300 cursor-pointer group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-purple-600 group-hover:text-white`}
+        onClick={() => setActiveNumber(index)}
+      >
+        {doc.number} {/* Always show number */}
       </div>
 
-      {/* Mobile Vertical List */}
-      <div className="lg:hidden flex flex-col gap-3 max-w-xs mx-auto">
-        {numberedDocuments.map((doc, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.08 }}
-            className={`flex items-start gap-3 bg-gradient-to-r ${doc.gradient} rounded-xl shadow-md p-3 transition-transform hover:scale-105`}
-          >
-            <div
-              className={`flex items-center justify-center w-12 h-12 rounded-full shadow-sm text-xl font-semibold
-              bg-white transition-all duration-300 cursor-pointer hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 hover:text-white`}
-              onClick={() => setActiveNumber(index)}
-            >
-              {activeNumber === index ? (
-                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
-                bg-blue-600 text-white font-bold text-xs 
-                transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 hover:scale-110">
-                  f
-                </div>
-              ) : (
-                doc.number
-              )}
-            </div>
-
-            <div className="flex flex-col">
-              <h3 className="text-sm font-semibold text-gray-900">{doc.title}</h3>
-              <p className="text-xs text-gray-700 leading-snug">{doc.description}</p>
-            </div>
-          </motion.div>
-        ))}
+      <div className="flex flex-col">
+        <h3 className="text-sm font-semibold text-gray-900">{doc.title}</h3>
+        <p className="text-xs text-gray-700 leading-snug">{doc.description}</p>
       </div>
+    </motion.div>
+  ))}
+</div>
 
-      {/* Note Section */}
-      <div className="mt-8 md:mt-12 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-4 border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow duration-300">
-        <p className="text-blue-800 text-sm italic text-center">
-          Note: Requirements may vary depending on your proposed operations. Our experts will guide you through the specific documentation needed for your case.
-        </p>
-      </div>
-    </div>
+
+  {/* Note Section */}
+  <div className="mt-8 md:mt-12 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-4 border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <p className="text-blue-800 text-sm italic text-center">
+      Note: Requirements may vary depending on your proposed operations. Our experts will guide you through the specific documentation needed for your case.
+    </p>
+  </div>
+</div>
+
 
 
           {/* NOC Section */}
@@ -817,100 +898,84 @@ const numberedDocuments = documents.map((doc, index) => ({ ...doc, number: index
 </motion.div>
 
     {/* Why & When NOC Cards */}
-   {/* Why & When Cards: Horizontal Scroll on Mobile with Zoom */}
-{/* Why & When Cards: Horizontal Scroll on Mobile */}
-{/* Why & When NOC Cards - Mobile Optimized */}
-<div className="flex gap-4 overflow-x-auto lg:grid lg:grid-cols-2 mb-8 py-2 lg:py-0">
-  {/* Why NOC */}
-  <motion.div
-    initial={{ opacity: 0, x: -20 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay: 0.5 }}
-    className="flex-shrink-0 min-w-[200px] sm:min-w-[220px] lg:min-w-full bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-5 border-l-4 border-gradient-to-r from-green-400 to-teal-500 shadow-md hover:shadow-xl transition-all duration-300"
-  >
-    <div className="flex items-center gap-3 mb-3">
-      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-green-400 to-teal-500 text-white shadow-lg">
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </div>
-      <h4 className="text-lg font-bold text-gray-800">Why NOC is Required</h4>
-    </div>
-    <div className="space-y-2 flex flex-col">
-      {[
-        "Confirms legal registration status at state level",
-        "Ensures no conflict with existing societies",
-        "Provides compliance record to Central Registrar",
-        "Validates multi-state expansion eligibility",
-      ].map((item, idx) => (
-        <div key={idx} className="flex items-start space-x-2">
-          <div className="w-4 h-4 bg-gradient-to-r from-green-400 to-teal-400 rounded-full flex-shrink-0 mt-1"></div>
-          <p className="text-gray-700 text-sm">{item}</p>
-        </div>
-      ))}
-    </div>
-  </motion.div>
+  
+ <div
+      id="noc-cards"
+      className="mb-20 scroll-mt-20 transition-all duration-700 delay-300"
+    >
+      <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+        NOC Information for Credit Cooperative Society{" "}
+        <span className="text-blue-600">Registration</span>
+      </h2>
+      <p className="text-lg text-gray-700 mb-10 text-justify max-w-3xl mx-auto">
+        Understanding when and why NOC is required will help you navigate the
+        legal framework and ensure smooth registration of your society.
+      </p>
 
-  {/* When You Need NOC */}
-  <motion.div
-    initial={{ opacity: 0, x: 20 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay: 0.7 }}
-    className="flex-shrink-0 min-w-[200px] sm:min-w-[220px] lg:min-w-full bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-5 border-l-4 border-gradient-to-r from-blue-500 to-indigo-500 shadow-md hover:shadow-xl transition-all duration-300"
-  >
-    <div className="flex items-center gap-3 mb-3">
-      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg">
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </div>
-      <h4 className="text-lg font-bold text-gray-800">When You Need NOC</h4>
-    </div>
-    <div className="space-y-2 flex flex-col">
-      {[
-  {
-    title: "For New Societies",
-    desc: <>Obtain NOC from State Registrar before applying <br /> to Central Registrar for multi-state registration.</>,
-  },
-  {
-    title: "For Existing Societies",
-    desc: <>Converting state-level society requires NOC from each state <br /> where you plan to operate.</>,
-  },
-].map((item, idx) => (
+      <div className="relative">
         <div
-          key={idx}
-          className="bg-blue-50/60 rounded-lg p-3 border border-blue-200/50 flex flex-col"
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex gap-4 overflow-x-auto md:grid md:grid-cols-2 md:gap-8 scrollbar-hide snap-x snap-mandatory pb-4"
         >
-          <h5 className="font-semibold text-blue-800 mb-1">{item.title}</h5>
-          <p className="text-gray-700 text-sm">{item.desc}</p>
+          {nocCards.map((card, index) => (
+            <motion.div
+              key={index}
+              ref={addToRefs}
+              initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 + index * 0.2 }}
+              className={`flex-shrink-0 min-w-[200px] sm:min-w-[220px] lg:min-w-full bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-5 border-l-4 border-gradient-to-r ${card.gradient} shadow-md hover:shadow-xl transition-all duration-300 snap-center`}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className={`w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r ${card.gradient} text-white shadow-lg`}>
+                  {card.icon}
+                </div>
+                <h4 className="text-lg font-bold text-gray-800">{card.title}</h4>
+              </div>
+              <div className="space-y-2 flex flex-col">
+                {Array.isArray(card.description)
+                  ? card.description.map((item, idx) => (
+                      <div
+                        key={idx}
+                        className={`${
+                          typeof item === "string" ? "flex items-start space-x-2" : "bg-blue-50/60 rounded-lg p-3 border border-blue-200/50 flex flex-col"
+                        }`}
+                      >
+                        {typeof item === "string" ? (
+                          <>
+                            <div className="w-4 h-4 bg-gradient-to-r from-green-400 to-teal-400 rounded-full flex-shrink-0 mt-1"></div>
+                            <p className="text-gray-700 text-sm">{item}</p>
+                          </>
+                        ) : (
+                          <>
+                            <h5 className="font-semibold text-blue-800 mb-1">{item.title}</h5>
+                            <p className="text-gray-700 text-sm">{item.desc}</p>
+                          </>
+                        )}
+                      </div>
+                    ))
+                  : null}
+              </div>
+            </motion.div>
+          ))}
         </div>
-      ))}
-    </div>
-  </motion.div>
-</div>
 
+        {/* Dot indicators - mobile only */}
+        <div className="flex justify-center mt-4 space-x-2 md:hidden">
+          {nocCards.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => scrollToIndex(index)}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                activeIndex === index ? "bg-blue-600 scale-125" : "bg-gray-300"
+              }`}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
 
 
 
@@ -991,7 +1056,7 @@ const numberedDocuments = documents.map((doc, index) => ({ ...doc, number: index
       Expert Guidance & Support
     </h4>
     <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4 md:mb-4 max-w-full sm:max-w-lg md:max-w-3xl mx-auto">
-      At Sahakar Samruddhi, we streamline the NOC acquisition process. Our experienced team prepares all necessary documents, coordinates with state authorities, and ensures your application meets every requirement before submission to the Central Registrar.
+      At Sahakar Samriddhi, we streamline the NOC acquisition process. Our experienced team prepares all necessary documents, coordinates with state authorities, and ensures your application meets every requirement before submission to the Central Registrar.
     </p>
     <button
       onClick={openAppointmentForm}
@@ -1109,7 +1174,7 @@ const numberedDocuments = documents.map((doc, index) => ({ ...doc, number: index
           {/* CTA Section */}
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-4 sm:p-6 md:p-10 text-center text-white shadow-xl transition-all duration-500 hover:shadow-2xl max-w-full sm:max-w-lg md:max-w-4xl mx-auto">
   <h2 className="text-lg sm:text-xl md:text-3xl font-bold mb-2 sm:mb-3 md:mb-4">
-    Why Choose Sahakar Samruddhi
+    Why Choose Sahakar Samriddhi
   </h2>
   <p className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 md:mb-8 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto">
     We specialize in Multi-State Credit Cooperative Society Registration. From drafting bylaws to filing your application with the Central Registrar, we handle the entire process to save you time and reduce errors. Our expertise ensures your society is legally compliant and ready to operate across states.

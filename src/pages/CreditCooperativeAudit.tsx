@@ -118,12 +118,12 @@ const CreditCooperativeAudit = () => {
       answer: "Statutory registers record members' details, shareholdings, loans, meetings, and board resolutions. They are mandatory under cooperative laws and help maintain transparency."
     },
     {
-      question: "Can Sahakar Samruddhi help with tax filings too?",
-      answer: "Yes. In addition to audits and compliance, Sahakar Samruddhi can assist with income tax filings, TDS returns, GST compliance, and other financial advisory services."
+      question: "Can Sahakar Samriddhi help with tax filings too?",
+      answer: "Yes. In addition to audits and compliance, Sahakar Samriddhi can assist with income tax filings, TDS returns, GST compliance, and other financial advisory services."
     },
     {
       question: "How can we stay compliant year-round?",
-      answer: "Keep accurate records, schedule regular board meetings, maintain statutory registers, and work with professionals like Sahakar Samruddhi for audits, returns, and timely advice."
+      answer: "Keep accurate records, schedule regular board meetings, maintain statutory registers, and work with professionals like Sahakar Samriddhi for audits, returns, and timely advice."
     }
   ];
   const benefits = [
@@ -408,7 +408,7 @@ const CreditCooperativeAudit = () => {
               Our Audit and Compliance Services
             </h2>
             <p className="text-lg text-gray-700 mb-10 text-center max-w-3xl mx-auto">
-              At Sahakar Samruddhi, we provide end-to-end support to ensure your Credit Cooperative Society meets all legal obligations.
+              At Sahakar Samriddhi, we provide end-to-end support to ensure your Credit Cooperative Society meets all legal obligations.
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -651,7 +651,7 @@ const CreditCooperativeAudit = () => {
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-10 text-center text-white shadow-xl transition-all duration-500 hover:shadow-2xl">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Stay Compliant?</h2>
             <p className="text-lg mb-8 max-w-3xl mx-auto">
-              Keeping your Credit Cooperative Society audit-ready doesn't have to be complicated. Sahakar Samruddhi offers complete audit and compliance support so you can focus on serving your members.
+              Keeping your Credit Cooperative Society audit-ready doesn't have to be complicated. Sahakar Samriddhi offers complete audit and compliance support so you can focus on serving your members.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <button

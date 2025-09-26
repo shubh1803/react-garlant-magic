@@ -7,6 +7,7 @@ import { CheckCircle, Users, FileText, TrendingUp, Clock, Shield, Briefcase, Boo
 
 const CreditCooperativeRegistration = () => {
   const pathRef = useRef(null);
+   const scrollRef = useRef(null);
   const [points, setPoints] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
   const [activeTab, setActiveTab] = useState('overview');
@@ -47,6 +48,28 @@ const CreditCooperativeRegistration = () => {
     setShowAppointmentForm(false);
     document.body.style.overflow = "auto";
   };
+    const handleScroll = () => {
+    if (!scrollRef.current) return;
+
+    const { scrollLeft } = scrollRef.current;
+    const cardWidth = scrollRef.current.firstChild.offsetWidth + 24; // card width + gap (space-x-6 = 1.5rem = 24px)
+
+    const newIndex = Math.round(scrollLeft / cardWidth);
+    setActiveIndex(newIndex);
+  };
+
+  // Smooth scroll to card when dot clicked
+  const scrollToIndex = (index) => {
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.firstChild.offsetWidth + 24;
+
+    scrollRef.current.scrollTo({
+      left: cardWidth * index,
+      behavior: "smooth",
+    });
+    setActiveIndex(index);
+  };
+
 
   const steps = [
   {
@@ -279,7 +302,7 @@ const CreditCooperativeRegistration = () => {
               className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-10"
             >
               Starting a Credit Cooperative Society is one of the most effective ways to bring people together 
-              and provide affordable credit to members. At Sahakar Samruddhi, we guide you through the complete 
+              and provide affordable credit to members. At Sahakar Samriddhi, we guide you through the complete 
               process of registering a Credit Cooperative Society in India so you can focus on building your organization.
             </motion.p>
 
@@ -439,247 +462,213 @@ const CreditCooperativeRegistration = () => {
           </div>
 
           {/* Benefits Section */}
+         <div 
+  id="benefits" 
+  ref={sectionRefs.benefits} 
+  className={`mb-20 scroll-mt-20 transition-all duration-700 delay-100 ${
+    isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+  }`}
+>
+  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+    Benefits of Registering a Credit Cooperative Society
+  </h2>
+
+  {/* Mobile Horizontal Scroll */}
+  <div className="flex md:hidden overflow-x-auto hide-scrollbar gap-4 snap-x snap-mandatory">
+    {[0, 3].map((startIndex) => (
+      <div key={startIndex} className="flex flex-col gap-4 min-w-[80%] snap-center">
+        {[
+          "Legal recognition to operate and accept member deposits",
+          "Access to low-cost funding through cooperative channels",
+          "Ability to offer affordable loans to members",
+          "Transparent and democratic governance",
+          "Builds trust and credibility among stakeholders",
+          "Tax benefits and exemptions under cooperative laws"
+        ].slice(startIndex, startIndex + 3).map((benefit, index) => (
           <div 
-            id="benefits" 
-            ref={sectionRefs.benefits} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-100 ${
-              isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+            key={index} 
+            className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4 group"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Benefits of Registering a Credit Cooperative Society
-            </h2>
-
-            {/* Mobile Horizontal Scroll */}
-            <div className="flex md:hidden overflow-x-auto hide-scrollbar gap-4 snap-x snap-mandatory">
-              {[0, 3].map((startIndex) => (
-                <div key={startIndex} className="flex flex-col gap-4 min-w-[80%] snap-center">
-                  {[
-                    "Legal recognition to operate and accept member deposits",
-                    "Access to low-cost funding through cooperative channels",
-                    "Ability to offer affordable loans to members",
-                    "Transparent and democratic governance",
-                    "Builds trust and credibility among stakeholders",
-                    "Tax benefits and exemptions under cooperative laws"
-                  ].slice(startIndex, startIndex + 3).map((benefit, index) => (
-                    <div 
-                      key={index} 
-                      className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4"
-                    >
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white font-bold">
-                        ✓
-                      </div>
-                      <p className="text-gray-900 font-medium">{benefit}</p>
-                    </div>
-                  ))}
-                </div>
-              ))}
+            {/* Circle Icon */}
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600 border border-gray-200 flex items-center justify-center text-gray-900 font-bold transition-all duration-300 group-hover:bg-primary-gradient group-hover:text-white group-hover:border-transparent">
+              ✓
             </div>
-
-            {/* Desktop Grid */}
-            <div className="hidden md:grid md:grid-cols-2 gap-8 mt-12">
-              {[
-                "Legal recognition to operate and accept member deposits",
-                "Access to low-cost funding through cooperative channels",
-                "Ability to offer affordable loans to members",
-                "Transparent and democratic governance",
-                "Builds trust and credibility among stakeholders",
-                "Tax benefits and exemptions under cooperative laws"
-              ].map((benefit, index) => (
-                <div 
-                  key={index} 
-                  className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4"
-                >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center text-white font-bold">
-                    ✓
-                  </div>
-                  <p className="text-gray-900 font-medium">{benefit}</p>
-                </div>
-              ))}
-            </div>
+            <p className="text-gray-900 font-medium">{benefit}</p>
           </div>
+        ))}
+      </div>
+    ))}
+  </div>
+
+  {/* Desktop Grid */}
+  <div className="hidden md:grid md:grid-cols-2 gap-8 mt-12">
+    {[
+      "Legal recognition to operate and accept member deposits",
+      "Access to low-cost funding through cooperative channels",
+      "Ability to offer affordable loans to members",
+      "Transparent and democratic governance",
+      "Builds trust and credibility among stakeholders",
+      "Tax benefits and exemptions under cooperative laws"
+    ].map((benefit, index) => (
+      <div 
+        key={index} 
+        className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4 group"
+      >
+        {/* Circle Icon */}
+        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600 border border-gray-200 flex items-center justify-center text-gray-900 font-bold transition-all duration-300 group-hover:bg-primary-gradient group-hover:text-white group-hover:border-transparent">
+          ✓
+        </div>
+        <p className="text-gray-900 font-medium">{benefit}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
 
           {/* Levels Section */}
-          <div 
-            id="levels" 
-            ref={sectionRefs.levels} 
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-200 ${
-              isVisible.levels ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-              Levels of Credit Cooperative Society <span className="text-blue-600">Registration</span>
-            </h2>
-            <p className="text-lg text-gray-700 mb-10 text-center max-w-3xl mx-auto">
-              Credit Cooperative Societies in India can be registered at different levels depending on the area of operation. 
-              Understanding these levels helps you decide the right structure for your society.
-            </p>
-            
-            {/* Horizontal scroll on mobile, grid on md+ */}
-            <div className="flex space-x-6 overflow-x-auto md:grid md:grid-cols-3 md:gap-8 md:space-x-0 pb-4 scrollbar-hide">
-              {levels.map((level, index) => (
-                <div
-                  key={index}
-                  className="relative bg-white border border-gray-200 rounded-xl p-6 w-80 flex-shrink-0 flex flex-col
-                             transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)]
-                             group cursor-pointer overflow-hidden md:w-auto"
-                  onClick={openAppointmentForm}
-                >
-                  {/* Shimmer Effect Overlay */}
-                  <div
-                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent 
-                                -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-                  ></div>
+       <div
+  id="levels"
+  className="mb-20 scroll-mt-20 transition-all duration-700 delay-200"
+>
+  <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+    Levels of Credit Cooperative Society <span className="text-blue-600">Registration</span>
+  </h2>
+  <p className="text-lg text-gray-700 mb-10 text-justify max-w-3xl mx-auto">
+    Credit Cooperative Societies in India can be registered at different levels depending on the area of operation. 
+    Understanding these levels helps you decide the right structure for your society.
+  </p>
 
-                  <div
-                    className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center mb-4 
-                                transition-all duration-500 group-hover:from-blue-500 group-hover:to-blue-700"
-                  >
-                    <div className="text-blue-600 transition-colors duration-300 group-hover:text-white">
-                      {level.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
-                    {level.title}
-                  </h3>
-                  <p className="text-gray-600 flex-grow mb-4">{level.description}</p>
-                  <div className="mt-auto pt-4 border-t border-gray-100 group-hover:border-blue-200 transition-colors duration-300">
-                    <div className="inline-flex items-center text-blue-600 font-medium text-sm group-hover:text-blue-700 transition-colors duration-300">
-                      Learn more
-                      <svg
-                        className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-12 text-center">
-              <p className="text-gray-600 mb-4 italic">
-                (In some cases, societies may also register at the multi-state or national level under separate laws. We can guide you on that too.)
-              </p>
-              <button
-                onClick={openAppointmentForm}
-                className="relative bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg 
-                           transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] overflow-hidden"
-              >
-                {/* Button Shimmer Overlay */}
-                <span
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent 
-                             -translate-x-full hover:translate-x-full transition-transform duration-700"
-                ></span>
-                <span className="relative">Consult Our Experts for Guidance</span>
-              </button>
-            </div>
+  <div className="relative">
+    <div
+      ref={scrollRef}
+      onScroll={handleScroll}
+      className="flex space-x-6 overflow-x-auto md:grid md:grid-cols-3 md:gap-8 md:space-x-0 pb-4 scrollbar-hide snap-x snap-mandatory"
+    >
+      {levels.map((level, index) => (
+        <div
+          key={index}
+          className="relative bg-white border border-gray-200 rounded-xl p-6 w-80 flex-shrink-0 flex flex-col 
+                     transition-transform duration-500 hover:-translate-y-2 hover:shadow-md group cursor-pointer 
+                     md:w-auto snap-center"
+          onClick={openAppointmentForm}
+        >
+          {/* Shimmer Overlay */}
+          <div
+            className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                       -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+          ></div>
+
+          <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4 
+                          transition-colors duration-300 group-hover:bg-blue-600">
+            {level.icon}
           </div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
+            {level.title}
+          </h3>
+          <p className="text-gray-600 flex-grow text-justify">{level.description}</p>
+
+          <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="w-full h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Dot indicators - mobile only */}
+    <div className="flex justify-center mt-4 space-x-2 md:hidden">
+      {levels.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => scrollToIndex(index)}
+          className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+            activeIndex === index ? "bg-blue-600 scale-125" : "bg-gray-300"
+          }`}
+        ></button>
+      ))}
+    </div>
+  </div>
+
+  <div className="mt-12 text-center">
+    <p className="text-gray-600 mb-4 italic">
+      (In some cases, societies may also register at the multi-state or national level under separate laws. We can guide you on that too.)
+    </p>
+    <button
+      onClick={openAppointmentForm}
+      className="relative bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg 
+                 transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] overflow-hidden"
+    >
+      <span
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                   -translate-x-full hover:translate-x-full transition-transform duration-700"
+      ></span>
+      <span className="relative">Consult Our Experts for Guidance</span>
+    </button>
+  </div>
+</div>
 
           {/* Categories Section */}
           <div
-            id="categories"
-            ref={sectionRefs.categories}
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-300 ${
-              isVisible.categories
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-              Categories of Credit Cooperative Society Registration
-            </h2>
-            <p className="text-lg text-gray-700 mb-10 text-center max-w-3xl mx-auto">
-              Credit Cooperative Societies can be formed for different groups based on
-              their needs and social objectives. Understanding these categories will
-              help you decide which type of society best matches your goals.
-            </p>
+      id="categories"
+      className="mb-20 scroll-mt-20 transition-all duration-700 delay-300"
+    >
+      <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+        Categories of Credit Cooperative Society{" "}
+        <span className="text-blue-600">Registration</span>
+      </h2>
+      <p className="text-lg text-gray-700 mb-10 text-justify max-w-3xl mx-auto">
+        Credit Cooperative Societies can be formed for different groups based on
+        their needs and social objectives. Understanding these categories will
+        help you decide which type of society best matches your goals.
+      </p>
 
-            {/* Horizontal scroll on mobile, grid on md+ */}
-            <div className="flex space-x-6 overflow-x-auto md:grid md:grid-cols-3 md:gap-8 md:space-x-0 pb-4 scrollbar-hide">
-              {categories.map((category, index) => (
-                <div
-                  key={index}
-                  className="bg-white border border-gray-200 rounded-xl p-6 w-80 flex-shrink-0 flex flex-col transition-transform duration-500 hover:-translate-y-2 hover:shadow-md group cursor-pointer md:w-auto"
-                  onClick={openAppointmentForm}
-                >
-                  <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-blue-600">
-                    {category.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
-                    {category.title}
-                  </h3>
-                  <p className="text-gray-600 flex-grow">{category.description}</p>
-                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-full h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Why Category Matters block */}
-            <div className="mt-12 p-8 rounded-3xl bg-gradient-to-r from-white via-sky-50 to-white shadow-xl border-l-8 border-gradient-to-b border-teal-400 hover:scale-105 transition-transform duration-500 ease-in-out">
-              <div className="flex items-center mb-6">
-                <div className="bg-teal-400 text-white w-12 h-12 flex items-center justify-center rounded-full mr-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m-6 4h6m2 4H7a2 2 0 01-2-2V6a2 2 0 012-2h4l2 2h6a2 2 0 012 2v12a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  Why the Category Matters
-                </h3>
+      {/* Horizontal scroll on mobile, grid on md+ */}
+      <div className="relative">
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex space-x-6 overflow-x-auto md:grid md:grid-cols-3 md:gap-8 md:space-x-0 pb-4 scrollbar-hide snap-x snap-mandatory"
+        >
+          {categories.map((category, index) => (
+            <div
+              key={index}
+              className="bg-white border border-gray-200 rounded-xl p-6 w-80 flex-shrink-0 flex flex-col 
+                        transition-transform duration-500 hover:-translate-y-2 hover:shadow-md group cursor-pointer 
+                        md:w-auto snap-center"
+              onClick={openAppointmentForm}
+            >
+              <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-blue-600">
+                {category.icon}
               </div>
-              <p className="text-gray-700 mb-5">
-                Choosing the right category of Credit Cooperative Society helps you:
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
+                {category.title}
+              </h3>
+              <p className="text-gray-600 flex-grow text-justify">
+                {category.description}
               </p>
-              <ul className="space-y-3">
-                {[
-                  "Comply with specific legal and membership requirements",
-                  "Access government benefits or schemes applicable to your category",
-                  "Better serve the unique needs of your target members",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start group">
-                    <span className="text-teal-400 mr-3 mt-1 group-hover:animate-bounce">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414L9 14.414l-3.707-3.707a1 1 0 011.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                    <span className="text-gray-800">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-gray-700">
-                At{" "}
-                <span className="font-semibold text-teal-600">Sahakar Samruddhi</span>, we
-                help you identify the right category for your society and guide you
-                through the registration process, including preparing the right documents
-                and ensuring compliance.
-              </p>
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="w-full h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"></div>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
+
+        {/* Dot indicators - visible only on mobile */}
+        <div className="flex justify-center mt-4 space-x-2 md:hidden">
+          {categories.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => scrollToIndex(index)}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                activeIndex === index
+                  ? "bg-blue-600 scale-125"
+                  : "bg-gray-300"
+              }`}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
+
 
           {/* Registration Process Section - IMPROVED ZIG-ZAG DESIGN */}
              <div
@@ -694,7 +683,7 @@ const CreditCooperativeRegistration = () => {
     Registration Process
   </h2>
   <p className="text-lg text-gray-700 mb-12 text-center max-w-3xl mx-auto">
-    Registering a Multi-State Credit Cooperative Society involves compliance with the Multi-State Cooperative Societies Act, 2002. Our team at Sahakar Samruddhi assists you with:
+    Registering a Multi-State Credit Cooperative Society involves compliance with the Multi-State Cooperative Societies Act, 2002. Our team at Sahakar Samriddhi assists you with:
   </p>
 
   <div className="relative">
@@ -797,7 +786,7 @@ const CreditCooperativeRegistration = () => {
     ].map((doc, index) => (
       <div key={index} className="relative z-10 flex-1 text-center px-4 mb-12 md:mb-0 group">
         {/* Number Circle */}
-        <div className="w-14 h-14 mx-auto bg-gray-200 group-hover:bg-primary-gradient text-blue-500 group-hover:text-white flex items-center justify-center rounded-full text-lg font-bold shadow-lg transition-all duration-300">
+        <div className="w-14 h-14 mx-auto bg-blue-600 group-hover:bg-primary-gradient text-black group-hover:text-white flex items-center justify-center rounded-full text-lg font-bold shadow-lg transition-all duration-300">
           {doc.number}
         </div>
 
@@ -923,7 +912,7 @@ const CreditCooperativeRegistration = () => {
           {/* CTA Section */}
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-6 md:p-10 text-center text-white shadow-xl transition-all duration-500 hover:shadow-2xl max-w-4xl mx-auto">
             {/* Heading */}
-            <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-6">Why Choose Sahakar Samruddhi</h2>
+            <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-6">Why Choose Sahakar Samriddhi</h2>
 
             {/* Description */}
             <p className="text-base md:text-lg mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed">

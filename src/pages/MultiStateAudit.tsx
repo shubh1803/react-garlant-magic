@@ -119,7 +119,7 @@ const MultiStateAudit = () => {
       answer: "Non-compliance can lead to fines, disqualification of office bearers, or even cancellation of registration by the Central Registrar."
     },
     {
-      question: "Can Sahakar Samruddhi help with both audit and tax filings?",
+      question: "Can Sahakar Samriddhi help with both audit and tax filings?",
       answer: "Yes. We provide end-to-end support including audit, compliance filings, tax returns, and advisory for multi-state operations."
     },
     {
@@ -918,7 +918,7 @@ const MultiStateAudit = () => {
   shadow-xl transition-all duration-500 hover:shadow-2xl"
 >
   <h2 className="text-xl md:text-3xl font-bold mb-3 md:mb-4">
-    Why Choose Sahakar Samruddhi
+    Why Choose Sahakar Samriddhi
   </h2>
   
   <p className="text-sm md:text-lg mb-6 md:mb-8 max-w-3xl mx-auto">

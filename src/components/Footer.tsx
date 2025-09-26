@@ -34,29 +34,33 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="sm:col-span-1">
-            <h4 className="text-sm md:text-lg font-semibold mb-3 md:mb-4 text-white">Quick Links</h4>
-            <ul className="space-y-2 md:space-y-3 text-xs md:text-sm">
-              <li><Link to="/about" className="hover:text-blue-500 transition-colors">About Us</Link></li>
-              <li><Link to="/services" className="hover:text-blue-500 transition-colors">Services</Link></li>
-              <li><Link to="/blog" className="hover:text-blue-500 transition-colors">Blog</Link></li>
-              <li><Link to="/success-stories" className="hover:text-blue-500 transition-colors">Success Stories</Link></li>
-              <li><Link to="/contact" className="hover:text-blue-500 transition-colors">Contact</Link></li>
-            </ul>
-          </div>
+         {/* Wrapper for Quick Links + Our Services */}
+<div className="sm:col-span-2 flex flex-row flex-wrap gap-6">
+  {/* Quick Links */}
+  <div className="flex-1 min-w-[120px]">
+    <h4 className="text-sm md:text-lg font-semibold mb-3 md:mb-4 text-white">Quick Links</h4>
+    <ul className="space-y-2 md:space-y-3 text-xs md:text-sm">
+      <li><Link to="/about" className="hover:text-blue-500 transition-colors">About Us</Link></li>
+      <li><Link to="/" className="hover:text-blue-500 transition-colors">Services</Link></li>
+      <li><Link to="/blog" className="hover:text-blue-500 transition-colors">Blog</Link></li>
+      <li><Link to="/success-stories" className="hover:text-blue-500 transition-colors">Success Stories</Link></li>
+      <li><Link to="/contact" className="hover:text-blue-500 transition-colors">Contact</Link></li>
+    </ul>
+  </div>
 
-          {/* Our Services */}
-          <div className="sm:col-span-1">
-            <h4 className="text-sm md:text-lg font-semibold mb-3 md:mb-4 text-white">Our Services</h4>
-            <ul className="space-y-2 md:space-y-3 text-xs md:text-sm">
-              <li className="hover:text-blue-500 transition-colors cursor-pointer">Credit Cooperative Societies</li>
-              <li className="hover:text-blue-500 transition-colors cursor-pointer">Multi-State Credit Cooperatives</li>
-              <li className="hover:text-blue-500 transition-colors cursor-pointer">Microfinance Companies (Section 8)</li>
-              <li className="hover:text-blue-500 transition-colors cursor-pointer">Banking & Finance Consultation</li>
-              <li className="hover:text-blue-500 transition-colors cursor-pointer">Legal Compliance & Advisory</li>
-              <li className="hover:text-blue-500 transition-colors cursor-pointer">Strategic Growth Planning</li>
-            </ul>
-          </div>
+  {/* Our Services */}
+  <div className="flex-1 min-w-[120px]">
+    <h4 className="text-sm md:text-lg font-semibold mb-3 md:mb-4 text-white">Our Services</h4>
+    <ul className="space-y-2 md:space-y-3 text-xs md:text-sm">
+      <li className="hover:text-blue-500 transition-colors cursor-pointer">Credit Cooperative Societies</li>
+      <li className="hover:text-blue-500 transition-colors cursor-pointer">Multi-State Credit Cooperatives</li>
+      <li className="hover:text-blue-500 transition-colors cursor-pointer">Microfinance Companies (Section 8)</li>
+      <li className="hover:text-blue-500 transition-colors cursor-pointer">Banking & Finance Consultation</li>
+      <li className="hover:text-blue-500 transition-colors cursor-pointer">Legal Compliance & Advisory</li>
+      <li className="hover:text-blue-500 transition-colors cursor-pointer">Strategic Growth Planning</li>
+    </ul>
+  </div>
+</div>
 
           {/* Contact Info */}
           <div className="sm:col-span-1 lg:col-span-1">
@@ -64,7 +68,7 @@ const Footer = () => {
             <ul className="space-y-2 md:space-y-4 text-xs md:text-sm">
               <li className="flex items-start">
                 <Mail className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3 text-blue-500" />
-                info@sahakarsamruddhi.in
+                info@sahakarSamriddhi.in
               </li>
               <li className="flex items-start">
                 <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3 text-blue-500" />
@@ -79,16 +83,32 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-6 md:mt-12 py-4 md:py-6 text-center text-xs md:text-sm">
-          <p>
-            © 2024 Sahakar Samruddhi. All rights reserved. | Designed with ❤️ in India
-          </p>
-          <div className="mt-2 md:mt-3 space-x-4 md:space-x-6 flex flex-wrap justify-center gap-2">
-            <Link to="/privacy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-blue-500 transition-colors">Terms of Service</Link>
-            <Link to="/disclaimer" className="hover:text-blue-500 transition-colors">Disclaimer</Link>
-          </div>
-        </div>
+      <div className="border-t border-gray-700 mt-6 md:mt-12 py-6 text-center text-xs md:text-sm text-gray-400">
+  <p className="mb-2 md:mb-3">
+    © 2024 Sahakar Samriddhi. All rights reserved. | Designed with <span className="text-red-500">❤️</span> in India
+  </p>
+  <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+    <Link
+      to="/privacy"
+      className="hover:text-blue-500 hover:underline transition-all duration-200"
+    >
+      Privacy Policy
+    </Link>
+    <Link
+      to="/terms"
+      className="hover:text-blue-500 hover:underline transition-all duration-200"
+    >
+      Terms of Service
+    </Link>
+    <Link
+      to="/disclaimer"
+      className="hover:text-blue-500 hover:underline transition-all duration-200"
+    >
+      Disclaimer
+    </Link>
+  </div>
+</div>
+
       </div>
     </footer>
   );

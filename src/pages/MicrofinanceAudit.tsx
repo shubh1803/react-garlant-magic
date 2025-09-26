@@ -82,7 +82,7 @@ const MicrofinanceAudit = () => {
       answer: "Non-compliance can result in penalties, cancellation of Section 8 license, or disqualification of directors by the Ministry of Corporate Affairs."
     },
     {
-      question: "Can Sahakar Samruddhi help with tax and RBI Compliances too?",
+      question: "Can Sahakar Samriddhi help with tax and RBI Compliances too?",
       answer: "Yes. We provide end-to-end support, including tax filings, ROC filings, and advisory on compliance."
     },
     {
@@ -600,7 +600,7 @@ const MicrofinanceAudit = () => {
           >
             <h2 className="text-3xl font-bold mb-4">Ready to Stay Compliant?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Managing a Microfinance Company under Section 8 is a serious responsibility. Sahakar Samruddhi offers complete audit and compliance solutions so you can focus on empowering communities through microfinance.
+              Managing a Microfinance Company under Section 8 is a serious responsibility. Sahakar Samriddhi offers complete audit and compliance solutions so you can focus on empowering communities through microfinance.
             </p>
             <button
               onClick={openAppointmentForm}

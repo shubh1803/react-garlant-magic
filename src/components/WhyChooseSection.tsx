@@ -209,7 +209,7 @@ const WhyChooseSection = () => {
     Ready to Transform Your Cooperative Institution?
   </h3>
   <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-    Join hundreds of successful cooperative institutions that have trusted Sahakar Samruddhi 
+    Join hundreds of successful cooperative institutions that have trusted Sahakar Samriddhi 
     for their banking and financial consultancy needs.
   </p>
   <button className="bg-primary-gradient text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 hover:scale-105">

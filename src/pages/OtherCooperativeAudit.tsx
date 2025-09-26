@@ -86,7 +86,7 @@ const OtherCooperativeAudit = () => {
       answer: "Non-compliance can result in fines, disqualification of office bearers, or cancellation of registration by the Registrar."
     },
     {
-      question: "Can Sahakar Samruddhi handle all filings?",
+      question: "Can Sahakar Samriddhi handle all filings?",
       answer: "Yes. We provide end-to-end support including audits, compliance filings, tax returns, and advisory for all types of cooperative societies."
     },
     {
@@ -624,7 +624,7 @@ const OtherCooperativeAudit = () => {
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Stay Compliant?</h2>
               <p className="text-lg mb-8 max-w-3xl mx-auto text-sky-100">
                 Managing a cooperative society responsibly requires regular audits and strict compliance. 
-                Sahakar Samruddhi offers complete audit and compliance solutions for all types of cooperative societies.
+                Sahakar Samriddhi offers complete audit and compliance solutions for all types of cooperative societies.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <button

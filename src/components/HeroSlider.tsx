@@ -42,7 +42,7 @@ const slides = [
   {
     id: 5,
     image: heroSlide2,
-    title: "Sahakar Samruddhi – Your Trusted Partner in Cooperative Success",
+    title: "Sahakar Samriddhi – Your Trusted Partner in Cooperative Success",
     subtitle: "We empower cooperative institutions with legal, financial, and strategic expertise tailored to your goals.",
     primaryBtn: "Request a Free Consultation",
     secondaryBtn: "Learn More"

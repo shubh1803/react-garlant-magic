@@ -195,7 +195,7 @@ const BankingBusinessSetup = () => {
       answer: "Begin with a feasibility study and business plan to understand your market, financial projections, and regulatory requirements."
     },
     {
-      question: "Can Sahakar Samruddhi help with licensing and registration?",
+      question: "Can Sahakar Samriddhi help with licensing and registration?",
       answer: "Yes. We guide you through entity registration, bylaw drafting, and obtaining approvals from authorities."
     },
     {
@@ -345,62 +345,66 @@ const BankingBusinessSetup = () => {
           </div>
 
           {/* Services Section with Horizontal Scroll */}
-          <div id="services" ref={sectionRefs.services} className="mb-20 scroll-mt-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Banking Business Setup Services</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Comprehensive setup services from concept to launch
-              </p>
-            </div>
+         <div id="services" ref={sectionRefs.services} className="mb-20 scroll-mt-20">
+  <div className="text-center mb-12">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Banking Business Setup Services</h2>
+    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+      Comprehensive setup services from concept to launch
+    </p>
+  </div>
 
-            <div className="relative">
-              {showLeftArrow.services && (
-                <button 
-                  onClick={() => scroll('left', servicesScrollRef, 'services')}
-                  className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-indigo-50 transition-all duration-300 -ml-6 group border border-gray-200"
-                >
-                  <ChevronLeft className="w-5 h-5 text-indigo-600 group-hover:text-indigo-800" />
-                </button>
-              )}
+  <div className="relative">
+    {showLeftArrow.services && (
+      <button 
+        onClick={() => scroll('left', servicesScrollRef, 'services')}
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-indigo-50 transition-all duration-300 -ml-6 group border border-gray-200"
+      >
+        <ChevronLeft className="w-5 h-5 text-indigo-600 group-hover:text-indigo-800" />
+      </button>
+    )}
 
-              {showRightArrow.services && (
-                <button 
-                  onClick={() => scroll('right', servicesScrollRef, 'services')}
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-indigo-50 transition-all duration-300 -mr-6 group border border-gray-200"
-                >
-                  <ChevronRight className="w-5 h-5 text-indigo-600 group-hover:text-indigo-800" />
-                </button>
-              )}
+    {showRightArrow.services && (
+      <button 
+        onClick={() => scroll('right', servicesScrollRef, 'services')}
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-indigo-50 transition-all duration-300 -mr-6 group border border-gray-200"
+      >
+        <ChevronRight className="w-5 h-5 text-indigo-600 group-hover:text-indigo-800" />
+      </button>
+    )}
 
-              <div 
-                ref={servicesScrollRef}
-                className="flex overflow-x-auto pb-6 -mx-4 px-4 hide-scrollbar"
-                onScroll={() => checkScrollPosition(servicesScrollRef, 'services')}
-              >
-                <div className="flex space-x-6 min-w-max">
-                  {setupServices.map((service, index) => (
-                    <div key={index} className="w-80 flex-shrink-0">
-                      <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-gray-100">
-                        <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg flex items-center justify-center mb-4">
-                          <service.icon className="w-6 h-6" />
-                        </div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-3">{service.title}</h3>
-                        <p className="text-gray-600 mb-4">{service.description}</p>
-                        <ul className="space-y-2">
-                          {service.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-center text-sm text-gray-700">
-                              <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+    <div 
+      ref={servicesScrollRef}
+      className="flex overflow-x-auto pb-6 -mx-4 px-4 hide-scrollbar"
+      onScroll={() => checkScrollPosition(servicesScrollRef, 'services')}
+    >
+      <div className="flex space-x-6 min-w-max">
+        {setupServices.map((service, index) => (
+          <div key={index} className="w-80 flex-shrink-0">
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-gray-100">
+              
+              {/* Number Circle */}
+              <div className="w-12 h-12 bg-indigo-500 text-black-600 font-bold rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                {index + 1}
               </div>
+
+              <h3 className="text-lg font-bold text-gray-900 mb-3">{service.title}</h3>
+              <p className="text-gray-600 mb-4">{service.description}</p>
+              <ul className="space-y-2">
+                {service.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
 
           {/* Benefits Section with Horizontal Scroll */}
           <div id="benefits" ref={sectionRefs.benefits} className="mb-20 scroll-mt-20">
@@ -569,7 +573,7 @@ const BankingBusinessSetup = () => {
     Ready to Set Up Your Banking Business?
   </h2>
   <p className="text-base sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">
-    With our services under one roof, Sahakar Samruddhi makes it easier to start and grow your financial institution.
+    With our services under one roof, Sahakar Samriddhi makes it easier to start and grow your financial institution.
   </p>
   <button
     onClick={openAppointmentForm}
