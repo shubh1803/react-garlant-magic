@@ -431,6 +431,7 @@ const OtherCooperativeAudit = () => {
           </div>
 
           {/* Process Section */}
+          
           <div id="process" ref={sectionRefs.process} className="mb-20 scroll-mt-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">

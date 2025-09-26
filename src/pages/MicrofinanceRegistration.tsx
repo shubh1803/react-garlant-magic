@@ -619,108 +619,104 @@ const MicrofinanceRegistration = () => {
     </div>
 
           {/* Registration Process */}
-          <div
-            id="process"
-            ref={sectionRefs.process}
-            className={`mb-20 scroll-mt-20 transition-all duration-700 delay-400 ${isVisible.process ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Registration Process
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our comprehensive process ensures smooth registration of your Section 8 Microfinance Company with full compliance and legal support.
+         <div
+  id="process"
+  ref={sectionRefs.process}
+  className={`mb-20 scroll-mt-20 transition-all duration-700 delay-400 ${isVisible.process ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+>
+  <div className="text-center mb-12">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      Registration Process
+    </h2>
+    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+      Our comprehensive process ensures smooth registration of your Section 8 Microfinance Company with full compliance and legal support.
+    </p>
+  </div>
+
+  <div className="relative max-w-4xl mx-auto">
+    <div className="space-y-12">
+      {[
+        {
+          step: "01",
+          title: "Name Approval",
+          description: "Applying for company name approval through the Ministry of Corporate Affairs (MCA) portal.",
+          details: "We help you choose an appropriate name that reflects your microfinance objectives and check availability."
+        },
+        {
+          step: "02", 
+          title: "Document Drafting",
+          description: "Drafting the Memorandum of Association (MOA) and Articles of Association (AOA) for microfinance activities.",
+          details: "Our legal experts prepare comprehensive documents aligned with Section 8 requirements and microfinance regulations."
+        },
+        {
+          step: "03",
+          title: "Section 8 License Application",
+          description: "Filing the Section 8 incorporation form with MCA and obtaining the special license.",
+          details: "Complete application filing with all required documents and follow-up until approval is received."
+        },
+        {
+          step: "04",
+          title: "Certificate of Incorporation",
+          description: "Obtaining Certificate of Incorporation and other statutory compliances.",
+          details: "Receiving official incorporation certificate and setting up necessary statutory registers and records."
+        },
+        {
+          step: "05",
+          title: "Post-Incorporation Setup",
+          description: "Securing PAN, TAN, opening bank account, and preparing for operations.",
+          details: "Complete setup including tax registrations, bank account opening, and operational framework establishment."
+        }
+      ].map((processStep, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.2 }}
+          viewport={{ once: true }}
+          className={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
+        >
+          <div className={`flex items-center max-w-2xl ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} group`}>
+            {/* Circle without icon, hover to pink gradient */}
+            <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center font-bold text-lg shadow-lg group-hover:bg-primary-gradient  transition-all duration-300">
+              {processStep.step}
+            </div>
+            
+            {/* Card with light blue background */}
+            <div className={`bg-blue-200 rounded-2xl p-6 shadow-lg border border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${index % 2 === 0 ? 'ml-6' : 'mr-6'} flex-1`}>
+              <div className="mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {processStep.title}
+                </h3>
+              </div>
+              <p className="text-gray-700 mb-2 font-medium">
+                {processStep.description}
+              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {processStep.details}
               </p>
             </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
 
-            <div className="relative max-w-4xl mx-auto">
-              <div className="space-y-12">
-                {[
-                  {
-                    step: "01",
-                    title: "Name Approval",
-                    description: "Applying for company name approval through the Ministry of Corporate Affairs (MCA) portal.",
-                    details: "We help you choose an appropriate name that reflects your microfinance objectives and check availability.",
-                    icon: "📝"
-                  },
-                  {
-                    step: "02", 
-                    title: "Document Drafting",
-                    description: "Drafting the Memorandum of Association (MOA) and Articles of Association (AOA) for microfinance activities.",
-                    details: "Our legal experts prepare comprehensive documents aligned with Section 8 requirements and microfinance regulations.",
-                    icon: "📋"
-                  },
-                  {
-                    step: "03",
-                    title: "Section 8 License Application",
-                    description: "Filing the Section 8 incorporation form with MCA and obtaining the special license.",
-                    details: "Complete application filing with all required documents and follow-up until approval is received.",
-                    icon: "🏛️"
-                  },
-                  {
-                    step: "04",
-                    title: "Certificate of Incorporation",
-                    description: "Obtaining Certificate of Incorporation and other statutory compliances.",
-                    details: "Receiving official incorporation certificate and setting up necessary statutory registers and records.",
-                    icon: "🏆"
-                  },
-                  {
-                    step: "05",
-                    title: "Post-Incorporation Setup",
-                    description: "Securing PAN, TAN, opening bank account, and preparing for operations.",
-                    details: "Complete setup including tax registrations, bank account opening, and operational framework establishment.",
-                    icon: "🚀"
-                  }
-                ].map((processStep, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
-                    viewport={{ once: true }}
-                    className={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
-                  >
-                    <div className={`flex items-center max-w-2xl ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} group`}>
-                      <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300">
-                        {processStep.step}
-                      </div>
-                      
-                      <div className={`bg-white rounded-2xl p-6 shadow-lg border border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${index % 2 === 0 ? 'ml-6' : 'mr-6'} flex-1`}>
-                        <div className="flex items-start mb-3">
-                          <span className="text-2xl mr-3">{processStep.icon}</span>
-                          <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                            {processStep.title}
-                          </h3>
-                        </div>
-                        <p className="text-gray-700 mb-2 font-medium">
-                          {processStep.description}
-                        </p>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          {processStep.details}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-          <div className="mt-10 px-4 sm:px-6 md:px-20">
-  <div className="relative bg-white rounded-2xl shadow-md border border-gray-200 p-6 sm:p-8 md:p-10 overflow-hidden">
-    
-    {/* Top-left accent circle */}
-    <div className="absolute -top-6 -left-6 w-16 h-16 bg-blue-100 rounded-full"></div>
-    
-    {/* Bottom-right accent circle */}
-    <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-blue-200 opacity-30 rounded-full"></div>
-    
-    <p className="text-blue-900 text-base sm:text-lg md:text-xl font-medium relative z-10 leading-relaxed">
-      Our team at <span className="font-semibold">Sahakar Samruddhi</span> assists you with drafting documents, filing applications, and ensuring compliance at every stage.
-    </p>
+  {/* Bottom info card */}
+  <div className="mt-10 px-4 sm:px-6 md:px-20">
+    <div className="relative bg-white rounded-2xl shadow-md border border-gray-200 p-6 sm:p-8 md:p-10 overflow-hidden">
+      {/* Top-left accent circle */}
+      <div className="absolute -top-6 -left-6 w-16 h-16 bg-blue-100 rounded-full"></div>
+      
+      {/* Bottom-right accent circle */}
+      <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-blue-200 opacity-30 rounded-full"></div>
+      
+      <p className="text-blue-900 text-base sm:text-lg md:text-xl font-medium relative z-10 leading-relaxed">
+        Our team at <span className="font-semibold">Sahakar Samruddhi</span> assists you with drafting documents, filing applications, and ensuring compliance at every stage.
+      </p>
+    </div>
   </div>
 </div>
 
-          </div>
 
           {/* Documents Section */}
        <div 

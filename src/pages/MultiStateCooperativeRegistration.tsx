@@ -7,6 +7,9 @@ import Footer from '@/components/Footer';
 import { AppointmentForm } from '@/components/AppointmentForm';
 
 const MultiStateCooperativeRegistration = () => {
+  
+    const [activeNumber, setActiveNumber] = useState(null); // for click effect
+
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState('overview');
   const [showAppointmentForm, setShowAppointmentForm] = useState(false);
@@ -31,9 +34,14 @@ const MultiStateCooperativeRegistration = () => {
       block: 'start'
     });
   };
+  
+  const scrollToBottom = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  };
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+  
 
   const openAppointmentForm = () => {
     setShowAppointmentForm(true);
@@ -44,6 +52,7 @@ const MultiStateCooperativeRegistration = () => {
     setShowAppointmentForm(false);
     document.body.style.overflow = "auto";
   };
+  
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -191,6 +200,22 @@ const MultiStateCooperativeRegistration = () => {
           ),
         },
       ]
+      const documents = [
+  { title: "Draft Bylaws", description: "Draft bylaws of the proposed society according to the multi-state requirements", gradient: "from-purple-100 to-purple-200" },
+  { title: "Member List", description: "List of promoter members with ID and address proof from different states", gradient: "from-pink-100 to-pink-200" },
+  { title: "Formation Resolution", description: "Resolution for forming the society passed by the promoter members", gradient: "from-yellow-100 to-yellow-200" },
+  { title: "Office Proof", description: "Proof of registered office address for the society", gradient: "from-green-100 to-green-200" },
+  { title: "Character Certificate", description: "Character certificate from police department for promoter members", gradient: "from-blue-100 to-blue-200" },
+  { title: "NOC from State", description: "No Objection Certificate from State Registrar of Cooperative Societies", gradient: "from-indigo-100 to-indigo-200" },
+  { title: "Application Form", description: "Completed application form and affidavits as per the Act requirements", gradient: "from-orange-100 to-orange-200" },
+  { title: "Financial Plan", description: "Detailed financial plan and capital structure of the proposed society", gradient: "from-teal-100 to-teal-200" },
+  { title: "Existing Society Documents", description: "For existing societies: registration certificate, audited accounts, and membership details", gradient: "from-rose-100 to-rose-200" }
+];
+
+// Add numbers dynamically
+const numberedDocuments = documents.map((doc, index) => ({ ...doc, number: index + 1 }));
+
+      
 
   return (
     <div className="min-h-screen bg-white">
@@ -265,16 +290,22 @@ const MultiStateCooperativeRegistration = () => {
         </div>
 
         {/* Scroll indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10"
-        >
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </motion.div>
+     <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 1.5 }}
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 cursor-pointer"
+      onClick={scrollToBottom}
+    >
+      <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+        <motion.div
+          className="w-1 h-3 bg-white rounded-full mt-2"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 0.8, repeat: Infinity }}
+        ></motion.div>
+      </div>
+    </motion.div>
+
       </section>
 
       {/* Sticky Navigation */}
@@ -516,7 +547,7 @@ const MultiStateCooperativeRegistration = () => {
           </div>
 
           {/* Registration Process */}
-     <div
+      <div
   id="process"
   ref={sectionRefs.process}
   className={`mb-20 scroll-mt-20 transition-all duration-700 delay-400 ${
@@ -548,10 +579,10 @@ const MultiStateCooperativeRegistration = () => {
             index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
           }`}
         >
-          {/* Icon Circle */}
+          {/* Number Circle */}
           <div className="flex-shrink-0 relative">
-            <div className="w-14 h-14 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white z-10 shadow-lg group-hover:scale-110 group-hover:shadow-indigo-400/70 transition-all duration-500">
-              {step.icon}
+            <div className="w-14 h-14 bg-white group-hover:bg-primary-gradient  text-blue-500 group-hover:text-white rounded-full flex items-center justify-center font-bold text-lg z-10 shadow-lg transition-all duration-500">
+              {index + 1}
             </div>
           </div>
 
@@ -571,37 +602,34 @@ const MultiStateCooperativeRegistration = () => {
     </div>
 
     {/* Mobile Layout */}
-    {/* Mobile Layout */}
-<div className="md:hidden relative flex flex-col gap-4 px-4">
-  {/* Vertical timeline line */}
-  <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600"></div>
+    <div className="md:hidden relative flex flex-col gap-4 px-4">
+      {/* Vertical timeline line */}
+      <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600"></div>
 
-  {steps.map((step, index) => (
-    <motion.div
-      key={index}
-      initial={{ opacity: 0, x: -15 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
-      viewport={{ once: true }}
-      className="flex items-start gap-3 relative"
-    >
-      {/* Icon Circle */}
-      <div className="flex-shrink-0 relative z-10">
-        <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white shadow-sm">
-          {step.icon}
-        </div>
-      </div>
+      {steps.map((step, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, x: -15 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.05 }}
+          viewport={{ once: true }}
+          className="flex items-start gap-3 relative group"
+        >
+          {/* Number Circle */}
+          <div className="flex-shrink-0 relative z-10">
+            <div className="w-8 h-8 bg-white group-hover:bg-primary-gradient  text-blue-500 group-hover:text-white rounded-full flex items-center justify-center font-bold text-sm shadow-sm transition-all duration-500">
+              {index + 1}
+            </div>
+          </div>
 
-      {/* Step Content Card */}
-      <div className="flex-grow p-3 rounded-lg border border-transparent shadow-sm bg-blue-100 transition-all duration-500">
-        <h3 className="text-sm font-semibold text-gray-900 mb-1">{step.title}</h3>
-        <p className="text-xs text-gray-700 leading-snug">{step.description}</p>
-      </div>
-    </motion.div>
-  ))}
-</div>
-
-
+          {/* Step Content Card */}
+          <div className="flex-grow p-3 rounded-lg border border-transparent shadow-sm bg-blue-100 transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-md">
+            <h3 className="text-sm font-semibold text-gray-900 mb-1">{step.title}</h3>
+            <p className="text-xs text-gray-700 leading-snug">{step.description}</p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
   </div>
 </div>
 
@@ -609,96 +637,102 @@ const MultiStateCooperativeRegistration = () => {
 
 
           {/* Documents Section */}
-      <div
-  id="documents"
-  ref={sectionRefs.documents}
-  className={`mb-20 relative scroll-mt-20 transition-all duration-700 delay-500 ${
-    isVisible.documents ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-  }`}
->
-  {/* Section Header */}
-  <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 md:mb-6 text-center">
-    Documents Needed
-  </h2>
-  <p className="text-sm md:text-base text-gray-700 mb-8 md:mb-10 text-center max-w-3xl mx-auto leading-relaxed">
-    Common documents required for Multi-State Credit Cooperative Society registration include:
-  </p>
+       <div
+      id="documents"
+      ref={sectionRefs.documents}
+      className={`mb-20 relative scroll-mt-20 transition-all duration-700 delay-500 ${
+        isVisible.documents ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
+      {/* Section Header */}
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 md:mb-6 text-center">
+        Documents Needed
+      </h2>
+      <p className="text-sm md:text-base text-gray-700 mb-8 md:mb-10 text-center max-w-3xl mx-auto leading-relaxed">
+        Common documents required for Multi-State Credit Cooperative Society registration include:
+      </p>
 
-  {/* Desktop Grid */}
-  <div className="hidden lg:grid grid-cols-3 gap-6 max-w-6xl mx-auto">
-    {[
-      { title: "Draft Bylaws", description: "Draft bylaws of the proposed society according to the multi-state requirements", icon: "📄", gradient: "from-purple-100 to-purple-200" },
-      { title: "Member List", description: "List of promoter members with ID and address proof from different states", icon: "👥", gradient: "from-pink-100 to-pink-200" },
-      { title: "Formation Resolution", description: "Resolution for forming the society passed by the promoter members", icon: "📝", gradient: "from-yellow-100 to-yellow-200" },
-      { title: "Office Proof", description: "Proof of registered office address for the society", icon: "🏢", gradient: "from-green-100 to-green-200" },
-      { title: "Character Certificate", description: "Character certificate from police department for promoter members", icon: "✅", gradient: "from-blue-100 to-blue-200" },
-      { title: "NOC from State", description: "No Objection Certificate from State Registrar of Cooperative Societies", icon: "🛡️", gradient: "from-indigo-100 to-indigo-200" },
-      { title: "Application Form", description: "Completed application form and affidavits as per the Act requirements", icon: "📋", gradient: "from-orange-100 to-orange-200" },
-      { title: "Financial Plan", description: "Detailed financial plan and capital structure of the proposed society", icon: "💰", gradient: "from-teal-100 to-teal-200" },
-      { title: "Existing Society Documents", description: "For existing societies: registration certificate, audited accounts, and membership details", icon: "📑", gradient: "from-rose-100 to-rose-200" }
-    ].map((doc, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: index * 0.08 }}
-        className={`relative group p-4 rounded-xl shadow-md border border-gray-100 cursor-pointer overflow-hidden bg-gradient-to-r ${doc.gradient} hover:shadow-lg transition-all duration-300`}
-        style={{ minHeight: '160px' }}
-      >
-        {/* Decorative floating circles */}
-        <div className="absolute -top-6 -left-6 w-16 h-16 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
-        <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
+      {/* Desktop Grid */}
+      <div className="hidden lg:grid grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {numberedDocuments.map((doc, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.08 }}
+            className={`relative group p-4 rounded-xl shadow-md border border-gray-100 cursor-pointer overflow-hidden bg-gradient-to-r ${doc.gradient} hover:shadow-lg transition-all duration-300`}
+            style={{ minHeight: '160px' }}
+          >
+            {/* Decorative floating circles */}
+            <div className="absolute -top-6 -left-6 w-16 h-16 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
+            <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-white opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
 
-        <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-sm mb-3 text-xl">
-          {doc.icon}
-        </div>
+            {/* Number Badge */}
+            <div
+              className={`flex items-center justify-center w-12 h-12 rounded-full shadow-sm mb-3 text-xl font-semibold
+              bg-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-purple-600 group-hover:text-white cursor-pointer`}
+              onClick={() => setActiveNumber(index)}
+            >
+              {activeNumber === index ? (
+                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
+                bg-blue-600 text-white font-bold text-xs 
+                transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 hover:scale-110">
+                  f
+                </div>
+              ) : (
+                doc.number
+              )}
+            </div>
 
-        <h3 className="text-lg font-semibold text-gray-900 mb-1 group-hover:text-gray-800 transition-colors duration-300">{doc.title}</h3>
-        <p className="text-gray-700 text-sm">{doc.description}</p>
-      </motion.div>
-    ))}
-  </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-1 group-hover:text-gray-800 transition-colors duration-300">{doc.title}</h3>
+            <p className="text-gray-700 text-sm">{doc.description}</p>
+          </motion.div>
+        ))}
+      </div>
 
-  {/* Mobile Vertical List */}
-  <div className="lg:hidden flex flex-col gap-3 max-w-xs mx-auto">
-    {[
-      { title: "Draft Bylaws", description: "Draft bylaws of the proposed society according to the multi-state requirements", icon: "📄", gradient: "from-purple-100 to-purple-200" },
-      { title: "Member List", description: "List of promoter members with ID and address proof from different states", icon: "👥", gradient: "from-pink-100 to-pink-200" },
-      { title: "Formation Resolution", description: "Resolution for forming the society passed by the promoter members", icon: "📝", gradient: "from-yellow-100 to-yellow-200" },
-      { title: "Office Proof", description: "Proof of registered office address for the society", icon: "🏢", gradient: "from-green-100 to-green-200" },
-      { title: "Character Certificate", description: "Character certificate from police department for promoter members", icon: "✅", gradient: "from-blue-100 to-blue-200" },
-      { title: "NOC from State", description: "No Objection Certificate from State Registrar of Cooperative Societies", icon: "🛡️", gradient: "from-indigo-100 to-indigo-200" },
-      { title: "Application Form", description: "Completed application form and affidavits as per the Act requirements", icon: "📋", gradient: "from-orange-100 to-orange-200" },
-      { title: "Financial Plan", description: "Detailed financial plan and capital structure of the proposed society", icon: "💰", gradient: "from-teal-100 to-teal-200" },
-      { title: "Existing Society Documents", description: "For existing societies: registration certificate, audited accounts, and membership details", icon: "📑", gradient: "from-rose-100 to-rose-200" }
-    ].map((doc, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: index * 0.08 }}
-        className={`flex items-start gap-3 bg-white rounded-xl shadow-md p-3 transition-transform hover:scale-105`}
-      >
-        <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-tr ${doc.gradient} text-white text-lg shadow`}>
-          {doc.icon}
-        </div>
-        <div className="flex flex-col">
-          <h3 className="text-sm font-semibold text-gray-900">{doc.title}</h3>
-          <p className="text-xs text-gray-700 leading-snug">{doc.description}</p>
-        </div>
-      </motion.div>
-    ))}
-  </div>
+      {/* Mobile Vertical List */}
+      <div className="lg:hidden flex flex-col gap-3 max-w-xs mx-auto">
+        {numberedDocuments.map((doc, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.08 }}
+            className={`flex items-start gap-3 bg-gradient-to-r ${doc.gradient} rounded-xl shadow-md p-3 transition-transform hover:scale-105`}
+          >
+            <div
+              className={`flex items-center justify-center w-12 h-12 rounded-full shadow-sm text-xl font-semibold
+              bg-white transition-all duration-300 cursor-pointer hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 hover:text-white`}
+              onClick={() => setActiveNumber(index)}
+            >
+              {activeNumber === index ? (
+                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
+                bg-blue-600 text-white font-bold text-xs 
+                transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 hover:scale-110">
+                  f
+                </div>
+              ) : (
+                doc.number
+              )}
+            </div>
 
-  {/* Note Section */}
-  <div className="mt-8 md:mt-12 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-4 border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow duration-300">
-    <p className="text-blue-800 text-sm italic text-center">
-      Note: Requirements may vary depending on your proposed operations. Our experts will guide you through the specific documentation needed for your case.
-    </p>
-  </div>
-</div>
+            <div className="flex flex-col">
+              <h3 className="text-sm font-semibold text-gray-900">{doc.title}</h3>
+              <p className="text-xs text-gray-700 leading-snug">{doc.description}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Note Section */}
+      <div className="mt-8 md:mt-12 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-4 border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow duration-300">
+        <p className="text-blue-800 text-sm italic text-center">
+          Note: Requirements may vary depending on your proposed operations. Our experts will guide you through the specific documentation needed for your case.
+        </p>
+      </div>
+    </div>
 
 
           {/* NOC Section */}
