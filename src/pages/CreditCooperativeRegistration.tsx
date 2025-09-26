@@ -441,7 +441,7 @@ const CreditCooperativeRegistration = () => {
             className={`group p-6 rounded-2xl bg-gradient-to-br ${service.colorFrom} ${service.colorTo} border border-blue-800 text-white hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center`}
           >
             {/* Number Circle */}
-            <div className="w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center font-bold text-black text-lg mb-4 transition-colors duration-300 group-hover:bg-blue-400 group-hover:text-white">
+            <div className="w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center font-bold text-white text-lg mb-4 transition-colors duration-300 group-hover:bg-blue-400 group-hover:text-white">
               {index + 1}
             </div>
 
@@ -483,7 +483,7 @@ const CreditCooperativeRegistration = () => {
             className="p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 flex items-center space-x-4 group"
           >
             {/* Circle Icon */}
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient border border-gray-200 flex items-center justify-center text-blue-900 font-bold transition-all duration-300 group-hover:bg-blue-400 group-hover:text-white group-hover:border-transparent">
+            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-gradient border border-gray-200 flex items-center justify-center text-white font-bold transition-all duration-300 group-hover:bg-blue-400 group-hover:text-white group-hover:border-transparent">
               ✓
             </div>
             <p className="text-gray-900 font-medium">{benefit}</p>
