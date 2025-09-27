@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export const HeroSection = () => {
-    const [showAppointmentForm, setShowAppointmentForm] = useState(false);
-
   const [scrollY, setScrollY] = useState(0);
   const handleScroll = () => setScrollY(window.scrollY);
 
@@ -25,15 +23,6 @@ export const HeroSection = () => {
 
   const bgVariants = {
     float: { y: [0, -15, 0], transition: { duration: 5, repeat: Infinity, ease: "easeInOut" } }
-  };
-  const openAppointmentForm = () => {
-    setShowAppointmentForm(true);
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeAppointmentForm = () => {
-    setShowAppointmentForm(false);
-    document.body.style.overflow = "auto";
   };
 
   return (
@@ -160,14 +149,14 @@ className="bg-white/30 backdrop-blur-md p-5 sm:p-6 rounded-[80px_0px_80px_0px] b
               </motion.p>
 
               <motion.div variants={itemVariants} className="flex justify-center">
-                 <button 
-  onClick={() => openAppointmentForm()}
-  className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-primary-gradient transition-colors duration-300 shadow-md hover:shadow-lg"
+               <Button
+  size="sm"
+  className="mt-4 sm:mt-6 bg-gradient-to-r from-primary to-primary/80 text-white px-10 py-8 sm:py-8 md:px-12 md:py-8 text-sm sm:text-md transition-all duration-300 hover:scale-[1.05] shadow-lg 
+             hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500"
 >
-Request a Free Consultation
-</button>
-                 
-              
+  Request a Free Consultation
+</Button>
+
 
 
               </motion.div>
@@ -181,6 +170,5 @@ Request a Free Consultation
     
      
     </section>
-    
   );
 };
