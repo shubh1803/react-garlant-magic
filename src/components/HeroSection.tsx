@@ -167,16 +167,8 @@ className="bg-white/30 backdrop-blur-md p-5 sm:p-6 rounded-[80px_0px_80px_0px] b
       </div>
 
       {/* Background Decorations with Floating Animation */}
-      <motion.div
-        variants={bgVariants}
-        animate="float"
-        className="absolute top-0 left-0 w-36 sm:w-48 h-36 sm:h-72 bg-blue-50 rounded-full -translate-x-1/2 -translate-y-1/2 opacity-50"
-      ></motion.div>
-      <motion.div
-        variants={bgVariants}
-        animate="float"
-        className="absolute bottom-0 right-0 w-56 sm:w-72 h-56 sm:h-96 bg-purple-50 rounded-full translate-x-1/2 translate-y-1/2 opacity-50"
-      ></motion.div>
+    
+     
     </section>
   );
 };

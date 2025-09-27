@@ -480,74 +480,75 @@ const CreditCooperativeAudit = () => {
 </div>
 
           {/* Process Section */}
-          <div
-            id="process"
-            ref={sectionRefs.process}
-            className={`mb-20 p-10 scroll-mt-20 transition-all duration-700 delay-400 ${
-              isVisible.process ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                How We Work
-              </h2>
-              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                Our step-by-step audit and compliance process ensures your Credit Cooperative Society stays compliant and transparent.
-              </p>
-            </div>
+       <div
+  id="process"
+  ref={sectionRefs.process}
+  className={`mb-20 p-10 scroll-mt-20 transition-all duration-700 delay-400 ${
+    isVisible.process ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
+  <div className="text-center mb-12">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">How We Work</h2>
+    <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+      Our step-by-step audit and compliance process ensures your Credit Cooperative Society stays compliant and transparent.
+    </p>
+  </div>
 
-            <div className="relative flex flex-wrap justify-center gap-12">
-              {[
-                { title: "Review", icon: "📝", color: "from-blue-400 to-indigo-500" },
-                { title: "Audit", icon: "📊", color: "from-purple-400 to-pink-500" },
-                { title: "Compliance Filing", icon: "📑", color: "from-green-400 to-teal-500" },
-                { title: "Ongoing Support", icon: "🛡️", color: "from-yellow-400 to-orange-500" },
-              ].map((step, i) => (
-                <div
-                  key={i}
-                  className="relative w-40 h-40 flex flex-col items-center justify-center text-center animate-float"
-                  style={{ animationDelay: `${i * 0.2}s` }}
-                >
-                  {/* Floating Gradient Bubble */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-tr ${step.color} opacity-60 blur-2xl`} />
+  <div className="relative flex flex-wrap justify-center gap-12">
+    {[
+      { title: "Review", color: "from-blue-400 to-indigo-500" },
+      { title: "Audit", color: "from-purple-400 to-pink-500" },
+      { title: "Compliance Filing", color: "from-green-400 to-teal-500" },
+      { title: "Ongoing Support", color: "from-yellow-400 to-orange-500" },
+    ].map((step, i) => (
+      <div
+        key={i}
+        className="relative w-40 h-40 flex flex-col items-center justify-center text-center animate-float"
+        style={{ animationDelay: `${i * 0.2}s` }}
+      >
+        {/* Floating Gradient Bubble */}
+        <div
+          className={`absolute inset-0 rounded-full bg-gradient-to-tr ${step.color} opacity-60 blur-2xl`}
+        />
 
-                  {/* Step Circle */}
-                  <div className="relative w-36 h-36 bg-white rounded-full flex flex-col items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-500">
-                    <div className="text-4xl mb-2">{step.icon}</div>
-                    <p className="text-sm font-semibold px-3">{step.title}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        {/* Step Circle */}
+        <div className="relative w-36 h-36 bg-white rounded-full flex flex-col items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-500">
+          <div className="text-4xl font-bold mb-2 transition-colors duration-300 group-hover:text-blue-500">{i + 1}</div>
+          <p className="text-sm font-semibold px-3">{step.title}</p>
+        </div>
+      </div>
+    ))}
+  </div>
 
-            {/* Process Details */}
-            <div className="mt-12 grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                <h3 className="text-xl font-bold text-blue-700 mb-4">Initial Review Phase</h3>
-                <p className="text-gray-600">
-                  We begin by thoroughly reviewing your society's financial records, compliance status, and operational procedures to understand your specific needs and requirements.
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                <h3 className="text-xl font-bold text-blue-700 mb-4">Comprehensive Audit</h3>
-                <p className="text-gray-600">
-                  Our certified auditors conduct detailed statutory audits following cooperative accounting standards and regulatory requirements.
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                <h3 className="text-xl font-bold text-blue-700 mb-4">Timely Filing</h3>
-                <p className="text-gray-600">
-                  We ensure all necessary returns and compliance documents are prepared accurately and filed with the Registrar of Cooperative Societies on time.
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                <h3 className="text-xl font-bold text-blue-700 mb-4">Continuous Support</h3>
-                <p className="text-gray-600">
-                  We provide ongoing advisory services, compliance monitoring, and timely reminders to keep your society compliant throughout the year.
-                </p>
-              </div>
-            </div>
-          </div>
+  {/* Process Details */}
+  <div className="mt-12 grid md:grid-cols-2 gap-8">
+    <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+      <h3 className="text-xl font-bold text-blue-700 mb-4">Initial Review Phase</h3>
+      <p className="text-gray-600">
+        We begin by thoroughly reviewing your society's financial records, compliance status, and operational procedures to understand your specific needs and requirements.
+      </p>
+    </div>
+    <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+      <h3 className="text-xl font-bold text-blue-700 mb-4">Comprehensive Audit</h3>
+      <p className="text-gray-600">
+        Our certified auditors conduct detailed statutory audits following cooperative accounting standards and regulatory requirements.
+      </p>
+    </div>
+    <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+      <h3 className="text-xl font-bold text-blue-700 mb-4">Timely Filing</h3>
+      <p className="text-gray-600">
+        We ensure all necessary returns and compliance documents are prepared accurately and filed with the Registrar of Cooperative Societies on time.
+      </p>
+    </div>
+    <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+      <h3 className="text-xl font-bold text-blue-700 mb-4">Continuous Support</h3>
+      <p className="text-gray-600">
+        We provide ongoing advisory services, compliance monitoring, and timely reminders to keep your society compliant throughout the year.
+      </p>
+    </div>
+  </div>
+</div>
+
 
           {/* FAQ Section */}
          <div className="text-center mb-12">

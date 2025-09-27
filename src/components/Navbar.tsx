@@ -1,62 +1,78 @@
-import { useState } from "react";
-import {
-  Menu,
-  X,
-  Search,
-  MapPin,
-  Mail,
-  Phone,
-  ChevronDown,
-} from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, Search, MapPin, Mail, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom"; // ✅ Added React Router Link
+import { Link, useLocation } from "react-router-dom";
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openSubMenu, setOpenSubMenu] = useState(null);
+type SubMenuKey = "registration" | "audit" | "consultancy" | null;
+
+const Navbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [openSubMenu, setOpenSubMenu] = useState<SubMenuKey>(null);
+
+  const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  const toggleSubMenu = (menu) => {
+  const toggleSubMenu = (menu: SubMenuKey) =>
     setOpenSubMenu(openSubMenu === menu ? null : menu);
-  };
+
+  // Close mobile menu & scroll to top when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setOpenSubMenu(null);
+  window.scrollTo(0, 0); // 🚀 Directly top, no smooth scroll
+  }, [location.pathname]);
+
+  const mobileMenus = [
+    {
+      title: "Registration",
+      key: "registration" as SubMenuKey,
+      links: [
+        { path: "/credit-cooperative-registration", label: "Credit Cooperative Society Registration" },
+        { path: "/multi-state-cooperative-registration", label: "Multi State Credit Cooperative Society Registration" },
+        { path: "/microfinance-registration", label: "Microfinance Company (Section 8) Registration" },
+        { path: "/other-cooperative-registration", label: "Other Cooperative Society Registration" },
+      ],
+    },
+    {
+      title: "Audit & Compliance",
+      key: "audit" as SubMenuKey,
+      links: [
+        { path: "/credit-cooperative-audit", label: "Credit Cooperative Society Audit" },
+        { path: "/multi-state-audit", label: "Multi State Audit & Compliance" },
+        { path: "/microfinance-audit", label: "Microfinance Audit & Compliance" },
+        { path: "/other-cooperative-audit", label: "Other Cooperative Audit" },
+      ],
+    },
+    {
+      title: "Business Consultancy",
+      key: "consultancy" as SubMenuKey,
+      links: [
+        { path: "/banking-consultancy", label: "Banking Business Consultancy" },
+        { path: "/banking-business-setup", label: "Banking Business Setup" },
+        { path: "/banking-business-growth", label: "Banking Business Growth" },
+      ],
+    },
+  ];
 
   return (
     <>
-      {/* Top Header - Only visible on desktop */}
+      {/* Top Header - Desktop only */}
       <div className="bg-dark text-white py-2 hidden lg:block">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-4">
               <span>Follow Us On:</span>
               <div className="flex space-x-2">
-                {/* Facebook */}
-                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
-                  bg-blue-600 text-white font-bold text-xs 
-                  transition-all duration-300 hover:bg-primary-gradient hover:scale-110">
-                  f
-                </div>
-
-                {/* Twitter */}
-                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
-                  bg-blue-600 text-white font-bold text-xs 
-                  transition-all duration-300 hover:bg-primary-gradient hover:scale-110">
-                  t
-                </div>
-
-                {/* LinkedIn */}
-                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
-                  bg-blue-600 text-white font-bold text-xs 
-                  transition-all duration-300 hover:bg-primary-gradient hover:scale-110">
-                  in
-                </div>
-
-                {/* YouTube */}
-                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
-                  bg-blue-600 text-white font-bold text-xs 
-                  transition-all duration-300 hover:bg-primary-gradient hover:scale-110">
-                  yt
-                </div>
+                {["f", "t", "in", "yt"].map((icon) => (
+                  <div
+                    key={icon}
+                    className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer 
+                      bg-blue-600 text-white font-bold text-xs 
+                      transition-all duration-300 hover:bg-primary-gradient hover:scale-110"
+                  >
+                    {icon}
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -78,18 +94,14 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Main Navigation */}
+      {/* Main Navbar */}
       <nav className="bg-white shadow-lg sticky top-0 z-50">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-center py-2 md:py-4">
             {/* Logo */}
             <div className="flex items-center">
               <Link to="/">
-                <img
-                  src="/logo.png"
-                  alt="Etaxwala Logo"
-                  className="h-12 md:h-16 w-auto"
-                />
+                <img src="/logo.png" alt="Etaxwala Logo" className="h-12 md:h-16 w-auto" />
               </Link>
             </div>
 
@@ -99,71 +111,26 @@ const Navbar = () => {
                 Home
               </Link>
 
-              {/* Registration */}
-              <div className="relative group">
-                <span className="text-dark hover:text-primary font-medium flex items-center cursor-pointer">
-                  Registration <ChevronDown className="ml-1 h-4 w-4" />
-                </span>
-                <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="p-4 space-y-1">
-                    <Link to="/credit-cooperative-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Credit Cooperative Society Registration
-                    </Link>
-                    <Link to="/multi-state-cooperative-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Multi State Credit Cooperative Society Registration
-                    </Link>
-                    <Link to="/microfinance-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Microfinance Company (Section 8) Registration
-                    </Link>
-                    <Link to="/other-cooperative-registration" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Other Cooperative Society Registration
-                    </Link>
+              {mobileMenus.map((menu) => (
+                <div key={menu.key} className="relative group">
+                  <span className="text-dark hover:text-primary font-medium flex items-center cursor-pointer">
+                    {menu.title} <ChevronDown className="ml-1 h-4 w-4" />
+                  </span>
+                  <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="p-4 space-y-1">
+                      {menu.links.map((link) => (
+                        <Link
+                          key={link.path}
+                          to={link.path}
+                          className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded"
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Audit & Compliance */}
-              <div className="relative group">
-                <span className="text-dark hover:text-primary font-medium flex items-center cursor-pointer">
-                  Audit & Compliance <ChevronDown className="ml-1 h-4 w-4" />
-                </span>
-                <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="p-4 space-y-1">
-                    <Link to="/credit-cooperative-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Credit Cooperative Society Audit
-                    </Link>
-                    <Link to="/multi-state-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Multi State Audit & Compliance
-                    </Link>
-                    <Link to="/microfinance-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Microfinance Audit & Compliance
-                    </Link>
-                    <Link to="/other-cooperative-audit" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Other Cooperative Audit
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Business Consultancy */}
-              <div className="relative group">
-                <span className="text-dark hover:text-primary font-medium flex items-center cursor-pointer">
-                  Business Consultancy <ChevronDown className="ml-1 h-4 w-4" />
-                </span>
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="p-4 space-y-1">
-                    <Link to="/banking-consultancy" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Banking Business Consultancy
-                    </Link>
-                    <Link to="/banking-business-setup" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Banking Business Setup
-                    </Link>
-                    <Link to="/banking-business-growth" className="block px-3 py-2 text-sm hover:text-primary hover:bg-gray-50 rounded">
-                      Banking Business Growth
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              ))}
 
               <Link to="/about" className="text-dark hover:text-primary font-medium">
                 About
@@ -178,22 +145,18 @@ const Navbar = () => {
               <button className="p-2 text-primary hover:text-primary-hover">
                 <Search className="w-5 h-5" />
               </button>
-            <Button
-  variant="default"
-  size="lg"
-  className="ml-4 bg-blue-600 text-white border-none transition-all duration-300 hover:bg-primary-gradient hover:scale-105"
->
-  Get Started Now
-</Button>
-
+              <Button
+                variant="default"
+                size="lg"
+                className="ml-4 bg-blue-600 text-white border-none transition-all duration-300 hover:bg-primary-gradient hover:scale-105"
+              >
+                Get Started Now
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="lg:hidden">
-              <button
-                onClick={toggleMenu}
-                className="p-2 text-dark hover:text-primary"
-              >
+              <button onClick={toggleMenu} className="p-2 text-dark hover:text-primary">
                 {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
@@ -203,99 +166,39 @@ const Navbar = () => {
           {isMenuOpen && (
             <div className="lg:hidden border-t border-gray-200 py-2 bg-white">
               <div className="flex flex-col space-y-2">
-                <Link to="/" className="text-dark font-medium py-2 px-4 hover:bg-gray-100 rounded">
+                <Link
+                  to="/"
+                  className="text-dark font-medium py-2 px-4 hover:bg-gray-100 rounded"
+                >
                   Home
                 </Link>
 
-                {/* Mobile Registration */}
-                <div className="px-4 py-2 border-b border-gray-100">
-                  <button
-                    onClick={() => toggleSubMenu("registration")}
-                    className="w-full flex justify-between items-center text-dark font-medium py-2"
-                  >
-                    Registration{" "}
-                    <ChevronDown
-                      className={`ml-1 h-4 w-4 transition-transform ${
-                        openSubMenu === "registration" ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {openSubMenu === "registration" && (
-                    <div className="mt-2 space-y-1 pl-4">
-                      <Link to="/credit-cooperative-registration" className="block py-1 hover:text-primary">
-                        Credit Cooperative Society Registration
-                      </Link>
-                      <Link to="/multi-state-cooperative-registration" className="block py-1 hover:text-primary">
-                        Multi State Credit Cooperative Society Registration
-                      </Link>
-                      <Link to="/microfinance-registration" className="block py-1 hover:text-primary">
-                        Microfinance Company (Section 8) Registration
-                      </Link>
-                      <Link to="/other-cooperative-registration" className="block py-1 hover:text-primary">
-                        Other Cooperative Society Registration
-                      </Link>
-                    </div>
-                  )}
-                </div>
-
-                {/* Mobile Audit & Compliance */}
-                <div className="px-4 py-2 border-b border-gray-100">
-                  <button
-                    onClick={() => toggleSubMenu("audit")}
-                    className="w-full flex justify-between items-center text-dark font-medium py-2"
-                  >
-                    Audit & Compliance{" "}
-                    <ChevronDown
-                      className={`ml-1 h-4 w-4 transition-transform ${
-                        openSubMenu === "audit" ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {openSubMenu === "audit" && (
-                    <div className="mt-2 space-y-1 pl-4">
-                      <Link to="/credit-cooperative-audit" className="block py-1 hover:text-primary">
-                        Credit Cooperative Society Audit
-                      </Link>
-                      <Link to="/multi-state-audit" className="block py-1 hover:text-primary">
-                        Multi State Audit & Compliance
-                      </Link>
-                      <Link to="/microfinance-audit" className="block py-1 hover:text-primary">
-                        Microfinance Audit & Compliance
-                      </Link>
-                      <Link to="/other-cooperative-audit" className="block py-1 hover:text-primary">
-                        Other Cooperative Audit
-                      </Link>
-                    </div>
-                  )}
-                </div>
-
-                {/* Mobile Business Consultancy */}
-                <div className="px-4 py-2 border-b border-gray-100">
-                  <button
-                    onClick={() => toggleSubMenu("consultancy")}
-                    className="w-full flex justify-between items-center text-dark font-medium py-2"
-                  >
-                    Business Consultancy{" "}
-                    <ChevronDown
-                      className={`ml-1 h-4 w-4 transition-transform ${
-                        openSubMenu === "consultancy" ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {openSubMenu === "consultancy" && (
-                    <div className="mt-2 space-y-1 pl-4">
-                      <Link to="/banking-consultancy" className="block py-1 hover:text-primary">
-                        Banking Business Consultancy
-                      </Link>
-                      <Link to="/banking-business-setup" className="block py-1 hover:text-primary">
-                        Banking Business Setup
-                      </Link>
-                      <Link to="/banking-business-growth" className="block py-1 hover:text-primary">
-                        Banking Business Growth
-                      </Link>
-                    </div>
-                  )}
-                </div>
+                {mobileMenus.map((menu) => (
+                  <div key={menu.key} className="px-4 py-2 border-b border-gray-100">
+                    <button
+                      onClick={() => toggleSubMenu(menu.key)}
+                      className="w-full flex justify-between items-center text-dark font-medium py-2"
+                    >
+                      {menu.title}
+                      <ChevronDown
+                        className={`ml-1 h-4 w-4 transition-transform ${openSubMenu === menu.key ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    {openSubMenu === menu.key && (
+                      <div className="mt-2 space-y-1 pl-4">
+                        {menu.links.map((link) => (
+                          <Link
+                            key={link.path}
+                            to={link.path}
+                            className="block py-1 hover:text-primary"
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
 
                 <Link to="/about" className="text-dark font-medium py-2 px-4 hover:bg-gray-100 rounded">
                   About
@@ -304,19 +207,17 @@ const Navbar = () => {
                   Contact
                 </Link>
 
-                {/* Actions */}
                 <div className="flex items-center space-x-4 px-4 pt-4">
                   <button className="p-2 text-primary hover:text-primary-hover">
                     <Search className="w-5 h-5" />
                   </button>
-                 <Button
-  variant="default"
-  size="lg"
-  className="w-full sm:w-auto bg-blue-600 text-white border-none hover:bg-primary-gradient hover:scale-105 transition-transform"
->
-  Get Started Now
-</Button>
-
+                  <Button
+                    variant="default"
+                    size="lg"
+                    className="w-full sm:w-auto bg-blue-600 text-white border-none hover:bg-primary-gradient hover:scale-105 transition-transform"
+                  >
+                    Get Started Now
+                  </Button>
                 </div>
               </div>
             </div>

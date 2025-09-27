@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -40,6 +41,38 @@ const About = () => {
       bgColor: "bg-green-100"
     }
   ];
+  const services =[
+      {
+        title: "Registration Assistance",
+        description: "Help you start and register your cooperative institution",
+        bgColor: "bg-primary-gradient"
+      },
+      {
+        title: "Compliance Management",
+        description: "Ensure complete compliance with all legal and financial norms",
+        bgColor: "bg-primary-gradient"
+      },
+      {
+        title: "Training Programs",
+        description: "Provide custom training and leadership development",
+        bgColor: "bg-primary-gradient"
+      },
+      {
+        title: "Business Modeling",
+        description: "Design scalable business models for cooperative banking",
+        bgColor: "bg-primary-gradient"
+      },
+      {
+        title: "Technology Solutions",
+        description: "Assist in technology adoption and digital infrastructure setup",
+        bgColor: "bg-primary-gradient"
+      },
+      {
+        title: "Growth Strategies",
+        description: "Offer strategies for sustainable growth",
+        bgColor: "bg-primary-gradient"
+      }
+    ]
 
   const nextValue = () => {
     setCurrentValueIndex((prevIndex) => (prevIndex + 1) % values.length);
@@ -97,10 +130,9 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                About  <span className="text-[#7B191B] ml-2">सहकार</span>
-  <span className="text-[#3C3C3C] ml-2 animate-shine">
-    समृद्धी
-  </span>
+                About  <span className="bg-primary-gradient bg-clip-text text-transparent font-bold tracking-wide">
+                सहकार&nbsp;समृद्धी
+              </span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
 Sahakar Samriddhi is a specialized consultancy platform dedicated to supporting the growth and success of cooperative financial institutions across India. With a focused approach on Credit Cooperative Societies, Multi-State Credit Cooperative Societies, and Microfinance Companies (Section 8), we provide complete guidance from setup to compliance, operations, and expansion.              </p>
@@ -235,186 +267,168 @@ India’s cooperative movement holds the potential to bring real financial empow
       </section>
 
       {/* What We Do Section - Enhanced */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What We Do</h2>
-            <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600">
-              We provide comprehensive services to help cooperative institutions thrive in today's competitive financial landscape.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Registration Assistance",
-                description: "Help you start and register your cooperative institution",
-                icon: "📋"
-              },
-              {
-                title: "Compliance Management",
-                description: "Ensure complete compliance with all legal and financial norms",
-                icon: "⚖️"
-              },
-              {
-                title: "Training Programs",
-                description: "Provide custom training and leadership development",
-                icon: "👨‍💼"
-              },
-              {
-                title: "Business Modeling",
-                description: "Design scalable business models for cooperative banking",
-                icon: "📊"
-              },
-              {
-                title: "Technology Solutions",
-                description: "Assist in technology adoption and digital infrastructure setup",
-                icon: "💻"
-              },
-              {
-                title: "Growth Strategies",
-                description: "Offer strategies for sustainable growth",
-                icon: "📈"
-              }
-            ].map((item, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md rounded-xl cursor-pointer hover:-translate-y-2 transform transition">
-                <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="text-4xl mb-4">{item.icon}</div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+   <div className="mb-20 scroll-mt-20 text-center px-8">
+  <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What We Do</h2>
+  <p className="text-lg text-gray-600 mb-12">
+    We provide comprehensive services to help cooperative institutions thrive in today's competitive financial landscape.
+  </p>
+
+  <div className="flex flex-wrap justify-center gap-4">
+    {services.map((service, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, rotateY: 90 }}
+        whileInView={{ opacity: 1, rotateY: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        className="w-full sm:w-80 md:w-90 lg:w-72 p-6 rounded-2xl bg-gradient-to-br from-blue-100 via-blue-200 to-blue-600 border border-blue-800 text-white hover:shadow-xl transition-all duration-300 hover:scale-105"
+      >
+        {/* Number Circle */}
+        <div className="w-14 h-14 bg-primary-gradient rounded-full flex items-center justify-center mb-4 text-white font-bold text-lg mx-auto">
+          {index + 1}
         </div>
-      </section>
+
+        <h3 className="text-lg font-bold text-indigo-700 mb-2 text-center">{service.title}</h3>
+        <p className="text-gray-700 text-center">{service.description}</p>
+      </motion.div>
+    ))}
+  </div>   
+</div>
+
+
+
+      
 
       {/* Our Values Section with Continuous Auto-Scrolling */}
       <section className="py-16 bg-gray-50 relative">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Values</h2>
-            <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600">
-              Our core values guide everything we do and define how we work with our clients.
-            </p>
-          </div>
-          
-          {/* Desktop/Laptop View - Auto Scrolling Slider */}
-          <div className="hidden md:block relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <div className="overflow-hidden relative">
-              <div 
-                ref={sliderRef}
-                className="flex transition-transform duration-1000 ease-in-out"
-                style={{ transform: `translateX(-${currentValueIndex * 25}%)` }}
-              >
-                {values.map((value, index) => (
-                  <div key={index} className="w-1/4 flex-shrink-0 px-4">
-                    <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md rounded-xl text-center cursor-pointer hover:-translate-y-2 transform transition h-full">
-                      <CardHeader>
-                        <div className={`w-14 h-14 ${value.bgColor} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
-                          <value.icon className={`w-7 h-7 ${value.color}`} />
-                        </div>
-                        <CardTitle className="text-xl font-bold text-gray-800 group-hover:text-primary transition-colors">
-                          {value.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-600 leading-relaxed">
-                          {value.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
-              </div>
+  <div className="container mx-auto px-6">
+    <div className="text-center max-w-3xl mx-auto mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Values</h2>
+      <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
+      <p className="text-lg text-gray-600">
+        Our core values guide everything we do and define how we work with our clients.
+      </p>
+    </div>
+    
+    {/* Desktop/Laptop View - Auto Scrolling Slider */}
+    <div className="hidden md:block relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div className="overflow-hidden relative">
+        <div 
+          ref={sliderRef}
+          className="flex transition-transform duration-1000 ease-in-out"
+          style={{ transform: `translateX(-${currentValueIndex * 25}%)` }}
+        >
+          {values.map((value, index) => (
+            <div key={index} className="w-1/4 flex-shrink-0 px-4">
+              <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md rounded-xl text-center cursor-pointer hover:-translate-y-2 transform transition h-full">
+                <CardHeader>
+  <div 
+    className={`w-14 h-14 ${value.bgColor} rounded-full flex items-center justify-center mx-auto mb-4 text-black font-bold text-lg group-hover:scale-110 transition-transform`}
+  >
+    {index + 1}
+  </div>
+  <CardTitle className="text-xl font-bold text-gray-800 group-hover:text-primary transition-colors">
+    {value.title}
+  </CardTitle>
+</CardHeader>
+
+                <CardContent>
+                  <p className="text-gray-600 leading-relaxed">
+                    {value.description}
+                  </p>
+                </CardContent>
+              </Card>
             </div>
-            
-            {/* Slider Controls for Desktop */}
-            <div className="flex justify-center mt-8 space-x-4">
-              <button 
-                onClick={prevValue}
-                className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
-              >
-                <ChevronLeft className="w-7 h-7 text-gray-700" />
-              </button>
-              <div className="flex space-x-3 items-center">
-                {values.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentValueIndex(index)}
-                    className={`w-3 h-3 rounded-full ${currentValueIndex === index ? 'bg-primary' : 'bg-gray-300'} transition-colors`}
-                  />
-                ))}
-              </div>
-              <button 
-                onClick={nextValue}
-                className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
-              >
-                <ChevronRight className="w-7 h-7 text-gray-700" />
-              </button>
-            </div>
-          </div>
-          
-          {/* Mobile View - Auto Scrolling Slider */}
-          <div className="md:hidden relative">
-            <div className="overflow-hidden relative">
-              <div 
-                className="flex transition-transform duration-1000 ease-in-out"
-                style={{ transform: `translateX(-${currentValueIndex * 100}%)` }}
-              >
-                {values.map((value, index) => (
-                  <div key={index} className="w-full flex-shrink-0 px-4">
-                    <Card className="border-0 shadow-md rounded-xl text-center">
-                      <CardHeader>
-                        <div className={`w-14 h-14 ${value.bgColor} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                          <value.icon className={`w-7 h-7 ${value.color}`} />
-                        </div>
-                        <CardTitle className="text-xl font-bold text-gray-800">
-                          {value.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-600 leading-relaxed">
-                          {value.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Slider Controls for Mobile */}
-            <div className="flex justify-center mt-6 space-x-4">
-              <button 
-                onClick={prevValue}
-                className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
-              >
-                <ChevronLeft className="w-6 h-6 text-gray-700" />
-              </button>
-              <div className="flex space-x-2 items-center">
-                {values.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentValueIndex(index)}
-                    className={`w-3 h-3 rounded-full ${currentValueIndex === index ? 'bg-primary' : 'bg-gray-300'} transition-colors`}
-                  />
-                ))}
-              </div>
-              <button 
-                onClick={nextValue}
-                className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
-              >
-                <ChevronRight className="w-6 h-6 text-gray-700" />
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </div>
+      
+      {/* Slider Controls for Desktop */}
+      <div className="flex justify-center mt-8 space-x-4">
+        <button 
+          onClick={prevValue}
+          className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+        >
+          <ChevronLeft className="w-7 h-7 text-gray-700" />
+        </button>
+        <div className="flex space-x-3 items-center">
+          {values.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentValueIndex(index)}
+              className={`w-3 h-3 rounded-full ${currentValueIndex === index ? 'bg-primary' : 'bg-gray-300'} transition-colors`}
+            />
+          ))}
+        </div>
+        <button 
+          onClick={nextValue}
+          className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+        >
+          <ChevronRight className="w-7 h-7 text-gray-700" />
+        </button>
+      </div>
+    </div>
+    
+    {/* Mobile View - Auto Scrolling Slider */}
+    <div className="md:hidden relative">
+      <div className="overflow-hidden relative">
+        <div 
+          className="flex transition-transform duration-1000 ease-in-out"
+          style={{ transform: `translateX(-${currentValueIndex * 100}%)` }}
+        >
+          {values.map((value, index) => (
+            <div key={index} className="w-full flex-shrink-0 px-4">
+              <Card className="border-0 shadow-md rounded-xl text-center">
+                <CardHeader>
+  <div 
+    className={`w-14 h-14 ${value.bgColor} rounded-full flex items-center justify-center mx-auto mb-4 text-black font-bold text-lg`}
+  >
+    {index + 1}
+  </div>
+  <CardTitle className="text-xl font-bold text-gray-800">
+    {value.title}
+  </CardTitle>
+</CardHeader>
+
+                <CardContent>
+                  <p className="text-gray-600 leading-relaxed">
+                    {value.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Slider Controls for Mobile */}
+      <div className="flex justify-center mt-6 space-x-4">
+        <button 
+          onClick={prevValue}
+          className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+        >
+          <ChevronLeft className="w-6 h-6 text-gray-700" />
+        </button>
+        <div className="flex space-x-2 items-center">
+          {values.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentValueIndex(index)}
+              className={`w-3 h-3 rounded-full ${currentValueIndex === index ? 'bg-primary' : 'bg-gray-300'} transition-colors`}
+            />
+          ))}
+        </div>
+        <button 
+          onClick={nextValue}
+          className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+        >
+          <ChevronRight className="w-6 h-6 text-gray-700" />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Vision & Mission Section */}
       <section className="py-16 bg-white">

@@ -473,24 +473,26 @@ const addToRefs = (el) => {
 
   <div className="flex flex-wrap justify-center gap-10">
     {[
-      { title: "No Minimum Capital", icon: "💰" },
-      { title: "Legal Recognition", icon: "⚖️" },
-      { title: "Easy Funding Access", icon: "🏦" }, // 
-      { title: "Promotes Inclusion", icon: "🤝" },
-      { title: "Limited Liability", icon: "🛡️" },
-      { title: "Trust & Credibility", icon: "📜" }, // 
+      { title: "No Minimum Capital" },
+      { title: "Legal Recognition" },
+      { title: "Easy Funding Access" },
+      { title: "Promotes Inclusion" },
+      { title: "Limited Liability" },
+      { title: "Trust & Credibility" },
     ].map((b, i) => (
       <div
         key={i}
-        className="w-32 h-32 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white flex flex-col items-center justify-center text-center animate-bounce"
+        className="w-32 h-32 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-gray-800 flex flex-col items-center justify-center text-center animate-bounce"
         style={{ animationDelay: `${i * 0.2}s` }}
       >
-        <div className="text-3xl">{b.icon}</div>
+        {/* Number inside circle */}
+        <div className="text-3xl font-bold">{i + 1}</div>
         <p className="text-xs mt-1 font-semibold">{b.title}</p>
       </div>
     ))}
   </div>
 </div>
+
 
 
           {/* Eligibility Section */}
@@ -1090,26 +1092,25 @@ const addToRefs = (el) => {
         {
           title: "Member Contributions",
           description: "Initial capital from founding members and subscribers",
-          icon: "👥"
+         
         },
         {
           title: "Donations & Grants",
           description: "Funding from charitable organizations and foundations", 
-          icon: "🎁"
+          
         },
         {
           title: "CSR Funds",
           description: "Corporate Social Responsibility funding from companies",
-          icon: "🏢"
+         
         },
         {
           title: "Soft Loans",
           description: "Low-interest loans from banks and financial institutions",
-          icon: "🏦"
+          
         }
       ].map((funding, index) => (
         <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
-          <div className="text-3xl mb-3">{funding.icon}</div>
           <h3 className="text-lg font-semibold mb-2">{funding.title}</h3>
           <p className="text-blue-100 text-sm">{funding.description}</p>
         </div>

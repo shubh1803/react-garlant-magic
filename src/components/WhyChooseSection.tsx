@@ -6,31 +6,26 @@ import { Shield, Globe, Users, DollarSign, Heart, Award } from 'lucide-react';
 const WhyChooseSection = () => {
   const features = [
     {
-      icon: Shield,
       title: "In-depth expertise in cooperative banking regulations",
       description: "",
       image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      icon: Globe,
       title: "One-stop solution from registration to growth", 
       description: "",
       image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      icon: Users,
       title: "Pan-India service coverage with a dedicated team",
       description: "",
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      icon: DollarSign,
       title: "Transparent pricing with result-driven approach",
       description: "",
       image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      icon: Heart,
       title: "Customized support for rural and urban cooperatives",
       description: "",
       image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -183,9 +178,7 @@ const WhyChooseSection = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                       
                       {/* Icon Container */}
-                      <div className="absolute bottom-4 right-4 w-16 h-16 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border border-gray-200 shadow-sm">
-                        <feature.icon className="w-8 h-8 text-blue-600" />
-                      </div>
+                      
                     </div>
                     
                     <CardContent className="p-6">
