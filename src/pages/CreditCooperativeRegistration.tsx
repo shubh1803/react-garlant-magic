@@ -521,7 +521,7 @@ const CreditCooperativeRegistration = () => {
 
           {/* Levels Section */}
        <div
-  id="levels"
+  id="levels" ref={sectionRefs.levels}
   className="mb-20 scroll-mt-20 transition-all duration-700 delay-200"
 >
   <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -602,7 +602,7 @@ const CreditCooperativeRegistration = () => {
 
           {/* Categories Section */}
           <div
-      id="categories"
+      id="categories" ref={sectionRefs.categories}
       className="mb-20 scroll-mt-20 transition-all duration-700 delay-300"
     >
       <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
