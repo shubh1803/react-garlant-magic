@@ -602,9 +602,9 @@ const CreditCooperativeAudit = () => {
          
            {/* Mobile: Horizontal Scroll, 5 per page */}
            <div className="md:hidden overflow-x-auto flex gap-4 snap-x snap-mandatory py-4">
-             {[0, 5].map((startIndex) => (
+             {[0, 4].map((startIndex) => (
                <div key={startIndex} className="flex flex-col gap-4 min-w-[85%] snap-center">
-                 {faqs.slice(startIndex, startIndex + 5).map((faq, index) => (
+                 {faqs.slice(startIndex, startIndex + 4).map((faq, index) => (
                    <motion.div
                      key={index}
                      initial={{ opacity: 0, y: 10 }}
