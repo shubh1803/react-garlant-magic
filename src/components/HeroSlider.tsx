@@ -5,6 +5,7 @@ import heroSlide1 from '@/assets/hero-slide-1.jpg';
 import heroSlide2 from '@/assets/hero-slide-2.jpg';
 import heroSlide3 from '@/assets/hero-slide-3.jpg';
 import cooprative from '@/assets/cooperative.jpg';
+import { AppointmentForm } from "../components/AppointmentForm"; // Adjust path as needed
 
 const slides = [
   {
@@ -13,7 +14,8 @@ const slides = [
     title: "Start Your Own Credit Cooperative or Microfinance Company",
     subtitle: "From registration to growth – Expert consultancy for Credit Cooperative Societies, Multi-State Societies, and Section 8 Microfinance Companies.",
     primaryBtn: "Get Started Today",
-    secondaryBtn: "Explore Now"
+    secondaryBtn: "Explore Now",
+    serviceType: "Cooperative Registration"
   },
   {
     id: 2,
@@ -21,7 +23,8 @@ const slides = [
     title: "Complete Compliance and Audit Solutions",
     subtitle: "We take care of all your statutory, audit, and regulatory needs as per RBI and Ministry guidelines.",
     primaryBtn: "Explore Our Compliance Services",
-    secondaryBtn: "View Gallery"
+    secondaryBtn: "Get Started",
+    serviceType: "Audit and Compliance"
   },
   {
     id: 3,
@@ -29,7 +32,8 @@ const slides = [
     title: "Training That Builds Cooperative Leaders",
     subtitle: "Customized training programs for your board, staff, and members to ensure strong governance and effective operations.",
     primaryBtn: "View Training Programs",
-    secondaryBtn: "Learn More"
+    secondaryBtn: "Learn More",
+    serviceType: "Training and Capacity Building"
   },
   {
     id: 4,
@@ -37,7 +41,8 @@ const slides = [
     title: "Grow and Expand Your Banking Business",
     subtitle: "We help you scale your cooperative or microfinance institution with branch expansion, product development, and digital systems.",
     primaryBtn: "Plan Your Growth",
-    secondaryBtn: "Learn More"
+    secondaryBtn: "Learn More",
+    serviceType: "Business Growth and Expansion"
   },
   {
     id: 5,
@@ -45,13 +50,38 @@ const slides = [
     title: "Sahakar Samriddhi – Your Trusted Partner in Cooperative Success",
     subtitle: "We empower cooperative institutions with legal, financial, and strategic expertise tailored to your goals.",
     primaryBtn: "Request a Free Consultation",
-    secondaryBtn: "Learn More"
+    secondaryBtn: "Learn More",
+    serviceType: "Free Consultation"
   },
 ];
 
 export const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [showAppointmentForm, setShowAppointmentForm] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
+
+  const openAppointmentForm = (serviceTitle = "") => {
+    setSelectedService(serviceTitle);
+    setShowAppointmentForm(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeAppointmentForm = () => {
+    setShowAppointmentForm(false);
+    document.body.style.overflow = "auto";
+  };
+
+  const handlePrimaryButtonClick = () => {
+    const currentSlideData = slides[currentSlide];
+    openAppointmentForm(currentSlideData.serviceType);
+  };
+
+  const handleSecondaryButtonClick = () => {
+    // For secondary buttons, you can add different behavior if needed
+    // For now, opening the same form but with a generic service type
+    openAppointmentForm("General Inquiry");
+  };
 
   const nextSlide = () => {
     if (isAnimating) return;
@@ -120,10 +150,20 @@ export const HeroSlider = () => {
               {slides[currentSlide].subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button variant="secondary" size="lg" className="min-w-[160px]">
+              <Button 
+                onClick={handlePrimaryButtonClick}
+                variant="secondary" 
+                size="lg" 
+                className="min-w-[160px] bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300"
+              >
                 {slides[currentSlide].primaryBtn}
               </Button>
-              <Button variant="outline" size="lg" className="min-w-[160px] border-white text-white hover:bg-white hover:text-primary">
+              <Button 
+                onClick={handleSecondaryButtonClick}
+                variant="outline" 
+                size="lg" 
+                className="min-w-[160px] border-white text-white hover:bg-white hover:text-primary"
+              >
                 {slides[currentSlide].secondaryBtn}
               </Button>
             </div>
@@ -132,54 +172,53 @@ export const HeroSlider = () => {
       </div>
 
       {/* Navigation Arrows */}
-     {/* Desktop buttons (hidden on mobile) */}
-<button
-  onClick={prevSlide}
-  disabled={isAnimating}
-  className="hidden sm:flex absolute left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full 
-             bg-white/10 backdrop-blur-sm border border-white/20 text-white 
-             hover:bg-white/20 transition-all duration-300 
-             disabled:opacity-50 disabled:cursor-not-allowed"
-  aria-label="Previous slide"
->
-  <ChevronLeft className="w-6 h-6" />
-</button>
+      {/* Desktop buttons (hidden on mobile) */}
+      <button
+        onClick={prevSlide}
+        disabled={isAnimating}
+        className="hidden sm:flex absolute left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full 
+                   bg-white/10 backdrop-blur-sm border border-white/20 text-white 
+                   hover:bg-white/20 transition-all duration-300 
+                   disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
 
-<button
-  onClick={nextSlide}
-  disabled={isAnimating}
-  className="hidden sm:flex absolute right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full 
-             bg-white/10 backdrop-blur-sm border border-white/20 text-white 
-             hover:bg-white/20 transition-all duration-300 
-             disabled:opacity-50 disabled:cursor-not-allowed"
-  aria-label="Next slide"
->
-  <ChevronRight className="w-6 h-6" />
-</button>
+      <button
+        onClick={nextSlide}
+        disabled={isAnimating}
+        className="hidden sm:flex absolute right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full 
+                   bg-white/10 backdrop-blur-sm border border-white/20 text-white 
+                   hover:bg-white/20 transition-all duration-300 
+                   disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
 
-{/* Mobile buttons (below slider, visible only on mobile) */}
-<div className="flex justify-center gap-6 mt-4 sm:hidden">
-  <button
-    onClick={prevSlide}
-    disabled={isAnimating}
-    className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 
-               disabled:opacity-50 disabled:cursor-not-allowed"
-    aria-label="Previous slide"
-  >
-    <ChevronLeft className="w-5 h-5" />
-  </button>
+      {/* Mobile buttons (below slider, visible only on mobile) */}
+      <div className="flex justify-center gap-6 mt-4 sm:hidden">
+        <button
+          onClick={prevSlide}
+          disabled={isAnimating}
+          className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 
+                     disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
 
-  <button
-    onClick={nextSlide}
-    disabled={isAnimating}
-    className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 
-               disabled:opacity-50 disabled:cursor-not-allowed"
-    aria-label="Next slide"
-  >
-    <ChevronRight className="w-5 h-5" />
-  </button>
-</div>
-
+        <button
+          onClick={nextSlide}
+          disabled={isAnimating}
+          className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 
+                     disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
 
       {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
@@ -197,6 +236,14 @@ export const HeroSlider = () => {
           />
         ))}
       </div>
+
+      {/* Reusable Appointment Form */}
+      <AppointmentForm
+        isOpen={showAppointmentForm}
+        onClose={closeAppointmentForm}
+        selectedService={selectedService}
+        title="Book an Appointment"
+      />
     </div>
   );
 };

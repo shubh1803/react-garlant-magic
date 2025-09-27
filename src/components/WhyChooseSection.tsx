@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { Shield, Globe, Users, DollarSign, Heart, Award } from 'lucide-react';
+import { AppointmentForm } from "../components/AppointmentForm"; // Adjust path as needed
 
 const WhyChooseSection = () => {
   const features = [
@@ -38,6 +39,19 @@ const WhyChooseSection = () => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
   const [inView, setInView] = useState(false);
+  const [showAppointmentForm, setShowAppointmentForm] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
+
+  const openAppointmentForm = (serviceTitle = "") => {
+    setSelectedService(serviceTitle);
+    setShowAppointmentForm(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeAppointmentForm = () => {
+    setShowAppointmentForm(false);
+    document.body.style.overflow = "auto";
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -205,13 +219,23 @@ const WhyChooseSection = () => {
     Join hundreds of successful cooperative institutions that have trusted Sahakar Samriddhi 
     for their banking and financial consultancy needs.
   </p>
- <button className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary-gradient hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 hover:scale-105">
-  Get Started Today
-</button>
-
+  <button 
+    onClick={() => openAppointmentForm("Transformation Consultation")}
+    className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary-gradient hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 hover:scale-105"
+  >
+    Get Started Today
+  </button>
 </div>
 
       </div>
+
+      {/* Reusable Appointment Form */}
+      <AppointmentForm
+        isOpen={showAppointmentForm}
+        onClose={closeAppointmentForm}
+        selectedService={selectedService}
+        title="Book an Appointment"
+      />
 
     </section>
   );

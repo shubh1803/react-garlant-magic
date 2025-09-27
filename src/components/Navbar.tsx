@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { Menu, X, Search, MapPin, Mail, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
+import { AppointmentForm } from "../components/AppointmentForm"; // Adjust path as needed
 
 type SubMenuKey = "registration" | "audit" | "consultancy" | null;
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [openSubMenu, setOpenSubMenu] = useState<SubMenuKey>(null);
+  const [showAppointmentForm, setShowAppointmentForm] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
 
   const location = useLocation();
 
@@ -15,11 +18,23 @@ const Navbar: React.FC = () => {
   const toggleSubMenu = (menu: SubMenuKey) =>
     setOpenSubMenu(openSubMenu === menu ? null : menu);
 
+  const openAppointmentForm = (serviceTitle = "") => {
+    setSelectedService(serviceTitle);
+    setShowAppointmentForm(true);
+    document.body.style.overflow = "hidden";
+    setIsMenuOpen(false); // Close mobile menu when opening form
+  };
+
+  const closeAppointmentForm = () => {
+    setShowAppointmentForm(false);
+    document.body.style.overflow = "auto";
+  };
+
   // Close mobile menu & scroll to top when route changes
   useEffect(() => {
     setIsMenuOpen(false);
     setOpenSubMenu(null);
-  window.scrollTo(0, 0); // 🚀 Directly top, no smooth scroll
+    window.scrollTo(0, 0); // 🚀 Directly top, no smooth scroll
   }, [location.pathname]);
 
   const mobileMenus = [
@@ -146,6 +161,7 @@ const Navbar: React.FC = () => {
                 <Search className="w-5 h-5" />
               </button>
               <Button
+                onClick={() => openAppointmentForm("General Consultation")}
                 variant="default"
                 size="lg"
                 className="ml-4 bg-blue-600 text-white border-none transition-all duration-300 hover:bg-primary-gradient hover:scale-105"
@@ -212,6 +228,7 @@ const Navbar: React.FC = () => {
                     <Search className="w-5 h-5" />
                   </button>
                   <Button
+                    onClick={() => openAppointmentForm("General Consultation")}
                     variant="default"
                     size="lg"
                     className="w-full sm:w-auto bg-blue-600 text-white border-none hover:bg-primary-gradient hover:scale-105 transition-transform"
@@ -224,6 +241,14 @@ const Navbar: React.FC = () => {
           )}
         </div>
       </nav>
+
+      {/* Reusable Appointment Form */}
+      <AppointmentForm
+        isOpen={showAppointmentForm}
+        onClose={closeAppointmentForm}
+        selectedService={selectedService}
+        title="Book an Appointment"
+      />
     </>
   );
 };
