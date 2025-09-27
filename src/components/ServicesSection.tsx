@@ -220,7 +220,7 @@ export const ServicesSection = () => {
                               : "opacity-100 h-auto"
                           }`}
                         >
-                          <div className="bg-blue-900 text-white  text-center rounded-lg p-4 mx-4 -mt-8 relative z-10 shadow-md">
+                          <div className="bg-blue-700 text-white  text-center rounded-lg p-4 mx-4 -mt-8 relative z-10 shadow-md">
                             <h3 className="text-lg font-semibold text-white-800">
                               {service.title}
                             </h3>
@@ -228,7 +228,7 @@ export const ServicesSection = () => {
                           <div className="text-center mt-6">
                             <button 
   onClick={() => openAppointmentForm(service.title)}
-  className="bg-blue-900 text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-600 transition-colors duration-300"
+  className="bg-blue-700 text-white rounded-full py-2 px-6 text-sm font-medium hover:bg-blue-600 transition-colors duration-300"
 >
   Explore More
 </button>

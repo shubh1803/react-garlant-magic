@@ -72,8 +72,9 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3 text-blue-500" />
-                +91-XXXXXXXXXX
+                +91-7071340707
               </li>
+              
               <li className="flex items-start">
                 <MapPin className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3 text-blue-500" />
                 Ashoka Plaza, Beed Bypass Road, Infront of Reliance Digital, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra – 431010

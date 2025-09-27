@@ -132,22 +132,54 @@ export const HeroSlider = () => {
       </div>
 
       {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        disabled={isAnimating}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-      <button
-        onClick={nextSlide}
-        disabled={isAnimating}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
+     {/* Desktop buttons (hidden on mobile) */}
+<button
+  onClick={prevSlide}
+  disabled={isAnimating}
+  className="hidden sm:flex absolute left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full 
+             bg-white/10 backdrop-blur-sm border border-white/20 text-white 
+             hover:bg-white/20 transition-all duration-300 
+             disabled:opacity-50 disabled:cursor-not-allowed"
+  aria-label="Previous slide"
+>
+  <ChevronLeft className="w-6 h-6" />
+</button>
+
+<button
+  onClick={nextSlide}
+  disabled={isAnimating}
+  className="hidden sm:flex absolute right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full 
+             bg-white/10 backdrop-blur-sm border border-white/20 text-white 
+             hover:bg-white/20 transition-all duration-300 
+             disabled:opacity-50 disabled:cursor-not-allowed"
+  aria-label="Next slide"
+>
+  <ChevronRight className="w-6 h-6" />
+</button>
+
+{/* Mobile buttons (below slider, visible only on mobile) */}
+<div className="flex justify-center gap-6 mt-4 sm:hidden">
+  <button
+    onClick={prevSlide}
+    disabled={isAnimating}
+    className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 
+               disabled:opacity-50 disabled:cursor-not-allowed"
+    aria-label="Previous slide"
+  >
+    <ChevronLeft className="w-5 h-5" />
+  </button>
+
+  <button
+    onClick={nextSlide}
+    disabled={isAnimating}
+    className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 
+               disabled:opacity-50 disabled:cursor-not-allowed"
+    aria-label="Next slide"
+  >
+    <ChevronRight className="w-5 h-5" />
+  </button>
+</div>
+
 
       {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">

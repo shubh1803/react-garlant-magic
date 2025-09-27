@@ -251,59 +251,50 @@ const BankingConsultancy = () => {
           </div>
 
           {/* Services Section with Card Flip Animation */}
-          <div id="services" ref={sectionRefs.services} className="mb-20 scroll-mt-20">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Our Key Services in Banking Business Consultancy
-            </h2>
+       <div id="services" ref={sectionRefs.services} className="mb-20 scroll-mt-20">
+  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+    Our Key Services in Banking Business Consultancy
+  </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: <FileText className="w-8 h-8" />,
-                  title: "Business Planning & Feasibility",
-                  description: "We assist in preparing detailed project reports, feasibility studies, and financial projections to evaluate and plan your banking business effectively."
-                },
-                {
-                  icon: <Building className="w-8 h-8" />,
-                  title: "Registration & Licensing Support",
-                  description: "We guide you through the legal and regulatory process for Credit Cooperative Society, Multi-State Cooperative Society, and Microfinance Company registration."
-                },
-                {
-                  icon: <Shield className="w-8 h-8" />,
-                  title: "Compliance and Governance Advisory",
-                  description: "We help you understand and implement governance structures, bylaws, board procedures, and risk management systems to meet legal standards."
-                },
-                {
-                  icon: <Users className="w-8 h-8" />,
-                  title: "Operational Setup",
-                  description: "We support you in designing loan and deposit products, drafting policies for credit, recovery, and customer service."
-                },
-                {
-                  icon: <BookOpen className="w-8 h-8" />,
-                  title: "Training and Capacity Building",
-                  description: "We conduct training sessions for directors, managers, and staff on compliance, finance, customer service, and risk management."
-                },
-                {
-                  icon: <TrendingUp className="w-8 h-8" />,
-                  title: "Business Growth & Expansion",
-                  description: "We help societies and financial institutions plan branch expansion, digital adoption, and partnerships to grow sustainably."
-                }
-              ].map((service, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, rotateY: 90 }}
-                  whileInView={{ opacity: 1, rotateY: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-className="p-6 rounded-2xl bg-gradient-to-br from-blue-100 via-blue-200 to-blue-600 border border-blue-800 text-white hover:shadow-xl transition-all duration-300 hover:scale-105"
-                >
-                  <div className="text-indigo-600 mb-4">{service.icon}</div>
-                  <h3 className="text-lg font-bold text-indigo-700 mb-2">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {[
+      { icon: <FileText className="w-8 h-8" />, title: "Business Planning & Feasibility", description: "We assist in preparing detailed project reports, feasibility studies, and financial projections to evaluate and plan your banking business effectively." },
+      { icon: <Building className="w-8 h-8" />, title: "Registration & Licensing Support", description: "We guide you through the legal and regulatory process for Credit Cooperative Society, Multi-State Cooperative Society, and Microfinance Company registration." },
+      { icon: <Shield className="w-8 h-8" />, title: "Compliance and Governance Advisory", description: "We help you understand and implement governance structures, bylaws, board procedures, and risk management systems to meet legal standards." },
+      { icon: <Users className="w-8 h-8" />, title: "Operational Setup", description: "We support you in designing loan and deposit products, drafting policies for credit, recovery, and customer service." },
+      { icon: <BookOpen className="w-8 h-8" />, title: "Training and Capacity Building", description: "We conduct training sessions for directors, managers, and staff on compliance, finance, customer service, and risk management." },
+      { icon: <TrendingUp className="w-8 h-8" />, title: "Business Growth & Expansion", description: "We help societies and financial institutions plan branch expansion, digital adoption, and partnerships to grow sustainably." },
+    ].map((service, index) => {
+      // 🎨 Fresh blue-purple-pink gradient combinations
+      const gradients = [
+        "from-[#60A5FA] via-[#9333EA] to-[#F472B6]",
+        "from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]",
+        "from-[#1D4ED8] via-[#6D28D9] to-[#DB2777]",
+        "from-[#93C5FD] via-[#E0AAFF] to-[#FBCFE8]",
+        "from-[#2563EB] via-[#7C3AED] to-[#EC4899]",
+          "from-[#93C5FD] via-[#E0AAFF] to-[#FBCFE8]",      ];
+
+      // Har card ke liye gradient randomly pick karenge
+      const gradient = gradients[index % gradients.length]; // ya aap random use kar sakte ho
+
+      return (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, rotateY: 90 }}
+          whileInView={{ opacity: 1, rotateY: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          className={`p-6 rounded-2xl bg-gradient-to-br ${gradient} border text-black hover:shadow-xl transition-all duration-300 hover:scale-105`}
+        >
+          <div className="mb-4">{service.icon}</div>
+          <h3 className="text-lg font-bold mb-2">{service.title}</h3>
+          <p className="text-black">{service.description}</p>
+        </motion.div>
+      );
+    })}
+  </div>
+</div>
+
 
           {/* Benefits Section with Scale-Up Animation */}
          <div id="benefits" ref={sectionRefs.benefits} className="mb-20 scroll-mt-20 px-4 relative">

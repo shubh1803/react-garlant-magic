@@ -414,43 +414,56 @@ const CreditCooperativeRegistration = () => {
             </div>
 
             {/* Horizontal Stepper */}
-           <div id="services" ref={sectionRefs.services} className="mb-32 scroll-mt-20 max-w-7xl mx-auto px-4 relative">
-     
+        <div
+  id="services"
+  ref={sectionRefs.services}
+  className="mb-32 scroll-mt-20 max-w-7xl mx-auto px-4 relative"
+>
+  {/* Horizontal Line */}
+  <div className="hidden md:block absolute top-32 left-0 right-0 h-1 bg-blue-700"></div>
 
-      {/* Horizontal Line */}
-      <div className="hidden md:block absolute top-32 left-0 right-0 h-1 bg-blue-700"></div>
+  {/* Dots on line */}
+  <div className="hidden md:flex absolute top-28 left-0 right-0 justify-between px-8">
+    {services.map((_, index) => (
+      <div
+        key={index}
+        className="w-4 h-4 bg-blue-700 rounded-full border-2 border-white"
+      ></div>
+    ))}
+  </div>
 
-      {/* Dots on line */}
-      <div className="hidden md:flex absolute top-28 left-0 right-0 justify-between px-8">
-        {services.map((_, index) => (
-          <div
-            key={index}
-            className="w-4 h-4 bg-blue-700 rounded-full border-2 border-white"
-          ></div>
-        ))}
-      </div>
+  <div className="grid md:grid-cols-3 gap-8 relative mt-16 justify-items-center">
+    {services.map((service, index) => {
+      const gradients = [
+        "from-[#60A5FA] via-[#9333EA] to-[#F472B6]", // Light Blue → Purple → Pink
+        "from-[#3B82F6] via-[#8B5CF6] to-[#EC4899]", // Vibrant Blue → Violet → Pink
+        "from-[#1D4ED8] via-[#6D28D9] to-[#DB2777]", // Deep Blue → Deep Purple → Rose Pink
+      ];
 
-      <div className="grid md:grid-cols-3 gap-8 relative mt-16">
-        {services.map((service, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, rotateY: 90 }}
-            whileInView={{ opacity: 1, rotateY: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className={`group p-6 rounded-2xl bg-gradient-to-br ${service.colorFrom} ${service.colorTo} border border-blue-800 text-white hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center`}
-          >
-            {/* Number Circle */}
-            <div className="w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center font-bold text-white text-lg mb-4 transition-colors duration-300 group-hover:bg-blue-400 group-hover:text-white">
-              {index + 1}
-            </div>
+      const gradient = gradients[index % gradients.length];
 
-            <h3 className="text-lg font-bold text-indigo-700 mb-2 text-center">{service.title}</h3>
-            <p className="text-gray-600 text-center">{service.description}</p>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+      return (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, rotateY: 90 }}
+          whileInView={{ opacity: 1, rotateY: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          className={`group p-6 rounded-2xl bg-gradient-to-br ${gradient} border border-blue-800 text-black hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center`}
+        >
+          {/* Number Circle */}
+          <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center font-bold text-black text-lg mb-4 transition-colors duration-300 group-hover:bg-white group-hover:text-blue-700">
+            {index + 1}
+          </div>
+
+          <h3 className="text-lg font-bold mb-2 text-center">{service.title}</h3>
+          <p className="text-black text-center">{service.description}</p>
+        </motion.div>
+      );
+    })}
+  </div>
+</div>
+
            
           </div>
 
